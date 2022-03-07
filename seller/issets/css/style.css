@@ -135,7 +135,7 @@ body{
   }
   
   .main-right.show {
-    margin-left: 10px;
+    margin-left: 5px;
   }
 
   /*  */
@@ -249,3 +249,94 @@ body{
   .select-ten{
     max-width: 150px;
   }
+
+  /*  */
+
+  .styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 100%;
+    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); */
+    border-radius: 10px;
+}
+
+
+.styled-table thead tr {
+  /* background-color: #009879; */
+  background-color: rgb(238, 238, 238);
+  color: #747474;
+  text-align: left;
+  border-radius: 10px;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 20px 15px;
+}
+
+
+.styled-table th{
+  /* border-top: solid 0.1px rgb(212, 212, 212); */
+  border-bottom: 0;
+}
+
+.styled-table th:first-child{
+  border-top-left-radius: 10px;
+}
+
+.styled-table th:last-child{
+  border-top-right-radius: 10px;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr td{
+  font-weight: 500;
+}
+.edit-produc-icon{
+  font-size: 20px;
+}
+
+.product-avatar-list{
+  width: 60px;
+}
+
+.produc-status-active{
+  font-size: 13px;
+  border: solid rgb(5, 177, 5) 1px;
+  border-radius: 5px;
+  padding: 0px 3px;
+  max-width: fit-content;
+  background-color: rgb(5, 177, 5);
+  color: white;
+  margin-left: 11px;
+}
+
+.produc-status-out{
+  font-size: 13px;
+  border: solid gray 1px;
+  border-radius: 5px;
+  padding: 0px 3px;
+  max-width: fit-content;
+  background-color: gray;
+  color: white;
+  margin-left: 11px;
+}
+
+.produc-status-locked{
+  font-size: 13px;
+  border: solid red 1px;
+  border-radius: 5px;
+  padding: 0px 3px;
+  max-width: fit-content;
+  background-color: red;
+  color: white;
+  margin-left: 11px;
+}
+
+
+
