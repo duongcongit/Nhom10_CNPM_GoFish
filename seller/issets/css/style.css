@@ -338,5 +338,21 @@ body{
   margin-left: 11px;
 }
 
+#photo-1{
+  background-image: url('../img/no-image-ok.png');
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+}
+
+#photo-1-input{
+  display: none;
+}
+
+#photo-1-input + label{
+  
+}
+
+
 
 
