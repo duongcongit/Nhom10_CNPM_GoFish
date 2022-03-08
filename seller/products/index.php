@@ -1,108 +1,11 @@
-<!DOCTYPE html>
-<html lang="vi">
+<?php
+include "../../config/constants.php";
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản lý sản phẩm</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../issets/css/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="../issets/js/script.js"></script>
-</head>
-
-<body>
-    <div class="container-fluid fixed-top">
-        <div class="row">
-            <div class="col-md-12 p-0">
-                <!-- Navbars start -->
-                <nav class="navbar navbar-expand-lg navbar-light">
-                    <div class="container-fluid">
-                        <a href="">
-                            <img src="../issets/img/logo-1.png" alt="" class="logo">
-                            <a class="navbar-brand me-auto" href="">Kênh người bán</a>
-                        </a>
-                    </div>
-                </nav>
-                <!-- Navbars end -->
-            </div>
-        </div>
-    </div>
-
-    <!--  -->
-
-    <!-- Main start -->
-    <div class="container-fluid main">
-        <div class="row">
-
-            <!-- Sidebar start -->
-            <div class="container sidebar">
-                <!-- Sidebar menu start-->
-                <div class="sidebar-menu">
-                    <ul class="">
-                        <li>
-                            <a href="../index.html" class="nav-link link-dark">
-                                <i class="bi bi-speedometer2"></i>
-                                <span class="sidebar-item-text">Thống kê chung</span>
-                            </a>
-                        </li>
-                        <hr>
-                        <li>
-                            <a href="" class="nav-link link-dark
-                                ">
-                                <i class="bi bi-receipt-cutoff me-3"></i>
-                                <span class="sidebar-item-text">Quản lý đơn hàng</span>
-                            </a>
-                        </li>
-                        <hr>
-                        <li>
-                            <a class="nav-link link-dark tour-btn ms-2" type="button">
-                                <img src="../issets/img/product-icon.png" alt="" style="width: 30px;">
-                                <span class="sidebar-item-text ms-3 text-muted">Quản lý sản phẩm</span>
-                                <span class="fas fa-caret-down tour-caret"></span>
-                            </a>
-                            <ul class="tour-show show">
-                                <li><a href="" class="">Tất cả sản phẩm</a></li>
-                                <li><a href="" class="">Thêm sản phẩm</a></li>
-                                <li><a href="" class="">Quản lý tồn kho</a></li>
-                                <li><a href="" class="">Sản phẩm bị khóa</a></li>
-                            </ul>
-                        </li>
-                        <hr>
-                        <li>
-                            <a href="" class="nav-link link-dark">
-                                <i class="bi bi-wallet"></i>
-                                <span class="sidebar-item-text">Tài chính</span>
-                            </a>
-                        </li>
-                        <hr>
-                        <li>
-                            <a href="" class="nav-link link-dark">
-                                <i class="bi bi-person"></i>
-                                <span class="sidebar-item-text">Hồ sơ</span>
-                            </a>
-                        </li>
-                        <hr>
-                        <li>
-                            <a href="" class="nav-link link-dark">
-                                <i class="bi bi-question-square"></i>
-                                <span class="sidebar-item-text">Hỗ trợ</span>
-                            </a>
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
-            <!-- Sidebar end -->
+include "../partials/header.php";
+?>
 
             <!-- Content start-->
-            <div class="col main-right container-fluid row show">
+            <div class="col main-right container-fluid row">
 
                 <!--  -->
                 <div class="col-md-12 mt-2 mb-3 nav-page">
@@ -172,7 +75,7 @@
                     <div class="col-md-12 mt-3">
                         <div class="d-flex justify-content-between">
                             <h3>0 Sản phẩm</h3>
-                            <a type="button" href="" class="btn btn-danger ms-auto"><i
+                            <a type="button" href="<?php echo SITEURL ?>seller/products/add-product.php" class="btn btn-danger ms-auto"><i
                                     class="bi bi-plus-circle-fill me-1"></i>Thêm một sản phẩm mới</a>
                         </div>
                         <!--  -->
@@ -212,7 +115,7 @@
                                     </td>
                                     <td>6</td>
                                     <td>
-                                        <a href="#" class="bi bi-pencil-square fs-5"></a>
+                                        <a href="./edit-product.html" class="bi bi-pencil-square fs-5"></a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -238,7 +141,7 @@
                                     </td>
                                     <td>6</td>
                                     <td>
-                                        <a href="#" class="bi bi-pencil-square fs-5"></a>
+                                        <a href="./edit-product.html" class="bi bi-pencil-square fs-5"></a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -276,14 +179,6 @@
             </div>
             <!-- Content end-->
 
-        </div>
-    </div>
-    <!-- Main end -->
-
-    <!-- Script -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-</body>
-
-</html>
+<?php
+include "../partials/footer.php";
+?>
