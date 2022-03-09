@@ -37,7 +37,7 @@ $(document).ready(function () {
   }
 
   //
-  showToursData("table-products", 1, 5, "id asc");
+  showToursData("table-products", 1, 5, "productID asc");
 
   // 
 });

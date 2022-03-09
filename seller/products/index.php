@@ -76,7 +76,7 @@ include "../partials/header.php";
         <div class="d-flex justify-content-between">
             <?php
             //Sql Query 
-            $sql_products = "SELECT * FROM item WHERE userID = '{$_SESSION['userID']}'";
+            $sql_products = "SELECT * FROM products WHERE userID = '{$_SESSION['userID']}'";
             //Execute Query
             $res_products = $conn->query($sql_products);
             //Count Rows
@@ -100,111 +100,8 @@ include "../partials/header.php";
             </thead>
             <tbody id="table-products">
                 <!--  -->
-                <tr>
-                    <td class="row">
-                        <div style="max-width: fit-content;">
-                            <img src="../issets/img/may-loc.png" alt="" class="product-avatar-list">
-                        </div>
 
-                        <div class="col row d-flex align-items-center">
-                            <div class="col-md-12 produc-status-active">
-                                Đang hoạt động
-                            </div>
-                            <div class="col-md-12">
-                                <b>Máy lọc thác Sunsun HBL-301</b>
-                            </div>
-                        </div>
-                    </td>
-                    <td>PVN1632</td>
-                    <td>Đồ điện</td>
-                    <td>95.000đ</td>
-                    <td>34
-                        <i class="bi bi-pencil-fill text-danger fs-6" type="button"></i>
-                    </td>
-                    <td>6</td>
-                    <td>
-                        <a href="./edit-product.php?producid=98234649356" class="bi bi-pencil-square fs-5"></a>
-                    </td>
-                </tr>
                 <!--  -->
-                <tr>
-                    <td class="row">
-                        <div style="max-width: fit-content;">
-                            <img src="../issets/img/may-loc.png" alt="" class="product-avatar-list">
-                        </div>
-
-                        <div class="col row d-flex align-items-center">
-                            <div class="col-md-12 produc-status-active">
-                                Đang hoạt động
-                            </div>
-                            <div class="col-md-12">
-                                <b>Máy lọc thác Sunsun HBL-301</b>
-                            </div>
-                        </div>
-                    </td>
-                    <td>PVN1632</td>
-                    <td>Đồ điện</td>
-                    <td>95.000đ</td>
-                    <td>34
-                        <i class="bi bi-pencil-fill text-danger fs-6" type="button"></i>
-                    </td>
-                    <td>6</td>
-                    <td>
-                        <a href="./edit-product.php?producid=98234649356" class="bi bi-pencil-square fs-5"></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="row">
-                        <div style="max-width: fit-content;">
-                            <img src="../issets/img/may-loc.png" alt="" class="product-avatar-list">
-                        </div>
-
-                        <div class="col row d-flex align-items-center">
-                            <div class="col-md-12 produc-status-out">
-                                Hết hàng
-                            </div>
-                            <div class="col-md-12">
-                                <b>Máy lọc thác Sunsun HBL-301</b>
-                            </div>
-                        </div>
-                    </td>
-                    <td>PVN1632</td>
-                    <td>Đồ điện</td>
-                    <td>95.000đ</td>
-                    <td>34
-                        <i class="bi bi-pencil-fill text-danger fs-6" type="button"></i>
-                    </td>
-                    <td>6</td>
-                    <td>
-                        <a href="./edit-product.php?producid=98234649356" class="bi bi-pencil-square fs-5"></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="row">
-                        <div style="max-width: fit-content;">
-                            <img src="../issets/img/may-loc.png" alt="" class="product-avatar-list">
-                        </div>
-
-                        <div class="col row d-flex align-items-center">
-                            <div class="col-md-12 produc-status-locked">
-                                Bị khóa
-                            </div>
-                            <div class="col-md-12">
-                                <b>Máy lọc thác Sunsun HBL-301</b>
-                            </div>
-                        </div>
-                    </td>
-                    <td>PVN1632</td>
-                    <td>Đồ điện</td>
-                    <td>95.000đ</td>
-                    <td>34
-                        <i class="bi bi-pencil-fill text-danger fs-6" type="button"></i>
-                    </td>
-                    <td>6</td>
-                    <td>
-                        <a href="#" class="bi bi-pencil-square fs-5"></a>
-                    </td>
-                </tr>
             </tbody>
         </table>
         <!--  -->

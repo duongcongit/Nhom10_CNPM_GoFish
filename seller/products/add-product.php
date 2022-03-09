@@ -23,7 +23,7 @@ include "../partials/header.php";
         <div class="col-md-12 d-flex justify-content-center">
             <div class="col-md-11">
                 <hr>
-                <form action="">
+                <form method="POST" action="./process-add-product.php" enctype="multipart/form-data" autocomplete="off">
                     <div class="basic-info col-md-12">
                         <h5><strong>Thông tin cơ bản</strong></h5>
                         <div class="input-group mb-3 mt-5">
@@ -31,21 +31,21 @@ include "../partials/header.php";
                                 <div class="input-group mb-3">
                                     <span class="pe-3" dir="rtl" style="min-width: 161px;">Tên sản phẩm
                                         *</span>
-                                    <input type="text" class="form-control" placeholder="Nhập vào">
+                                    <input name="prodNameAdd" type="text" class="form-control" placeholder="Nhập vào">
                                 </div>
                             </div>
                             <div class="col-md-12 pe-4">
                                 <div class="input-group mb-3">
                                     <span class="pe-3" dir="rtl" style="min-width: 161px;">Mô tả sản phẩm
                                         *</span>
-                                    <textarea class="form-control" rows="10" aria-label="With textarea" cols="40"></textarea>
+                                    <textarea name="prodDetailAdd" class="form-control" rows="10" aria-label="With textarea" cols="40"></textarea>
                                 </div>
                             </div>
                             <div class="col-md-12 pe-4">
                                 <div class="input-group mb-3">
                                     <span class="pe-1" dir="rtl" style="min-width: 161px;">Danh mục sản phẩm
                                         *</span>
-                                    <select class="form-select" style="max-width: 500px;">
+                                    <select name="prodCategoryAdd" class="form-select" style="max-width: 500px;">
                                         <option value="0" selected>Chọn danh mục sản phẩm</option>
                                         <option value="1">Cá cảnh</option>
                                     </select>
@@ -54,7 +54,7 @@ include "../partials/header.php";
                             <div class="col-md-12 pe-4">
                                 <div class="input-group mb-3">
                                     <span class="pe-3" dir="rtl" style="min-width: 161px;">Mã SKU *</span>
-                                    <input type="text" class="form-control" placeholder="Mã SKU tùy chỉnh">
+                                    <input name="prodSKUAdd" type="text" class="form-control" placeholder="Mã SKU tùy chỉnh">
                                 </div>
                             </div>
                         </div>
@@ -67,13 +67,13 @@ include "../partials/header.php";
                             <div class="input-group mb-3">
                                 <span class="pe-3" dir="rtl" style="min-width: 161px;">Giá *</span>
                                 <span class="input-group-text">đ</span>
-                                <input type="text" class="form-control" placeholder="0">
+                                <input name="prodPriceAdd" type="text" class="form-control" placeholder="0">
                             </div>
                         </div>
                         <div class="col-md-12 pe-4">
                             <div class="input-group mb-3">
                                 <span class="pe-3" dir="rtl" style="min-width: 161px;">Kho hàng *</span>
-                                <input type="text" class="form-control" placeholder="0">
+                                <input name="prodStockAdd" type="text" class="form-control" placeholder="0">
                             </div>
                         </div>
                     </div>
@@ -84,7 +84,7 @@ include "../partials/header.php";
                         <p class="ms-4 mb-4">(*) Tối đa 3 hình ảnh</p>
                         <div class="row ms-5">
                             <div class="card p-0 mb-3 me-3 d-flex justify-content-center" style="width: 200px;height: 200px;">
-                                <input type="file" name="" id="photo-1-input" onchange="loadPhoto1(event)">
+                                <input type="file" name="prodImg1Add" id="photo-1-input" onchange="loadPhoto1(event)">
                                 <label for="photo-1-input" type="button">
                                     <img id="photo-1-preview" src="../issets/img/no-image.png" alt="" style="max-width: 100%;">
                                 </label>
@@ -110,7 +110,7 @@ include "../partials/header.php";
 
                             <!-- Photo 2 -->
                             <div class="card px-0 mb-3 me-3 d-flex justify-content-center align-items-center" style="width: 200px;height: 200px;background-size: contain;">
-                                <input type="file" name="" id="photo-2-input" onchange="loadPhoto2(event)">
+                                <input type="file" name="prodImg2Add" id="photo-2-input" onchange="loadPhoto2(event)">
                                 <label for="photo-2-input" type="button">
                                     <img id="photo-2-preview" src="../issets/img/no-image.png" alt="" style="max-width: 100%;">
                                 </label>
@@ -128,7 +128,7 @@ include "../partials/header.php";
 
                             <!-- Photo 3 -->
                             <div class="card px-0 mb-3 me-3 d-flex justify-content-center align-items-center" style="width: 200px;height: 200px;background-size: contain;">
-                                <input type="file" name="" id="photo-3-input" onchange="loadPhoto3(event)">
+                                <input type="file" name="prodImg3Add" id="photo-3-input" onchange="loadPhoto3(event)">
                                 <label for="photo-3-input" type="button">
                                     <img id="photo-3-preview" src="../issets/img/no-image.png" alt="" style="max-width: 100%;">
                                 </label>
@@ -150,7 +150,7 @@ include "../partials/header.php";
 
                     <div class="col-md-12 py-2 d-flex justify-content-end">
                         <button class="btn btn-secondary px-4">Hủy và quay lại</button>
-                        <button class="btn btn-primary px-4 mx-3" type="submit">Thêm sản phẩm</button>
+                        <button class="btn btn-primary px-4 mx-3" type="submit" name="btnAddProduct">Thêm sản phẩm</button>
                     </div>
                 </form>
             </div>

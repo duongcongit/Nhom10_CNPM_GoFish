@@ -65,7 +65,7 @@ include "./partials/header.php";
         <div class="col-lg col-md-3 my-1 mx-2 card text-center shadow dashboard-card">
             <?php
             //Sql Query 
-            $sql_products_run_out = "SELECT * FROM item WHERE stock = 0 and userID = '{$_SESSION['userID']}'";
+            $sql_products_run_out = "SELECT * FROM products WHERE stock = 0 and userID = '{$_SESSION['userID']}'";
             //Execute Query
             $res_products_run_out = $conn->query($sql_products_run_out);
             //Count Rows
@@ -80,7 +80,7 @@ include "./partials/header.php";
         <div class="col-lg col-md-3 my-1 mx-2 card text-center shadow dashboard-card">
             <?php
             //Sql Query 
-            $sql_products_locked = "SELECT * FROM item WHERE status = '3' and userID = '{$_SESSION['userID']}'";
+            $sql_products_locked = "SELECT * FROM products WHERE status = '3' and userID = '{$_SESSION['userID']}'";
             //Execute Query
             $res_products_locked = $conn->query($sql_products_locked);
             //Count Rows
@@ -95,7 +95,7 @@ include "./partials/header.php";
         <div class="col-lg col-md-3 my-1 mx-2 card text-center shadow dashboard-card">
             <?php
             //Sql Query 
-            $sql_products = "SELECT * FROM item WHERE userID = '{$_SESSION['userID']}'";
+            $sql_products = "SELECT * FROM products WHERE userID = '{$_SESSION['userID']}'";
             //Execute Query
             $res_products = $conn->query($sql_products);
             //Count Rows

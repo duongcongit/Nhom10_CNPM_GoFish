@@ -6,7 +6,7 @@ if (isset($_POST['tableID'])) {
     $numRow = $_POST['numRow'];
     $sortBy = $_POST['sortBy'];
 
-    $sqlTotalRow    = "SELECT * FROM item WHERE userID = '{$_SESSION['userID']}'";
+    $sqlTotalRow    = "SELECT * FROM products WHERE userID = '{$_SESSION['userID']}'";
     $totalRow       = $conn->query($sqlTotalRow)->num_rows;
     $numPage        = ceil($totalRow / $numRow);
     $start          = ($page - 1) * $numRow;
@@ -25,7 +25,7 @@ if (isset($_POST['tableID'])) {
                             ?></td> -->
                 <td class="row">
                     <div style="max-width: fit-content;">
-                        <img src="../issets/img/<?= $row['itemImg']; ?>" alt="" class="product-avatar-list">
+                        <img src="../issets/img/<?= $row['image']; ?>" alt="" class="product-avatar-list">
                     </div>
 
                     <div class="col row d-flex align-items-center">
@@ -54,20 +54,42 @@ if (isset($_POST['tableID'])) {
                         }
                         ?>
                         <div class="col-md-12">
-                            <b><?= $row['itemName']; ?></b>
+                            <b><?= $row['productName']; ?></b>
                         </div>
                     </div>
                 </td>
-                <td>PVN1632<? //= $row['sold']; 
-                            ?></td>
-                <td><?= $row['type']; ?></td>
+                <td><?= $row['productSKU'];?></td>
+                <td><?= $row['category']; ?></td>
                 <td><?= $row['price']; ?>đ</td>
                 <td><?= $row['stock']; ?>
-                    <i class="bi bi-pencil-fill text-danger fs-6" type="button"></i>
+                    <?php
+                    if ($row['status'] == 3) {
+                    ?>
+                        <i class="bi bi-pencil-fill fs-6 text-muted" style="cursor:not-allowed;"></i>
+
+                    <?php
+                    } else {
+                    ?>
+                        <i class="bi bi-pencil-fill text-danger fs-6 edit-stock" type="button"></i>
+                    <?php
+                    }
+                    ?>
                 </td>
                 <td><?= $row['sold']; ?></td>
                 <td>
-                    <a href="./edit-product.php?producid=98234649356" class="bi bi-pencil-square fs-5"></a>
+                    <?php
+                    if ($row['status'] == 3) {
+                    ?>
+                        <i class="bi bi-pencil-square fs-5 text-muted" style="cursor:not-allowed;"></i>
+
+                    <?php
+                    } else {
+                    ?>
+                        <a href="./edit-product.php?producid=98234649356" class="bi bi-pencil-square fs-5"></a>
+                    <?php
+                    }
+                    ?>
+
                 </td>
             </tr>
         <?php
