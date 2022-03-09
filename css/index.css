@@ -1,5 +1,5 @@
 .header-top {
-  background-color: aqua;
+  background-color: rgb(0, 255, 115);
 }
 .header-top .wrapper {
   display: flex;
@@ -43,6 +43,11 @@
     transform: translate(1px, -2px) rotate(-1deg);
   }
 }
+.header-top{
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
 .header-top .initial {
   font-size: 13px;
   align-items: center;
@@ -53,6 +58,10 @@
 }
 .social .bi {
   font-size: 22px;
+}
+.navbar{
+  margin-top: 40px;
+  background-color: aqua;
 }
 .navbar .form-control {
   font-size: 14px;
@@ -65,8 +74,13 @@
   border-color: white;
 }
 
+.navbar-logo button{
+  border: aqua;
+  background-color: aqua;
+}
 .navbar-logo img {
   width: 100px;
+  background-color: aqua;
 }
 .initial {
   border-right: 1px solid rgb(255, 255, 255);
@@ -77,6 +91,9 @@
   color: orange;
   font-size: 18px;
 }
+.posts_slider{
+  z-index: -1;
+}
 .collapse a {
   text-decoration: none;
 }
@@ -86,7 +103,7 @@
 }
 
 .menu {
-  background-color: rgb(188, 214, 221);
+  background-color: rgb(91, 228, 221);
   height: 40px;
 }
 .menu .wrapper {
@@ -129,6 +146,23 @@
 	text-align: center;
 	align-items: center;
 	justify-content: center;
+}
+.simple-banner:hover img{
+  box-shadow: #000000 0px 4px 12px 0px;
+}
+.dropdown, .cart, .notify{
+  display: inline-flex;
+}
+
+.nav-item a{
+  color: orange;
+}
+
+.login:hover{
+  background-color: pink;
+}
+.signup:hover{
+  background-color: pink;
 }
 
 ul.products {
@@ -182,7 +216,7 @@ ul.products li .product-info .product-cat {
   text-transform: uppercase;
   color: #333333;
 }
-ul.products li .product-info .product-name {
+ul.products li .product-info .product-status {
   font-size: 13px;
 }
 ul.products li .product-info .product-price-action .product-price {
@@ -225,7 +259,7 @@ ul.products li .product-info .product-price-action .product-action button {
 .title-product{
   text-align: center;
   border-radius: 16px;
-  background: linear-gradient(to right, aqua, #fff);
+  background: linear-gradient(to right, rgb(43, 216, 135), #fff);
 }
 
 
@@ -302,7 +336,7 @@ ul.products li .product-info .product-price-action .product-action button {
   #hotline > a {
 	display: inline-block;
 	text-align: center;
-	background: #0f75bc;
+	background: #4264c4;
 	color: #ffffff;
 	width: 60px;
 	font-size: 24px;
