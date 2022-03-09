@@ -17,4 +17,27 @@ $(document).ready(function () {
     document.getElementById('photo-1-input').value = "";
   })
 
+
+  // 
+  // ====== Script for show products page
+  function showToursData(tableID, page, numRow, sortBy) {
+    $.ajax({
+      url: "get-products-data.php",
+      type: "POST",
+      data: {
+        tableID: tableID,
+        page: page,
+        numRow: numRow,
+        sortBy: sortBy,
+      },
+      success: function (data) {
+        $("#table-products").html(data);
+      },
+    });
+  }
+
+  //
+  showToursData("table-products", 1, 5, "id asc");
+
+  // 
 });

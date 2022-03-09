@@ -1,3 +1,23 @@
+<?php
+
+// Set for testing
+$_SESSION['userID'] = "U001";
+
+// include dirname(__FILE__) . '/login-check.php';
+
+
+//Sql Query 
+//$sql_partner = "SELECT * FROM doitac Where maCongTy = '{$_SESSION['partnerAccount']}'";
+//Execute Query
+// $resultInfoPartner = $conn->query($sql_partner);
+// $infoPartner = $resultInfoPartner->fetch_assoc();
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -41,7 +61,7 @@
         <div class="row">
 
             <!-- Sidebar start -->
-            <div class="container sidebar sidebar-show">
+            <div class="container sidebar">
                 <!-- Sidebar menu start-->
                 <div class="sidebar-menu">
                     <ul class="">
@@ -62,11 +82,11 @@
                         <hr>
                         <li>
                             <a class="nav-link link-dark tour-btn ms-2" type="button">
-                                <img src="./issets/img/product-icon.png" alt="" style="width: 30px;">
+                                <img src="<?php echo SITEURL ?>seller/issets/img/product-icon.png" alt="" style="width: 30px;">
                                 <span class="sidebar-item-text ms-3 text-muted">Quản lý sản phẩm</span>
                                 <span class="fas fa-caret-down tour-caret"></span>
                             </a>
-                            <ul class="tour-show show">
+                            <ul class="tour-show">
                                 <li><a href="<?php echo SITEURL ?>seller/products/index.php" class="">Tất cả sản phẩm</a></li>
                                 <li><a href="<?php echo SITEURL ?>seller/products/add-product.php" class="">Thêm sản phẩm</a></li>
                                 <li><a href="#" class="">Quản lý tồn kho</a></li>
@@ -101,3 +121,4 @@
             <!-- Sidebar end -->
 
             <!-- Content start-->
+            <div class="col main-right container-fluid row show">

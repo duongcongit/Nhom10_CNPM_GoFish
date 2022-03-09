@@ -5,7 +5,6 @@ include "../partials/header.php";
 ?>
 
 <!-- Content start-->
-<div class="col main-right container-fluid row">
 
     <!--  -->
     <div class="col-md-12 mt-2 mb-3 nav-page">
@@ -158,7 +157,7 @@ include "../partials/header.php";
         </div>
     </div>
     <!--  -->
-</div>
+
 <!-- Content end-->
 
 <?php

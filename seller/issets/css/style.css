@@ -27,6 +27,7 @@ body{
 
 }
 
+
 /*  */
 .sidebar {
     width: 250px;
@@ -144,11 +145,12 @@ body{
   .main-right {
     position: relative;
     transition: margin 0.5s;
-    margin: 70px 0px 10px 255px;
+    margin: 70px 0px 10px 255px !important;
+    overflow: auto;
   }
   
   .main-right.show {
-    margin-left: 5px;
+    margin-left: 5px !important;
   }
 
   /*  */
@@ -166,6 +168,8 @@ body{
     background-color: rgb(255, 255, 255);
     border-radius: 20px;
   }
+
+
   
   
   /* =============== CSS for Main content ================== */
