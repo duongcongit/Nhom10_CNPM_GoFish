@@ -18,10 +18,10 @@
         <div class="header-top container-fluid">
             <div class="wrapper ms-5 me-3">
                 <div class="initial ms-5 pe-2">
-                    <a href="">Kênh người bán</a>
+                    <a href="seller.php">Kênh người bán</a>
                 </div>
                 <div class="initial ms-2 pe-2">
-                    <a href="">Trở thành người bán Gofish</a>
+                    <a href="">Tải ứng dụng</a>
                 </div>
                 <div class="social ms-2 pe-2">
                     <span style="color: rgb(150, 157, 21);">Kết nối</span>
@@ -34,18 +34,18 @@
                 </div>
             </div>
         </div>
-        <div class="navbar navbar-expand-lg bg-white ms-3">
-            <div class="container-fluid ms-5">
+        <div class="navbar navbar-expand-lg">
+            <div class="container-fluid">
                 <a class="navbar-logo ms-5" href="index.html">
-                    <button type="button" class="btn btn-light">
-                        <img src="https://images.squarespace-cdn.com/content/v1/5cef069f124fff000125b347/1559169045380-V07V99DGIM6IQ01H0Z2U/gofish-logo.png"
+                    <button type="button" class="btn btn-light ms-2">
+                        <img src="assets/img/gofish-logo.png"
                             alt="">
                     </button>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon" style="color: #000;"></span>
                 </button>
                 <div class="collapse navbar-collapse ms-5" id="navbarSupportedContent">
                     <div class="search ms-5" style="display: inline;">
@@ -54,9 +54,25 @@
                             <input type="text" class="form-control p-3" placeholder="Search for fish, product...">
                         </div>
                     </div>
-                    <a href="" class="member ms-5">
-                        <i class="bi bi-person-circle ms-5"></i> Tài Khoản
-                    </a>
+                    <li class="nav-item dropdown ms-5" style="border-right: 1px solid rgb(238, 221, 221);">
+                        <a class="nav-link me-2" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="text-nav">
+                                <i class="bi bi-person-circle"></i> Tài khoản 
+                                <i class="bi bi-caret-down-fill"></i>
+                            </div>
+                            </i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="width: 150px; text-align: center;">
+                            <div class="login" style="border-bottom: 1px solid pink   ;">
+                                <a href="login.php">Đăng nhập</a>
+                            </div>
+                            <div class="signup">
+                                <a href="signup.php">Đăng Ký</a>
+                            </div>
+
+                        </ul>
+                    </li>
                     <a href="" class="notifi ms-5">
                         <i class="bi bi-bell"></i> Thông báo
                     </a>
@@ -106,28 +122,28 @@
 
     </header>
     
-    <main style="padding: 0;">
+    <main style="background-color: aqua;">
         <section class="posts_slider container-fluid" style="padding: 0;">
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                   <div class="carousel-item active">
                         <div class="row">
                             <div class="col-md-12">
-                                <img src="https://cakienghoanglam.com/thumb/1366x524/1/upload/hinhanh/549862.png" alt="">
+                                <img src="assets/img/slider3.png" alt="">
                             </div>
                         </div>
                   </div>
                   <div class="carousel-item ">
                         <div class="row">
                             <div class="col-md-12">
-                                <img src="https://cakienghoanglam.com/thumb/1366x524/1/upload/hinhanh/549862.png" alt="">
+                                <img src="assets/img/slider5.png" alt="">
                             </div>
                         </div>
                     </div>
                     <div class="carousel-item ">
                         <div class="row">
                             <div class="col-md-12">
-                                <img src="https://cakienghoanglam.com/thumb/1366x524/1/upload/hinhanh/549862.png" alt="">
+                                <img src="assets/img/slider4.png" alt="">
                             </div>
                         </div>
                     </div>
@@ -145,20 +161,20 @@
 
         <div class="simple-banner mt-2">
             <a href="">
-                <img src="https://cf.shopee.vn/file/0ed0d80b26a4a8dc8f8652679f37604d" alt="">
+                <img src="assets/img/flash-sale.png" alt="">
             </a>
         </div>
         <!-- product -->
         <div id="intro mt-4 ms-5 me-5">
             <div class="title-product col-md-2 mt-5 ms-5 p-2" style="background-color: aqua;">
-                <h3 style="color: darkmagenta;">Cá cảnh</h3>
+                <h3>Cá cảnh</h3>
             </div>
             <ul class="products ms-5 me-5">
                 <li>
                     <div class="product-item list-group">
                         <div class="product-top">
                             <a href="product.html" class="product-thumb">
-                                <img src="https://cakienghoanglam.com/thumb/225x220/1/upload/sanpham/ca-canh-bien-du-tim-purple-tang.jpg" alt="">
+                                <img src="assets/img/product3.jpg" alt="">
 
                             </a>
                         </div>
@@ -179,15 +195,15 @@
                     <div class="product-item">
                         <div class="product-top">
                             <a href="product.html" class="product-thumb">
-                                <img src="https://cakienghoanglam.com/thumb/225x220/1/upload/sanpham/ca-canh-bien-ne-dien-powder-brown-tang.jpg" alt="">
+                                <img src="assets/img/product1.jpg" alt="">
 
                             </a>
                         </div>
                         <div class="product-info">
                             <a href="product.html" class="product-cat">Cá Cảnh Biển Nẻ Điện</a>
-                            <p class="product-name" style="color: red;">Đã bán: 1089</p>
+                            <p class="product-status" style="color: red;">Đã bán: 225</p>
                             <div class="product-price-action">
-                                <p class="product-price">1.089.000đ</p>
+                                <p class="product-price">1.350.000đ</p>
                                 <div class="product-action">
                                     <button type="button" class="btn-action"><i class="bi bi-cart-fill"></i>
                                     </button>
@@ -200,15 +216,15 @@
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
-                                <img src="https://cakienghoanglam.com/thumb/225x220/1/upload/sanpham/ca-canh-bien-platinum-percula-clownfish.jpg" alt="">
+                                <img src="assets/img/product2.jpg" alt="">
 
                             </a>
                         </div>
                         <div class="product-info">
-                            <a href="" class="product-cat">Cá Cảnh Biển Nẻ Điện</a>
-                            <p class="product-name" style="color: red;">Đã bán: 1089</p>
+                            <a href="" class="product-cat">Cá Cảnh Biển Platinum</a>
+                            <p class="product-status" style="color: red;">Đã bán: 799</p>
                             <div class="product-price-action">
-                                <p class="product-price">1.089.000đ</p>
+                                <p class="product-price">2.059.000đ</p>
                                 <div class="product-action">
                                     <button type="button" class="btn-action"><i class="bi bi-cart-fill"></i>
                                     </button>
@@ -221,15 +237,15 @@
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
-                                <img src="https://cakienghoanglam.com/thumb/225x220/1/upload/sanpham/ca-canh-bien-platinum-percula-clownfish.jpg" alt="">
+                                <img src="assets/img/product4.jpg" alt="">
 
                             </a>
                         </div>
                         <div class="product-info">
-                            <a href="" class="product-cat">Cá Cảnh Biển Nẻ Điện</a>
-                            <p class="product-name" style="color: red;">Đã bán: 1089</p>
+                            <a href="" class="product-cat">Cá Cảnh Biển khoan cổ</a>
+                            <p class="product-status" style="color: red;">Đã bán: 1100</p>
                             <div class="product-price-action">
-                                <p class="product-price">1.089.000đ</p>
+                                <p class="product-price">865.000đ</p>
                                 <div class="product-action">
                                     <button type="button" class="btn-action"><i class="bi bi-cart-fill"></i>
                                     </button>
@@ -242,15 +258,15 @@
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
-                                <img src="https://cakienghoanglam.com/thumb/225x220/1/upload/sanpham/ca-canh-bien-platinum-percula-clownfish.jpg" alt="">
+                                <img src="assets/img/fish5.jpg" alt="">
 
                             </a>
                         </div>
                         <div class="product-info">
-                            <a href="" class="product-cat">Cá Cảnh Biển Nẻ Điện</a>
-                            <p class="product-name" style="color: red;">Đã bán: 1089</p>
+                            <a href="" class="product-cat">Cá Cảnh Biển Maroon đỏ</a>
+                            <p class="product-status" style="color: red;">Đã bán: 350</p>
                             <div class="product-price-action">
-                                <p class="product-price">1.089.000đ</p>
+                                <p class="product-price">1.170.000đ</p>
                                 <div class="product-action">
                                     <button type="button" class="btn-action"><i class="bi bi-cart-fill"></i>
                                     </button>
@@ -263,14 +279,14 @@
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
-                                <img src="https://cakienghoanglam.com/thumb/225x220/1/upload/sanpham/ca-canh-bien-ne-nhat-powder-blue-tang.jpg" alt="">
+                                <img src="assets/img/fish7.jpg" alt="">
                             </a>
                         </div>
                         <div class="product-info">
-                            <a href="" class="product-cat">Cá Cảnh Biển Nẻ Điện</a>
-                            <p class="product-name" style="color: red;">Đã bán: 1089</p>
+                            <a href="" class="product-cat">Cá Cảnh Biển Nẻ Nhật</a>
+                            <p class="product-status" style="color: red;">Đã bán: 189</p>
                             <div class="product-price-action">
-                                <p class="product-price">1.089.000đ</p>
+                                <p class="product-price">2.569.000đ</p>
                                 <div class="product-action">
                                     <button type="button" class="btn-action"><i class="bi bi-cart-fill"></i>
                                     </button>
@@ -283,15 +299,15 @@
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
-                                <img src="https://cakienghoanglam.com/thumb/225x220/1/upload/sanpham/ca-canh-bien-ne-nhat-powder-blue-tang.jpg" alt="">
+                                <img src="assets/img/fish6.jpg" alt="">
 
                             </a>
                         </div>
                         <div class="product-info">
-                            <a href="" class="product-cat">Cá Cảnh Biển Nẻ Điện</a>
-                            <p class="product-name" style="color: red;">Đã bán: 1089</p>
+                            <a href="" class="product-cat">Cá Cảnh Biển Lemonpeel</a>
+                            <p class="product-status" style="color: red;">Đã bán: 568</p>
                             <div class="product-price-action">
-                                <p class="product-price">1.089.000đ</p>
+                                <p class="product-price">795.000đ</p>
                                 <div class="product-action">
                                     <button type="button" class="btn-action"><i class="bi bi-cart-fill"></i>
                                     </button>
@@ -304,15 +320,15 @@
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
-                                <img src="https://cakienghoanglam.com/thumb/225x220/1/upload/sanpham/ca-canh-bien-ne-nhat-powder-blue-tang.jpg" alt="">
+                                <img src="assets/img/fish8.jpg" alt="">
 
                             </a>
                         </div>
                         <div class="product-info">
-                            <a href="" class="product-cat">Cá Cảnh Biển Nẻ Điện</a>
-                            <p class="product-name" style="color: red;">Đã bán: 1089</p>
+                            <a href="" class="product-cat">Cá Cảnh Biển Yellowtail</a>
+                            <p class="product-status" style="color: red;">Đã bán: 489</p>
                             <div class="product-price-action">
-                                <p class="product-price">1.089.000đ</p>
+                                <p class="product-price">2.509.000đ</p>
                                 <div class="product-action">
                                     <button type="button" class="btn-action"><i class="bi bi-cart-fill"></i>
                                     </button>
@@ -331,15 +347,15 @@
                     <div class="product-item list-group">
                         <div class="product-top">
                             <a href="product.html" class="product-thumb">
-                                <img src="https://cakienghoanglam.com/thumb/225x220/1/upload/sanpham/thuc-an-head-up-okiko-100g-len-dau-cho-ca-la-han.jpg" alt="">
+                                <img src="assets/img/food3.jpg" alt="">
 
                             </a>
                         </div>
                         <div class="product-info">
-                            <a href="product.html" class="product-cat" style="font-size: 16px;">Thức Ăn Head Up (500g) Lên Đầu Cho Cá La Hán</a>
-                            <p class="product-name" style="color: red;">Đã bán: 1089</p>
+                            <a href="product.html" class="product-cat" style="font-size: 16px;">Thức Ăn Head Up (500g) </a>
+                            <p class="product-status" style="color: red;">Đã bán: 120</p>
                             <div class="product-price-action">
-                                <p class="product-price">1.089.000đ</p>
+                                <p class="product-price">150.000đ</p>
                                 <div class="product-action">
                                     <button type="button" class="btn-action"><i class="bi bi-cart-fill"></i>
                                     </button>
@@ -352,15 +368,15 @@
                     <div class="product-item list-group">
                         <div class="product-top">
                             <a href="product.html" class="product-thumb">
-                                <img src="https://cakienghoanglam.com/thumb/225x220/1/upload/sanpham/thuc-an-head-up-okiko-100g-len-dau-cho-ca-la-han.jpg" alt="">
+                                <img src="assets/img/food1.jpg" alt="">
 
                             </a>
                         </div>
                         <div class="product-info">
-                            <a href="product.html" class="product-cat" style="font-size: 16px;">Thức Ăn Head Up (500g) Lên Đầu Cho Cá La Hán</a>
-                            <p class="product-name" style="color: red;">Đã bán: 1089</p>
+                            <a href="product.html" class="product-cat" style="font-size: 16px;">Thức Ăn cho cá bột</a>
+                            <p class="product-status" style="color: red;">Đã bán: 99</p>
                             <div class="product-price-action">
-                                <p class="product-price">1.089.000đ</p>
+                                <p class="product-price">170.000đ</p>
                                 <div class="product-action">
                                     <button type="button" class="btn-action"><i class="bi bi-cart-fill"></i>
                                     </button>
@@ -373,15 +389,15 @@
                     <div class="product-item list-group">
                         <div class="product-top">
                             <a href="product.html" class="product-thumb">
-                                <img src="https://cakienghoanglam.com/thumb/225x220/1/upload/sanpham/thuc-an-head-up-okiko-100g-len-dau-cho-ca-la-han.jpg" alt="">
+                                <img src="assets/img/food2.jpg" alt="">
 
                             </a>
                         </div>
                         <div class="product-info">
-                            <a href="product.html" class="product-cat" style="font-size: 16px;">Thức Ăn Head Up (500g) Lên Đầu Cho Cá La Hán</a>
-                            <p class="product-name" style="color: red;">Đã bán: 1089</p>
+                            <a href="product.html" class="product-cat" style="font-size: 16px;">Thức Ăn cho cá orio</a>
+                            <p class="product-status" style="color: red;">Đã bán: 89</p>
                             <div class="product-price-action">
-                                <p class="product-price">1.089.000đ</p>
+                                <p class="product-price">300.000đ</p>
                                 <div class="product-action">
                                     <button type="button" class="btn-action"><i class="bi bi-cart-fill"></i>
                                     </button>
@@ -394,15 +410,15 @@
                     <div class="product-item list-group">
                         <div class="product-top">
                             <a href="product.html" class="product-thumb">
-                                <img src="https://cakienghoanglam.com/thumb/225x220/1/upload/sanpham/thuc-an-head-up-okiko-100g-len-dau-cho-ca-la-han.jpg" alt="">
+                                <img src="assets/img/food4.jpg" alt="">
 
                             </a>
                         </div>
                         <div class="product-info">
-                            <a href="product.html" class="product-cat" style="font-size: 16px;">Thức Ăn Head Up (500g) Lên Đầu Cho Cá La Hán</a>
-                            <p class="product-name" style="color: red;">Đã bán: 1089</p>
+                            <a href="product.html" class="product-cat" style="font-size: 16px;">Sâu canxi sấy khô</a>
+                            <p class="product-status" style="color: red;">Đã bán: 55</p>
                             <div class="product-price-action">
-                                <p class="product-price">1.089.000đ</p>
+                                <p class="product-price">160.000đ</p>
                                 <div class="product-action">
                                     <button type="button" class="btn-action"><i class="bi bi-cart-fill"></i>
                                     </button>
@@ -415,15 +431,15 @@
                     <div class="product-item list-group">
                         <div class="product-top">
                             <a href="product.html" class="product-thumb">
-                                <img src="https://cakienghoanglam.com/thumb/225x220/1/upload/sanpham/thuc-an-head-up-okiko-100g-len-dau-cho-ca-la-han.jpg" alt="">
+                                <img src="assets/img/food5.jpg" alt="">
 
                             </a>
                         </div>
                         <div class="product-info">
-                            <a href="product.html" class="product-cat" style="font-size: 16px;">Thức Ăn Head Up (500g) Lên Đầu Cho Cá La Hán</a>
-                            <p class="product-name" style="color: red;">Đã bán: 1089</p>
+                            <a href="product.html" class="product-cat" style="font-size: 16px;">Thức Ăn Rainbow lên màu</a>
+                            <p class="product-status" style="color: red;">Đã bán: 189</p>
                             <div class="product-price-action">
-                                <p class="product-price">1.089.000đ</p>
+                                <p class="product-price">99.000đ</p>
                                 <div class="product-action">
                                     <button type="button" class="btn-action"><i class="bi bi-cart-fill"></i>
                                     </button>
@@ -436,15 +452,15 @@
                     <div class="product-item list-group">
                         <div class="product-top">
                             <a href="product.html" class="product-thumb">
-                                <img src="https://cakienghoanglam.com/thumb/225x220/1/upload/sanpham/thuc-an-head-up-okiko-100g-len-dau-cho-ca-la-han.jpg" alt="">
+                                <img src="assets/img/food6.jpg" alt="">
 
                             </a>
                         </div>
                         <div class="product-info">
-                            <a href="product.html" class="product-cat" style="font-size: 16px;">Thức Ăn Head Up (500g) Lên Đầu Cho Cá La Hán</a>
-                            <p class="product-name" style="color: red;">Đã bán: 1089</p>
+                            <a href="product.html" class="product-cat" style="font-size: 16px;">Cam thái INVE 3/5 50g</a>
+                            <p class="product-name" style="color: red;">Đã bán: 250</p>
                             <div class="product-price-action">
-                                <p class="product-price">1.089.000đ</p>
+                                <p class="product-price">165.000đ</p>
                                 <div class="product-action">
                                     <button type="button" class="btn-action"><i class="bi bi-cart-fill"></i>
                                     </button>
@@ -457,15 +473,15 @@
                     <div class="product-item list-group">
                         <div class="product-top">
                             <a href="product.html" class="product-thumb">
-                                <img src="https://cakienghoanglam.com/thumb/225x220/1/upload/sanpham/thuc-an-head-up-okiko-100g-len-dau-cho-ca-la-han.jpg" alt="">
+                                <img src="assets/img/food7.jpg" alt="">
 
                             </a>
                         </div>
                         <div class="product-info">
-                            <a href="product.html" class="product-cat" style="font-size: 16px;">Thức Ăn Head Up (500g) Lên Đầu Cho Cá La Hán</a>
-                            <p class="product-name" style="color: red;">Đã bán: 1089</p>
+                            <a href="product.html" class="product-cat" style="font-size: 16px;">Thức Ăn Quick Okiko</a>
+                            <p class="product-name" style="color: red;">Đã bán: 210</p>
                             <div class="product-price-action">
-                                <p class="product-price">1.089.000đ</p>
+                                <p class="product-price">55.000đ</p>
                                 <div class="product-action">
                                     <button type="button" class="btn-action"><i class="bi bi-cart-fill"></i>
                                     </button>
@@ -478,15 +494,15 @@
                     <div class="product-item list-group">
                         <div class="product-top">
                             <a href="product.html" class="product-thumb">
-                                <img src="https://cakienghoanglam.com/thumb/225x220/1/upload/sanpham/thuc-an-head-up-okiko-100g-len-dau-cho-ca-la-han.jpg" alt="">
+                                <img src="assets/img/food8.jpg" alt="">
 
                             </a>
                         </div>
                         <div class="product-info">
-                            <a href="product.html" class="product-cat" style="font-size: 16px;">Thức Ăn Head Up (500g) Lên Đầu Cho Cá La Hán</a>
-                            <p class="product-name" style="color: red;">Đã bán: 1089</p>
+                            <a href="product.html" class="product-cat" style="font-size: 16px;">Thức Ăn XO Humpy head</a>
+                            <p class="product-name" style="color: red;">Đã bán: 80</p>
                             <div class="product-price-action">
-                                <p class="product-price">1.089.000đ</p>
+                                <p class="product-price">175.000đ</p>
                                 <div class="product-action">
                                     <button type="button" class="btn-action"><i class="bi bi-cart-fill"></i>
                                     </button>
@@ -496,6 +512,98 @@
                     </div>
                 </li>
             </ul>
+
+            <div class="title-product col-md-2 mt-5 ms-5 p-2" style="background-color: aqua;">
+                <h3>Bể cá cảnh</h3>
+            </div>
+            <ul class="products ms-5 me-5">
+                <li>
+                    <div class="product-item list-group">
+                        <div class="product-top">
+                            <a href="product.html" class="product-thumb">
+                                <img src="assets/img/ho-ca-rong-184.jpg" alt="">
+
+                            </a>
+                        </div>
+                        <div class="product-info">
+                            <a href="product.html" class="product-cat" style="font-size: 16px;">Bể cá rồng</a>
+                            <p class="product-name" style="color: red;">Đã bán: 25</p>
+                            <div class="product-price-action">
+                                <p class="product-price">4.089.000đ</p>
+                                <div class="product-action">
+                                    <button type="button" class="btn-action"><i class="bi bi-cart-fill"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="product-item">
+                        <div class="product-top">
+                            <a href="product.html" class="product-thumb">
+                                <img src="assets/img/ho-ca-rong-op-go-xoai-son-trang.jpg" alt="">
+
+                            </a>
+                        </div>
+                        <div class="product-info">
+                            <a href="product.html" class="product-cat">Bể cá rồng ốp gỗ</a>
+                            <p class="product-status" style="color: red;">Đã bán: 17</p>
+                            <div class="product-price-action">
+                                <p class="product-price">3.160.000đ</p>
+                                <div class="product-action">
+                                    <button type="button" class="btn-action"><i class="bi bi-cart-fill"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="product-item">
+                        <div class="product-top">
+                            <a href="" class="product-thumb">
+                                <img src="assets/img/ho-ca-rong-tu-nhom-son-trang.jpg" alt="">
+
+                            </a>
+                        </div>
+                        <div class="product-info">
+                            <a href="" class="product-cat">Bể cá rồng tủ nhôm</a>
+                            <p class="product-status" style="color: red;">Đã bán: 19</p>
+                            <div class="product-price-action">
+                                <p class="product-price">2.500.000đ</p>
+                                <div class="product-action">
+                                    <button type="button" class="btn-action"><i class="bi bi-cart-fill"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="product-item">
+                        <div class="product-top">
+                            <a href="" class="product-thumb">
+                                <img src="assets/img/ho-ca-rong-op-go-do.jpg" alt="">
+
+                            </a>
+                        </div>
+                        <div class="product-info">
+                            <a href="" class="product-cat">Bể cá rồng ốp gỗ đỏ</a>
+                            <p class="product-status" style="color: red;">Đã bán: 9</p>
+                            <div class="product-price-action">
+                                <p class="product-price">2.200.000đ</p>
+                                <div class="product-action">
+                                    <button type="button" class="btn-action"><i class="bi bi-cart-fill"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            </div>
+
             <div class="product-more" style="text-align: center;">
                 <a href=""><button class="view-more bg-white">Xem Thêm</button></a>
             </div>
@@ -512,7 +620,7 @@
                                     <div class="col-md-6">
                                         <div class="row"> 
                                             <div class="col-md-5">
-                                                <img src="https://cakienghoanglam.com/thumb/225x220/1/upload/sanpham/ca-canh-bien-platinum-percula-clownfish.jpg" alt="">
+                                                <img src="assets/img/fish8.jpg" alt="">
                                             </div>
                                             <div class="col-md-7">
                                                 <h4>Mua cá rồng và những điều cần biết</h4>
@@ -523,10 +631,10 @@
                                     <div class="col-md-6">
                                         <div class="row"> 
                                             <div class="col-md-5">
-                                                <img src="https://cakienghoanglam.com/upload/user/images/thi-cong-ho-thuy-sinh-1.jpg" alt="">
+                                                <img src="assets/img/becacanh.jpg" alt="">
                                             </div>
                                             <div class="col-md-7">
-                                                <h4>Thi công hồ thủy sinh cần quan tâm những vấn đề gì?</h4>
+                                                <h4>Thi công Bể thủy sinh cần quan tâm những vấn đề gì?</h4>
                                                 <P>Bạn có nhu cầu thi công hồ thủy sinh? Bạn đang phân vân không biết nên bắt đầu thi công từ đâu? Nên lựa chọn đơn vị thi công nào uy tín, đảm bảo chất lượng, làm việc chuyên nghiệp? Những thông tin dưới đây của chúng tôi chắc chắn sẽ hữu ích dành cho bạn.</P>
                                             </div>
                                         </div>
@@ -538,7 +646,7 @@
                                       <div class="col-md-6">
                                           <div class="row"> 
                                               <div class="col-md-5">
-                                                  <img src="https://cakienghoanglam.com/thumb/225x220/1/upload/sanpham/ca-canh-bien-platinum-percula-clownfish.jpg" alt="">
+                                                  <img src="assets/img/product1.jpg" alt="">
                                               </div>
                                               <div class="col-md-7">
                                                   <h4>Mua cá rồng và những điều cần biết</h4>
@@ -549,7 +657,7 @@
                                       <div class="col-md-6">
                                           <div class="row"> 
                                               <div class="col-md-5">
-                                                  <img src="https://cakienghoanglam.com/upload/user/images/thi-cong-ho-thuy-sinh-1.jpg" alt="">
+                                                  <img src="assets/img/becacanh.jpg" alt="">
                                               </div>
                                               <div class="col-md-7">
                                                   <h4>Thi công hồ thủy sinh cần quan tâm những vấn đề gì?</h4>
@@ -564,7 +672,7 @@
                                           <div class="col-md-6">
                                               <div class="row"> 
                                                   <div class="col-md-5">
-                                                      <img src="https://cakienghoanglam.com/thumb/225x220/1/upload/sanpham/ca-canh-bien-platinum-percula-clownfish.jpg" alt="">
+                                                      <img src="assets/img/fish5.jpg" alt="">
                                                   </div>
                                                   <div class="col-md-7">
                                                       <h4>Mua cá rồng và những điều cần biết</h4>
@@ -575,7 +683,7 @@
                                           <div class="col-md-6">
                                               <div class="row"> 
                                                   <div class="col-md-5">
-                                                      <img src="https://cakienghoanglam.com/thumb/225x220/1/upload/sanpham/ca-canh-bien-platinum-percula-clownfish.jpg" alt="">
+                                                      <img src="assets/img/becacanh.jpg" alt="">
                                                   </div>
                                                   <div class="col-md-7">
                                                       <h4>Thi công hồ thủy sinh cần quan tâm những vấn đề gì?</h4>
@@ -606,7 +714,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class=" logo-footer">
-                            <img class="col-md-6" src="https://images.squarespace-cdn.com/content/v1/5cef069f124fff000125b347/1559169045380-V07V99DGIM6IQ01H0Z2U/gofish-logo.png" alt="">
+                            <img class="col-md-6" src="assets/img/gofish-logo.png" alt="">
                         </div>
                     </div>
                     <div class="col-md mt-2">
@@ -628,7 +736,7 @@
                             <li><a href="" class="text-decoration-none">Tuyển dụng</a></li>
                             <li><a href="" class="text-decoration-none">Điều khoản</a></li>
                             <li><a href="" class="text-decoration-none">Chính sách bảo mật</a></li>
-                            <li><a href="" class="text-decoration-none">Kênh Người Bán</a></li>
+                            <li><a href="seller.php" class="text-decoration-none">Kênh Người Bán</a></li>
                             <li><a href="" class="text-decoration-none">Flash Sales</a></li>
                         </ul>
                     </div>
