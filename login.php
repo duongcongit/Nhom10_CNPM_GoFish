@@ -11,16 +11,16 @@ session_start();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./assets/css/login.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="./js/scriptsLogin.js"></script>
+    <script src="./assets/js/scriptsLogin.js"></script>
 </head>
 <body>
 <header class="header-navbar container-fluid fixed-top">
     <nav class="navbar navbar-light">
     <div class="container ">
         <a class="navbar-brand" href="../index.php">
-        <img src="../img/GF-home.png" alt="" class="img-fluid">
+        <img src="./assets/img/GF-home.png" alt="" class="img-fluid">
         </a>
     </div>
     </nav>
@@ -28,13 +28,14 @@ session_start();
 <main class="container-fluid">
 <div class="wrapper">
     <div class="card">
-        <form action="processLogin.php" class="d-flex flex-column" method ="post">
+        <form action="./Login-Signup/processLogin.php" class="d-flex flex-column" method ="post">
             <div class="h3 text-center text-white">Đăng Nhập</div>
-            <div class="d-flex align-items-center input-field my-3 mb-4"> 
+            <div class="d-flex align-items-center input-field mt-3 mb-2 "> 
                 <span class="fa fa-user p-2"></span> 
                 <input type="text" placeholder="Tên đăng nhập hoặc Email" required class="form-control" id="user" name="user"> 
             </div>
-            <div class="d-flex align-items-center input-field mb-4">
+            <small id="userNotification"></small>
+            <div class="d-flex align-items-center input-field mt-3 mb-4">
                 <span class="fas fa-lock p-2"></span> 
                 <input type="password" placeholder="Mật Khẩu" required class="form-control" id="pwd" name="pass">  
             </div>

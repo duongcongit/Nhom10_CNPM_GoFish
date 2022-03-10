@@ -1,7 +1,7 @@
 <?php
 
 if( !isset($_POST['btnSignUp']) ){
-    header("location: signup.php");
+    header("location: ../signup.php");
 }
 else{
     $name = $_POST['hoten'];
@@ -18,12 +18,12 @@ else{
     $address = htmlspecialchars($address); 
     $pass= htmlspecialchars($pass);
     $cpass= htmlspecialchars($cpass);
-    require './config/dbconfig.php';
+    require '../config/dbconfig.php';
     $sql = "SELECT * FROM users WHERE username='$user' OR email='$email'";
     $result = mysqli_query($conn,$sql);
     if(mysqli_num_rows($result) > 0){
         $_SESSION['error'] = "Username hoặc Email đã tồn tại";
-        header("location: signup.php");
+        header("location: ../signup.php");
     }
     
     else if($cpass != $pass){
@@ -47,7 +47,7 @@ else{
         }
         else{
             $_SESSION['error'] = "Có lỗi";
-            header("location: signup.php"); //Chuyển hướng, hiển thị thông báo lỗi
+            header("location: ../signup.php"); //Chuyển hướng, hiển thị thông báo lỗi
     }
             
     

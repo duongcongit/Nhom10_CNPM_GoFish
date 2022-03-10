@@ -1,12 +1,12 @@
 <?php
-require_once './config/dbconfig.php';
+require_once '../config/dbconfig.php';
 if( !isset($_POST['btnLogIn']) ){
-    header("location: login.php");
+    header("location: ../login.php");
 }
 else{
     if(empty($_POST['user']) || empty($_POST['pass'])) {
     $_SESSION['error'] = 'Bạn cần điền đầy đủ thông tin!';
-    header('location:login.php');
+    header('location:../login.php');
     exit();
 }
 $user =  htmlspecialchars($_POST['user']);
@@ -33,11 +33,11 @@ if($stmt){
                         $_SESSION['id'] = $Id;
                         $_SESSION['username'] = $UserName;
                         $_SESSION['email'] = $Email;
-                        header('location: ../');
+                        header('location: ../index.php');
                         exit();
                     } else{
                         $_SESSION['error'] = 'Sai mật khẩu ';
-                        header('location:login.php');
+                        header('location:../login.php');
                         exit();
                     }
                 
@@ -59,7 +59,7 @@ mysqli_stmt_close($stmt);
 
 mysqli_close($conn);
 
-header('location:login.php');
+header('location:../login.php');
 }
 
 ?>

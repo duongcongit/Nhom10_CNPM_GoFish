@@ -11,16 +11,16 @@ session_start();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./assets/css/login.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="./js/scriptsSignUp.js"></script>
+    <script src="./assets/js/scriptsSignUp.js"></script>
 </head>
 <body>
 <header class="header-navbar container-fluid fixed-top">
     <nav class="navbar navbar-light">
     <div class="container">
         <a class="navbar-brand" href="../index.php">
-        <img src="../img/GF-home.png" alt="" class="img-fluid">
+        <img src="./assets/img/GF-home.png" alt="" class="img-fluid">
         </a>
     </div>
     </nav>
@@ -28,7 +28,7 @@ session_start();
 <main class="container-fluid">
 <div class="wrapper">
     <div class="card">
-        <form action="processSignup.php" method="post" class="d-flex flex-column">
+        <form action="./Login-Signup/processSignup.php" method="post" class="d-flex flex-column">
             <div class="h3 text-center text-black">Đăng Ký</div>
             <div class="d-flex align-items-center input-field my-3"> 
               <span class="fa fa-user-pen p-2"></span>  

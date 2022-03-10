@@ -13,7 +13,7 @@
 <?php
 if($_GET['key'] && $_GET['token'])
 {
-    include "./config/dbconfig.php";
+    include "../config/dbconfig.php";
     $email = $_GET['key'];
     $token = $_GET['token'];
 
@@ -36,7 +36,7 @@ if($_GET['key'] && $_GET['token'])
 }
 else
 {
-    header('location: signup.php');
+    header('location: ../signup.php');
 }
 ?>
     <div class="container mt-3">
@@ -48,7 +48,7 @@ else
                 <p>
                     <?php echo $msg; ?>
                 </p>
-                <a href="./login.php">Chuyển sang trang đăng nhập tại đây</a>
+                <a href="../login.php">Chuyển sang trang đăng nhập tại đây</a>
             </div>
         </div>
     </div>

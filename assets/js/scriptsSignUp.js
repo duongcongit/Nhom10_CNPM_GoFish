@@ -41,7 +41,7 @@ $(document).ready(function(){
         }
         else{
             $.ajax({
-                url: "processCheckUserName.php",
+                url: "../Nhom10_CNPM_GoFish/Login-Signup/processCheckUserName.php",
                 type: "post",
                 data: {name:$(this).val()},
 
@@ -77,7 +77,7 @@ $(document).ready(function(){
         }
         else{
             $.ajax({
-                url: "processCheckEmail.php",
+                url: "../Nhom10_CNPM_GoFish/Login-Signup/processCheckEmail.php",
                 type: "post",
                 data: {email:$(this).val()},
 
