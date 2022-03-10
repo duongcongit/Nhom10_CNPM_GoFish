@@ -1,4 +1,4 @@
-<?php include('constants.php'); ?>
+<?php include('config/constants.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,98 +15,115 @@
 </head>
 
 <body>
-  <header>
-    <div class="header-top container-fluid">
-      <div class="wrapper ms-5 me-3">
-        <div class="initial ms-5 pe-2">
-          <a href="">Kênh người bán</a>
-        </div>
-        <div class="initial ms-2 pe-2">
-          <a href="">Trở thành người bán Gofish</a>
-        </div>
-        <div class="social ms-2 pe-2">
-          <span style="color: rgb(150, 157, 21);">Kết nối</span>
-          <a href=""><i class="bi bi-facebook text-primary"></i></a>
-          <a href=""><i class="bi bi-tiktok text-dark"></i></a>
-          <a href=""><i class="bi bi-instagram text-info me-5"></i></a>
-        </div>
-        <div class="slogan ms-auto">
-          <p class="me-5">Gofish - Thả hồn vào sự huyền dịu của thiên nhiên</p>
-        </div>
-      </div>
-    </div>
-    <div class="navbar navbar-expand-lg bg-white ms-3">
-      <div class="container-fluid ms-5">
-        <a class="navbar-logo ms-5" href="index.php">
-          <button type="button" class="btn btn-light">
-            <img
-              src="https://images.squarespace-cdn.com/content/v1/5cef069f124fff000125b347/1559169045380-V07V99DGIM6IQ01H0Z2U/gofish-logo.png"
-              alt="">
-          </button>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse ms-5" id="navbarSupportedContent">
-          <div class="search ms-5" style="display: inline;">
-            <div style="display: inline-flex;">
-              <span class="input-group-text" id="addon-wrapping"><i class="bi bi-search"></i></span>
-              <input type="text" class="form-control p-3" placeholder="Search for fish, product...">
+<header>
+        <div class="header-top container-fluid">
+            <div class="wrapper ms-5 me-3">
+                <div class="initial ms-5 pe-2">
+                    <a href="seller.php">Kênh người bán</a>
+                </div>
+                <div class="initial ms-2 pe-2">
+                    <a href="">Tải ứng dụng</a>
+                </div>
+                <div class="social ms-2 pe-2">
+                    <span style="color: rgb(150, 157, 21);">Kết nối</span>
+                    <a href=""><i class="bi bi-facebook text-primary"></i></a>
+                    <a href=""><i class="bi bi-tiktok text-dark"></i></a>
+                    <a href=""><i class="bi bi-instagram text-info me-5"></i></a>
+                </div>
+                <div class="slogan ms-auto">
+                    <p class="me-5">Gofish - Thả hồn vào sự huyền dịu của thiên nhiên</p>
+                </div>
             </div>
-          </div>
-          <a href="" class="member ms-5">
-            <i class="bi bi-person-circle ms-5"></i> Tài Khoản
-          </a>
-          <a href="" class="notifi ms-5">
-            <i class="bi bi-bell"></i> Thông báo
-          </a>
-          <a href="" class="cart ms-5">
-            <i class="bi bi-cart"></i> Giỏ hàng
-          </a>
         </div>
-      </div>
-    </div>
-    <div class="menu">
-      <div class="wrapper container ms-5 me-5">
-        <ul class="main-nav ms-5">
-          <li class="nav-item ms-5">
-            <a class="nav-link active" href="">
-              <div class="text-nav" style="font-style: normal; font-size: 18px;">Trang chủ</div>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">
-              <div class="text-nav" style="font-style: normal; font-size: 18px;">Sản phẩm</div>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">
-              <div class="text-nav" style="font-style: normal; font-size: 18px;">Giới thiệu</div>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">
-              <div class="text-nav" style="font-style: normal; font-size: 18px;">
-                <i class="bi bi-info-circle"></i> Hỗ trợ
-              </div>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">
-              <div class="text-nav" style="font-style: normal; font-size: 18px;">Tin tức</div>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">
-              <div class="text-nav" style="font-style: normal; font-size: 18px;">Liên hệ</div>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
+        <div class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-logo ms-5" href="index.php">
+                    <button type="button" class="btn btn-light ms-2">
+                        <img src="assets/img/gofish-logo.png"
+                            alt="">
+                    </button>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon" style="color: #000;"></span>
+                </button>
+                <div class="collapse navbar-collapse ms-5" id="navbarSupportedContent">
+                    <div class="search ms-5" style="display: inline;">
+                        <div style="display: inline-flex;">
+                            <span class="input-group-text" id="addon-wrapping"><i class="bi bi-search"></i></span>
+                            <input type="text" class="form-control p-3" placeholder="Search for fish, product...">
+                        </div>
+                    </div>
+                    <li class="nav-item dropdown ms-5" style="border-right: 1px solid rgb(238, 221, 221);">
+                        <a class="nav-link me-2" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="text-nav">
+                                <i class="bi bi-person-circle"></i> Tài khoản 
+                                <i class="bi bi-caret-down-fill"></i>
+                            </div>
+                            </i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="width: 150px; text-align: center;">
+                            <div class="login" style="border-bottom: 1px solid pink   ;">
+                                <a href="login.php">Đăng nhập</a>
+                            </div>
+                            <div class="signup">
+                                <a href="signup.php">Đăng Ký</a>
+                            </div>
 
-  </header>
+                        </ul>
+                    </li>
+                    <a href="" class="notifi ms-5">
+                        <i class="bi bi-bell"></i> Thông báo
+                    </a>
+                    <a href="" class="cart ms-5">
+                        <i class="bi bi-cart"></i> Giỏ hàng
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu -->
+        <div class="menu">
+            <div class="wrapper container ms-5 me-5">
+                <ul class="main-nav ms-5">
+                    <li class="nav-item ms-5">
+                        <a class="nav-link active" href="index.php">
+                            <div class="text-nav" style="font-style: normal; font-size: 18px;">Trang chủ</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            <div class="text-nav" style="font-style: normal; font-size: 18px;">Sản phẩm</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            <div class="text-nav" style="font-style: normal; font-size: 18px;">Giới thiệu</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            <div class="text-nav" style="font-style: normal; font-size: 18px;">
+                                <i class="bi bi-info-circle"></i> Hỗ trợ</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            <div class="text-nav" style="font-style: normal; font-size: 18px;">Tin tức</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            <div class="text-nav" style="font-style: normal; font-size: 18px;">Liên hệ</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </header>
   <main>
     <!-- ITEM  -->
     <div class="container">
@@ -149,7 +166,7 @@
                                     {
                                         //Image Available
                                         ?>
-              <img src="<?php echo SITEURL; ?>assets/img/<?php echo $hinhAnh; ?>" class="img-fluid"
+              <img src="<?php echo SITEURL; ?>assets/img/products/<?php echo $hinhAnh; ?>" class="img-fluid"
                 style="height:350px">
               <?php
                                     }
