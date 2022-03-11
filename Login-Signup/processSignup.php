@@ -18,7 +18,7 @@ else{
     $address = htmlspecialchars($address); 
     $pass= htmlspecialchars($pass);
     $cpass= htmlspecialchars($cpass);
-    require '../config/dbconfig.php';
+    require '../config/constants.php';
     $sql = "SELECT * FROM users WHERE username='$user' OR email='$email'";
     $result = mysqli_query($conn,$sql);
     if(mysqli_num_rows($result) > 0){
