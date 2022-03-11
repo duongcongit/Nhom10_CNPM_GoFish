@@ -1,17 +1,19 @@
 <?php 
     //Start Session
     session_start();
-
-
     //Create Constants to Store Non Repeating Values
-    define('SITEURL', 'http://localhost/Nhom10_CNPM_GoFish/');
+    define('SITEURL', 'http://localhost/btlcnpm/');
     define('LOCALHOST', 'localhost');
     define('DB_USERNAME', 'root');
     define('DB_PASSWORD', '');
-    define('DB_NAME', 'gofishdemo');
+    define('DB_NAME', 'dbgofish');
+
+    $conn = new mysqli(LOCALHOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
     
-    $conn = mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD) or die(mysqli_error()); //Database Connection
-    $db_select = mysqli_select_db($conn, DB_NAME) or die(mysqli_error()); //SElecting Database
-
-
+    //$conn = mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD) or die(mysqli_error()); //Database Connection
+    //$db_select = mysqli_select_db($conn, DB_NAME) or die(mysqli_error()); //SElecting Database
 ?>
+
