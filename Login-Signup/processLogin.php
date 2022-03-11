@@ -1,5 +1,5 @@
 <?php
-require_once '../config/dbconfig.php';
+require_once '../config/constants.php';
 if( !isset($_POST['btnLogIn']) ){
     header("location: ../login.php");
 }

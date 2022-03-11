@@ -63,7 +63,7 @@ $(document).ready(function(){
 
 $(document).ready(function(){
     $("#email").change(function(){
-        let emailPattern = /[a-zA-Z_0-9](@gmail.com)$/;
+        let emailPattern = /^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/;
         if(emailPattern.test($(this).val())== false){
             $("#emailNotification").text("Email không hợp lệ").css("color","red");
             $("#Signup").prop( "disabled", true );

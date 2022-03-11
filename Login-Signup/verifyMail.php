@@ -13,7 +13,7 @@
 <?php
 if($_GET['key'] && $_GET['token'])
 {
-    include "../config/dbconfig.php";
+    include "../config/constants.php";
     $email = $_GET['key'];
     $token = $_GET['token'];
 
