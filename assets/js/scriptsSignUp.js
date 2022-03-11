@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $("#hoten").change(function(){
-        let idclassPattern = /[a-zA-Z]$/;
-        if(idclassPattern.test($(this).val())== false){
+        let namePattern = /[a-zA-Z]$/;
+        if(namePattern.test($(this).val())== false){
             $("#nameNotification").text("Họ tên hợp lệ").css("color","red");
             $("#Signup").prop( "disabled", true );
             $("#username").prop( "disabled", true );
