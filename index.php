@@ -206,27 +206,6 @@
                     </div>
                 </li>
                 <?php } ?>
-                <li>
-                    <div class="product-item">
-                        <div class="product-top">
-                            <a href="" class="product-thumb">
-                                <img src="assets/img/fish5.jpg" alt="">
-
-                            </a>
-                        </div>
-                        <div class="product-info">
-                            <a href="" class="product-cat">Cá Cảnh Biển Maroon đỏ</a>
-                            <p class="product-status" style="color: red;">Đã bán: 350</p>
-                            <div class="product-price-action">
-                                <p class="product-price">1.170.000đ</p>
-                                <div class="product-action">
-                                    <button type="button" class="btn-action"><i class="bi bi-cart-fill"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
             </ul>
 
             <div class="title-product col-md-2 mt-5 ms-5 p-2" style="background-color: aqua;">
