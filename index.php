@@ -4,7 +4,7 @@
   $sql = "SELECT * FROM products
   order by productID desc";
 
-  $result = mysqli_query($connect, $sql);
+  $result = mysqli_query($conn, $sql);
   if(mysqli_num_rows($result) == 0) {
     $error = 'Không có sản phẩm nào';
   }
@@ -29,7 +29,7 @@
         <div class="header-top container-fluid">
             <div class="wrapper ms-5 me-3">
                 <div class="initial ms-5 pe-2">
-                    <a href="seller.php">Kênh người bán</a>
+                    <a href="./seller">Kênh người bán</a>
                 </div>
                 <div class="initial ms-2 pe-2">
                     <a href="">Tải ứng dụng</a>
@@ -185,15 +185,15 @@
             <ul class="products ms-5 me-5">
                 <?php foreach($result as $each) { ?>
                 <li>
-                    <div class="product-item list-group">
+                    <div class="product-item list-group" style="height: 400px;">
                         <div class="product-top">
                             <a href="product.php?id=<?= $each['productID'] ?>" >
-                                <img src="assets/img/<?= $each['image'] ?>" alt="">
+                                <img src="assets/img/products/<?= explode(",", $each['image'])[0]; ?>" alt="">
                             </a>
                         </div>
                         <div class="product-info">
                             <p class="product-cat"><?= $each['productName'] ?></p>
-                            <p class="product-status" style="color: red; font-size: 15px;">Đã bán:<?= $each['sold'] ?></p>
+                            <p class="product-status" style="color: red; font-size: 15px;">Đã bán: <?= $each['sold'] ?></p>
                             <div class="product-price-action">
                                 <p class="product-price"><?= number_format($each['price'], 0, '.', '.') ?>đ</p>
                                 <div class="product-action">
