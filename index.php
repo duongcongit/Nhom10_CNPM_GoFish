@@ -179,7 +179,7 @@
           <?php 
 
                 //Create SQL Query to Display CAtegories from Database
-                $sql1 = "SELECT * from item";
+                $sql1 = "SELECT * from products";
                 //Execute the Query
                 $res1 = mysqli_query($conn, $sql1);
                 //Count rows to check whether the category is available or not
@@ -191,9 +191,12 @@
                     while($row=mysqli_fetch_assoc($res1))
                     {
                         //Get the Values like id, title, image_name
-                        $id = $row['itemID'];
-                        $type = $row['type'];
-                        $hinhAnh = $row['itemImg'];
+                        $id = $row['productID'];
+                        $type = $row['category'];
+                        $hinhAnh = $row['image'];
+                        $hinhAnhString = explode(',',$hinhAnh);
+                        $hinhAnh1 = $hinhAnhString[0];
+                        $hinhAnh2 = $hinhAnhString[1];
                         ?>
 
           <div class="col-lg-4 col-md-6 col-sm-12 mt-3 position-relative">
@@ -209,7 +212,7 @@
                                     {
                                         //Image Available
                                         ?>
-              <img src="<?php echo SITEURL; ?>assets/img/products/<?php echo $hinhAnh; ?>" class="img-fluid"
+              <img src="<?php echo SITEURL; ?>assets/img/products/<?php echo $hinhAnh1; ?>" class="img-fluid"
                 style="height:350px">
               <?php
                                     }

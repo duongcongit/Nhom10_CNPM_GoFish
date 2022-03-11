@@ -130,8 +130,8 @@
         //Lấy mã sản phẩm và thông tin của sản phẩm đã chọn
         $iditem = $_GET['id'];
         //sql lấy thông tin của sản phẩm
-        $sql = "SELECT users.id,users.username,users.email,users.telephone,users.address,item.itemName,item.type,item.price,item.detail,item.itemLeft,item.itemImg
-        FROM item,users where item.id = users.id and item.itemID  = '$iditem'";
+        $sql = "SELECT users.id,users.username,users.email,users.phone,users.address,products.productName,products.category,products.price,products.detail,products.stock,products.image
+        FROM products,users where products.userid = users.id and products.productID  = '$iditem' and products.status = '1'";
 
         //Thực thi câu lệnh
         $res = mysqli_query($conn, $sql);
@@ -143,15 +143,18 @@
         {
             //Lấy dữ liệu từ database
             $row = mysqli_fetch_assoc($res);
-            $tenSanPham = $row['itemName'];
-            $theLoai = $row['type'];
+            $tenSanPham = $row['productName'];
+            $theLoai = $row['category'];
             $price = $row['price'];
             $chiTiet = $row['detail'];
-            $conLai = $row['itemLeft'];
-            $hinhAnh = $row['itemImg'];
+            $conLai = $row['stock'];
+            $hinhAnh = $row['image'];
+            $hinhAnhString = explode(',',$hinhAnh);
+            $hinhAnh1 = $hinhAnhString[0];
+            $hinhAnh2 = $hinhAnhString[1];
             $userName = $row['username'];
             $userEmail = $row['email'];
-            $userPhone = $row['telephone'];
+            $userPhone = $row['phone'];
             $userID = $row['id'];
         }
         else
@@ -236,7 +239,9 @@
                   {
                       //nếu có
               ?>
-                <img src="<?php echo SITEURL; ?>assets/img/products/<?php echo $hinhAnh; ?>" alt="Item-img"
+                <img src="<?php echo SITEURL; ?>assets/img/products/<?php echo $hinhAnh1; ?>" alt="Item-img"
+                  style="max-height: 400px;width:100%" class="img-fluid mt-3">
+                <img src="<?php echo SITEURL; ?>assets/img/products/<?php echo $hinhAnh2; ?>" alt="Item-img"
                   style="max-height: 400px;width:100%" class="img-fluid mt-3">
                 <?php
                     }
