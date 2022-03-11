@@ -1,9 +1,10 @@
 <?php
 
-// Set for testing
-$_SESSION['userID'] = "U001";
+//
+$_SESSION['userID'] = $_SESSION['id'];
 
-// include dirname(__FILE__) . '/login-check.php';
+
+include dirname(__FILE__) . '/login-check.php';
 
 
 //Sql Query 
@@ -112,6 +113,13 @@ $_SESSION['userID'] = "U001";
                             <a href="#" class="nav-link link-dark">
                                 <i class="bi bi-question-square"></i>
                                 <span class="sidebar-item-text">Hỗ trợ</span>
+                            </a>
+                        </li>
+                        <hr style="width: 100%;">
+                        <li>
+                            <a href="<?php echo SITEURL ?>seller/partials/log-out.php" class="nav-link link-dark">
+                                <i class="bi bi-box-arrow-right"></i>
+                                <span class="sidebar-item-text">Đăng xuất</span>
                             </a>
                         </li>
                     </ul>

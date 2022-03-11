@@ -48,6 +48,7 @@ include "../partials/header.php";
                                     <option value="Cá, tép, ốc cảnh">Cá, tép, ốc cảnh</option>
                                     <option value="Cây thủy sinh">Cây thủy sinh</option>
                                     <option value="Thức ăn<">Thức ăn</option>
+                                    <option value="Bể cá">Bể cá</option>
                                     <option value="Phụ kiện hồ cá">Phụ kiện hồ cá</option>
                                     <option value="Phụ kiện thủy sinh">Phụ kiện thủy sinh</option>
                                 </select>

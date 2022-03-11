@@ -165,10 +165,6 @@ if (isset($_POST['btnEditProduct'])) {
         }
     }
 
-    echo $prodImg . "<pre> </pre>";
-    echo " -1: ".$img1Status;
-    echo " -2: ".$img2Status;
-    echo " -3: ".$img3Status;
 
 
 

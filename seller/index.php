@@ -1,7 +1,9 @@
 <?php
 include "../config/constants.php";
 include "./partials/header.php";
+
 ?>
+
 
 
 <!-- Content start-->
@@ -120,6 +122,7 @@ include "./partials/header.php";
 <!--  -->
 
 <!-- Content end-->
+
 
 
 <?php

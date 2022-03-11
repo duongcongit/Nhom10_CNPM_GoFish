@@ -6,7 +6,7 @@
     define('LOCALHOST', 'localhost');
     define('DB_USERNAME', 'root');
     define('DB_PASSWORD', '');
-    define('DB_NAME', 'btlcnpm');
+    define('DB_NAME', 'dbgofish');
 
     $conn = new mysqli(LOCALHOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
     if ($conn->connect_error) {

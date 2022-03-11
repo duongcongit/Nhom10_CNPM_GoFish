@@ -82,6 +82,7 @@ if (isset($_GET['productid']) && isset($_GET['productsku'])) {
                                     <option value="Cá, tép, ốc cảnh" <?php echo ($prodInf['category'] == "Cá, tép, ốc cảnh" ? "selected" : "") ?>>Cá, tép, ốc cảnh</option>
                                     <option value="Cây thủy sinh" <?php echo ($prodInf['category'] == "Cây thủy sinh" ? "selected" : "") ?>>Cây thủy sinh</option>
                                     <option value="Thức ăn" <?php echo ($prodInf['category'] == "Thức ăn" ? "selected" : "") ?>>Thức ăn</option>
+                                    <option value="Thức ăn" <?php echo ($prodInf['category'] == "Bể cá" ? "selected" : "") ?>>Bể cá</option>
                                     <option value="Phụ kiện hồ cá" <?php echo ($prodInf['category'] == "Phụ kiện hồ cá" ? "selected" : "") ?>>Phụ kiện hồ cá</option>
                                     <option value="Phụ kiện thủy sinh" <?php echo ($prodInf['category'] == "Phụ kiện thủy sinh" ? "selected" : "") ?>>Phụ kiện thủy sinh</option>
                                 </select>

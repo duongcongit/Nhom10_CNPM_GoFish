@@ -9,5 +9,7 @@ if(isset($_POST['productSKU'])){
     $res_productSKU = $conn->query($sql_prod_sku);
     echo $res_productSKU->fetch_assoc()['productSKU'];
 }
-
+else {
+    header("location:" . SITEURL . "seller/");
+}
 ?>

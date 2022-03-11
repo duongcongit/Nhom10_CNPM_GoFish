@@ -2,11 +2,24 @@
 include "../../config/constants.php";
 
 if (isset($_POST['tableID'])) {
+    $tableType = $_POST['type'];
     $page = $_POST['page'];
     $numRow = $_POST['numRow'];
     $sortBy = $_POST['sortBy'];
+    $productStatus = "";
 
-    $sqlTotalRow    = "SELECT * FROM products WHERE userID = '{$_SESSION['userID']}'";
+    if ($tableType == "all") {
+        $productStatus = "";
+    } else if ($tableType == "active") {
+        $productStatus = "status=1 and stock>0 and";
+    } else if ($tableType == "run_out") {
+        $productStatus = "stock=0 and";
+    } else if ($tableType == "locked") {
+        $productStatus = "status=3 and";
+    }
+
+
+    $sqlTotalRow    = "SELECT * FROM products WHERE $productStatus userID = '{$_SESSION['userID']}'";
     $totalRow       = $conn->query($sqlTotalRow)->num_rows;
     $numPage        = ceil($totalRow / $numRow);
     $start          = ($page - 1) * $numRow;
@@ -93,10 +106,14 @@ if (isset($_POST['tableID'])) {
         }
     } else {
         ?>
-        <div class="col-md-12 h-50 d-flex flex-column justify-content-center align-items-center">
-            <i class="bi bi-binoculars text-muted" style="font-size: 80px;"></i>
-            <p class="text-muted fs-3">Chưa có dữ liệu</p>
-        </div>
+        <tr>
+            <td colspan="7">
+                <div class="mt-5 mb-5 col-md-12 h-50 d-flex flex-column justify-content-center align-items-center">
+                    <i class="bi bi-search text-muted" style="font-size: 40px;"></i>
+                    <p class="text-muted fs-5">Không tìm thấy dữ liệu</p>
+                </div>
+            </td>
+        </tr>
 
 
 <?php
@@ -106,6 +123,9 @@ if (isset($_POST['tableID'])) {
 
 
     //
+}
+else {
+    header("location:" . SITEURL . "seller/");
 }
 
 

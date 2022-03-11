@@ -19,6 +19,9 @@ if(isset($_POST['productID']) && isset($_POST['stock'])){
         echo "false";
     }
 }
+else {
+    header("location:" . SITEURL . "seller/");
+}
 
 
 

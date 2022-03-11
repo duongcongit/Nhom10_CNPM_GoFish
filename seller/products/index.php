@@ -2,10 +2,14 @@
 include "../../config/constants.php";
 
 include "../partials/header.php";
+
+$tableType = (isset($_GET['productstype']) ? $_GET['productstype'] : "all");
+
+echo "<script  type = 'text/javascript'>showProductsData('table-products', '$tableType', 1, 20, 'productID asc'); </script>";
+
 ?>
 
 <!-- Content start-->
-
 
 <!-- Modal edit stock start -->
 <!-- <div class="modal fade" id="modalUpdateStock" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"> -->
@@ -60,11 +64,11 @@ if (!isset($_SESSION['editProdSucsess']) && !isset($_SESSION['addProdSucsess']) 
     <div>
         <p class="d-inline">
             <?php
-            if(isset($_SESSION['addProdSucsess'])){
+            if (isset($_SESSION['addProdSucsess'])) {
                 echo $_SESSION['addProdSucsess'];
                 unset($_SESSION['addProdSucsess']);
             }
-            if(isset($_SESSION['editProdSucsess'])){
+            if (isset($_SESSION['editProdSucsess'])) {
                 echo $_SESSION['editProdSucsess'];
                 unset($_SESSION['editProdSucsess']);
             }
@@ -83,16 +87,16 @@ if (!isset($_SESSION['editProdSucsess']) && !isset($_SESSION['addProdSucsess']) 
     <div class="col-md-12">
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link active" href="#">Tất cả</a>
+                <a type="button" class="nav-mng-product nav-link <?php echo ($tableType == "all" ? "active" : "") ?>">Tất cả</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Đang hoạt động</a>
+                <a type="button" class="nav-mng-product nav-link <?php echo ($tableType == "active" ? "active" : "") ?>">Đang hoạt động</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Hết hàng</a>
+                <a type="button" class="nav-mng-product nav-link <?php echo ($tableType == "run_out" ? "active" : "") ?>">Hết hàng</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Bị khóa</a>
+                <a type="button" class="nav-mng-product nav-link <?php echo ($tableType == "locked" ? "active" : "") ?>">Bị khóa</a>
             </li>
         </ul>
         <hr class="mt-0">
@@ -149,7 +153,7 @@ if (!isset($_SESSION['editProdSucsess']) && !isset($_SESSION['addProdSucsess']) 
             //Count Rows
             $count_products = $res_products->num_rows;
             ?>
-            <h3 class="ms-2"><?php echo $count_products ?> Sản phẩm <span class="fs-6 text-primary">( <?php echo $count_products ?>/1000 )</span></h3>
+            <h3 class="ms-2" id="label-count-prod"><?php echo $count_products ?> Sản phẩm </h3>
             <a type="button" href="./add-product.php" class="btn btn-danger ms-auto"><i class="bi bi-plus-circle-fill me-1"></i>Thêm một sản phẩm mới</a>
         </div>
         <!--  -->
@@ -178,5 +182,6 @@ if (!isset($_SESSION['editProdSucsess']) && !isset($_SESSION['addProdSucsess']) 
 <!-- Content end-->
 
 <?php
+echo "<script  type = 'text/javascript'>showProductsData('table-products', '$tableType', 1, 20, 'productID asc'); </script>";
 include "../partials/footer.php";
 ?>
