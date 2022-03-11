@@ -34,7 +34,7 @@ include "./partials/header.php";
             <div class="card-body">
 
                 <h2 class="card-title d-inline">0</h2>
-                <img src="./issets/img/carry-box-icon.png" class="icon" alt="">
+                <img src="./assets/img/carry-box-icon.png" class="icon" alt="">
             </div>
             <h6 class="card-subtitle me-auto mt-2">Chờ lấy hàng</h6>
         </div>
@@ -49,7 +49,7 @@ include "./partials/header.php";
         <div class="col-lg col-md-3 my-1 mx-2 card text-center shadow dashboard-card">
             <div class="card-body">
                 <h2 class=" ms-1card-title d-inline">0</h2>
-                <img src="./issets/img/refund-icon-1.jpg" class="icon" alt="" style="width: 50px;">
+                <img src="./assets/img/refund-icon-1.jpg" class="icon" alt="" style="width: 50px;">
                 <!-- <i class="fas icon fs-2"></i> -->
             </div>
             <h6 class="card-subtitle me-auto mt-2">Trả hàng / Hoàn tiền</h6>
@@ -73,7 +73,7 @@ include "./partials/header.php";
             ?>
             <div class="card-body">
                 <h2 class=" ms-1card-title d-inline"><?php echo $count_products_run_out ?></h2>
-                <img src="./issets/img/out-product-icon.png" alt="" class="icon">
+                <img src="./assets/img/out-product-icon.png" alt="" class="icon">
             </div>
             <h6 class="card-subtitle me-auto mt-2">Sản phẩm hết hàng</h6>
         </div>
@@ -88,7 +88,7 @@ include "./partials/header.php";
             ?>
             <div class="card-body">
                 <h2 class=" ms-1card-title d-inline"><?php echo $count_products_locked ?></h2>
-                <img src="./issets/img/lock-product-icon.png" alt="" class="icon">
+                <img src="./assets/img/lock-product-icon.png" alt="" class="icon">
             </div>
             <h6 class="card-subtitle me-auto mt-2">Sản phẩm bị khóa</h6>
         </div>
@@ -103,7 +103,7 @@ include "./partials/header.php";
             ?>
             <div class="card-body">
                 <h2 class=" ms-1card-title d-inline"><?php echo $count_products ?></h2>
-                <img src="./issets/img/product-icon.png" alt="" class="icon">
+                <img src="./assets/img/product-icon.png" alt="" class="icon">
             </div>
             <h6 class="card-subtitle me-auto mt-2">Sản phẩm</h6>
         </div>

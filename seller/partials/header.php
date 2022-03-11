@@ -29,9 +29,9 @@ $_SESSION['userID'] = "U001";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="<?php echo SITEURL ?>seller/issets/css/style.css">
+    <link rel="stylesheet" href="<?php echo SITEURL ?>seller/assets/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="<?php echo SITEURL ?>seller/issets/js/script.js"></script>
+    <script src="<?php echo SITEURL ?>seller/assets/js/script.js"></script>
 </head>
 
 <body>
@@ -43,7 +43,7 @@ $_SESSION['userID'] = "U001";
                     <div class="container-fluid">
                         <i id="btn-menu" class="bi bi-list me-3 fs-2" type="button"></i>
                         <a href="<?php echo SITEURL ?>">
-                            <img src="<?php echo SITEURL ?>seller/issets/img/logo-1.png" alt="" class="logo">
+                            <img src="<?php echo SITEURL ?>seller/assets/img/logo-1.png" alt="" class="logo">
 
                         </a>
                         <a class="navbar-brand me-auto" href="<?php echo SITEURL ?>seller/">Kênh người bán</a>
@@ -82,7 +82,7 @@ $_SESSION['userID'] = "U001";
                         <hr>
                         <li>
                             <a class="nav-link link-dark tour-btn ms-2" type="button">
-                                <img src="<?php echo SITEURL ?>seller/issets/img/product-icon.png" alt="" style="width: 30px;">
+                                <img src="<?php echo SITEURL ?>seller/assets/img/product-icon.png" alt="" style="width: 30px;">
                                 <span class="sidebar-item-text ms-3 text-muted">Quản lý sản phẩm</span>
                                 <span class="fas fa-caret-down tour-caret"></span>
                             </a>

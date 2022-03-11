@@ -21,13 +21,10 @@ if (isset($_POST['tableID'])) {
         while ($row = $result->fetch_assoc()) {
         ?>
             <tr>
-                <!-- <td><? //= $row['maTour']; 
-                            ?></td> -->
                 <td class="row">
                     <div style="max-width: fit-content;">
-                        <img src="../issets/img/<?= $row['image']; ?>" alt="" class="product-avatar-list">
+                        <img src="../../assets/img/products/<?php echo explode(",", $row['image'])[0]; ?>" alt="" class="product-avatar-list">
                     </div>
-
                     <div class="col row d-flex align-items-center">
                         <?php
                         if ($row['status'] == 1 and $row['stock'] > 0) {
@@ -58,7 +55,7 @@ if (isset($_POST['tableID'])) {
                         </div>
                     </div>
                 </td>
-                <td><?= $row['productSKU'];?></td>
+                <td><?= $row['productSKU']; ?></td>
                 <td><?= $row['category']; ?></td>
                 <td><?= $row['price']; ?>đ</td>
                 <td><?= $row['stock']; ?>
@@ -70,7 +67,7 @@ if (isset($_POST['tableID'])) {
                     <?php
                     } else {
                     ?>
-                        <i class="bi bi-pencil-fill text-danger fs-6 edit-stock" type="button"></i>
+                        <i class="bi bi-pencil-fill text-danger fs-6 btn-update-stock" type="button" data-productid="<?php echo $row['productID']; ?>" data-productstock="<?php echo $row['stock']; ?>" data-productsku="<?php echo $row['productSKU']; ?>"></i>
                     <?php
                     }
                     ?>
@@ -85,7 +82,7 @@ if (isset($_POST['tableID'])) {
                     <?php
                     } else {
                     ?>
-                        <a href="./edit-product.php?producid=98234649356" class="bi bi-pencil-square fs-5"></a>
+                        <a href="./edit-product.php?productid=<?php echo $row['productID']; ?>&productsku=<?php echo $row['productSKU']; ?>" class="bi bi-pencil-square fs-5"></a>
                     <?php
                     }
                     ?>
