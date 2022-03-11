@@ -19,7 +19,7 @@
     <div class="header-top container-fluid">
       <div class="wrapper ms-5 me-3">
         <div class="initial ms-5 pe-2">
-          <a href="seller.php">Kênh người bán</a>
+          <a href="./seller/">Kênh người bán</a>
         </div>
         <div class="initial ms-2 pe-2">
           <a href="">Tải ứng dụng</a>
@@ -269,13 +269,13 @@
                       <?php echo $conLai; ?>
                     </span>
                   </p>
-                  <p class="text-warning"><i class="bi bi-flag me-3"></i>Loại Hình:
+                  <p class="text-success"><i class="bi bi-flag me-3"></i>Loại Hình:
                     <?php echo $theLoai ?>
                   </p>
-                  <p><i class="bi bi-building me-3"></i>Mã người bán:
-                    <?php echo $userID ?>
-                  </p>
-                  <p><i class="bi bi-building me-3"></i>Tên người bán:
+                  <!-- <p><i class="bi bi-building me-3"></i>Mã người bán:
+                    <?php //echo $userID ?>
+                  </p> -->
+                  <p><i class="bi bi-building me-3"></i>Người bán:
                     <?php echo $userName ?>
                   </p>
                   <p><i class="bi bi-envelope me-3"></i>Email liên hệ:

@@ -10,7 +10,7 @@
   }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
@@ -29,7 +29,7 @@
         <div class="header-top container-fluid">
             <div class="wrapper ms-5 me-3">
                 <div class="initial ms-5 pe-2">
-                    <a href="./seller">Kênh người bán</a>
+                    <a href="./seller/">Kênh người bán</a>
                 </div>
                 <div class="initial ms-2 pe-2">
                     <a href="">Tải ứng dụng</a>
@@ -187,7 +187,7 @@
                 <li>
                     <div class="product-item list-group" style="height: 400px;">
                         <div class="product-top">
-                            <a href="product.php?id=<?= $each['productID'] ?>" >
+                            <a href="detailView.php?id=<?= $each['productID'] ?>" >
                                 <img src="assets/img/products/<?= explode(",", $each['image'])[0]; ?>" alt="">
                             </a>
                         </div>
