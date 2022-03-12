@@ -2,7 +2,7 @@
     //Start Session
     session_start();
     //Create Constants to Store Non Repeating Values
-    define('SITEURL', 'http://localhost/gofish/');
+    define('SITEURL', 'http://localhost/btlcnpm/');
     define('LOCALHOST', 'localhost');
     define('DB_USERNAME', 'root');
     define('DB_PASSWORD', '');
