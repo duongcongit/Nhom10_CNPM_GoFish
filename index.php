@@ -83,12 +83,24 @@ if (mysqli_num_rows($result) == 0) {
                             </i>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="width: 150px; text-align: center;">
-                            <div class="login" style="border-bottom: 1px solid pink   ;">
-                                <a href="login.php">Đăng nhập</a>
-                            </div>
-                            <div class="signup">
-                                <a href="signup.php">Đăng Ký</a>
-                            </div>
+                            <?php
+                            if (isset($_SESSION['id'])) {
+                                ?>
+                                <div class="logout" style="border-bottom: 1px solid pink   ;">
+                                    <a href="logout.php">Đăng xuất</a>
+                                </div>
+                                <?php
+                            } else {
+                            ?>
+                                <div class="login" style="border-bottom: 1px solid pink   ;">
+                                    <a href="login.php">Đăng nhập</a>
+                                </div>
+                                <div class="signup">
+                                    <a href="signup.php">Đăng Ký</a>
+                                </div>
+                            <?php
+                            }
+                            ?>
 
                         </ul>
                     </li>
