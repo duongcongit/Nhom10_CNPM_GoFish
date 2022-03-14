@@ -24,7 +24,7 @@ if (mysqli_num_rows($result) == 0) {
 </head>
 
 <body>
-    <header>
+    <header class="fixed-top">
         <div class="header-top container-fluid">
             <div class="wrapper ms-5 me-3">
                 <div class="initial ms-5 pe-2">

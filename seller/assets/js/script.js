@@ -204,7 +204,7 @@ $(document).ready(function () {
 
   // Check product SKU
 
-  // Check tour id
+  // Check SKU
   $("[name='prodSKUAdd']").on("change", function () {
     var productSKU = $(this).val();
     if (productSKU != "") {
@@ -216,7 +216,7 @@ $(document).ready(function () {
           var result = $.trim(data);
           if (result == productSKU) {
             $("#prodSKUAddHelp").text(
-              "(!) Đã tồn tại sản phẩm khác có mã SKU này trong gian hàng của bạn, không thể thêm. Vui lòng kiểm tra lại!"
+              "(!) Đã tồn tại sản phẩm khác có mã SKU này. Vui lòng kiểm tra lại!"
             );
             $("#prodSKUAddHelp").css("color", "red");
           } else {
@@ -316,7 +316,7 @@ $(document).ready(function () {
           var result = $.trim(data);
           if (result == newProductSKU && newProductSKU != currProdSKU) {
             $("#prodSKUEditHelp").text(
-              "(!) Đã tồn tại sản phẩm khác có mã SKU này trong gian hàng của bạn. Vui lòng kiểm tra lại!"
+              "(!) Đã tồn tại sản phẩm khác có mã SKU này. Vui lòng kiểm tra lại!"
             );
             $("#prodSKUEditHelp").css("color", "red");
           } else if (result == currProdSKU) {
