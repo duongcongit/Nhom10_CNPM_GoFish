@@ -33,7 +33,7 @@ else{
         else {
         $token = md5($_POST['email']).rand(10,9999);
         $pass_hash=password_hash($pass,PASSWORD_DEFAULT);
-        $sql3 = "INSERT INTO users (fullname,username, email,telephone,address,password, email_verification_link ) VALUES('$name','$user', '$email', '$tlp', '$address' , '$pass_hash' , '$token')";
+        $sql3 = "INSERT INTO users (fullname,username, email,phone,address,password, email_verification_link ) VALUES('$name','$user', '$email', '$tlp', '$address' , '$pass_hash' , '$token')";
         $result3 = mysqli_query($conn,$sql3);
         $link = "<a href='http://localhost/Nhom10_CNPM_GoFish/Login-Signup/verifyMail.php?key=".$email."&token=".$token."'>Kích hoạt tài khoản</a>";
         if($result3 == true){
