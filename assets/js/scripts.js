@@ -13,4 +13,27 @@ $(document).ready(function () {
       modalAddCartSucc.hide();
     }, 3000);
   });
+
+  // Check input quantity 
+  $("#input-quantity").on("change", function(){
+    let numPattern = /^[0-9]+$/;
+    if(numPattern.test($(this).val()) == false){
+      $(this).val("1");
+    }
+  })
+  // When click button increase quantity
+  $("#btn-increase").on("click", function(){
+    var currQuantity = $("#input-quantity").val();
+    $("#input-quantity").val(parseInt(currQuantity) + 1);
+  })
+  // When click button decrease quantity
+  $("#btn-decrease").on("click", function(){
+    var currQuantity = $("#input-quantity").val();
+    if(parseInt(currQuantity) > 1){
+      $("#input-quantity").val(parseInt(currQuantity) - 1);
+    }
+  })
+
+
+  // 
 });

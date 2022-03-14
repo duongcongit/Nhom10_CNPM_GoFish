@@ -424,3 +424,41 @@ transform: scale(0.9);
 box-shadow: 0 0 0 0 rgba(15, 117, 188, 0); 
 } 
 }
+
+/* Style for add to cart */
+
+.btn-add-to-cart{
+  background: #3d1a1a;
+  color: white;
+  font-size: 20px;
+  padding: 15px 15px;
+  border-radius: 10px;
+  max-width: fit-content;
+}
+
+
+/* Style for modal alert add to cart success */
+.modal-add-to-cart-success div div{
+  color: white;
+  background-color: rgba(53, 53, 53, 0.7);
+  height: 200px;
+  width: 500px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+
+/* Style for text when product is sold out */
+.sold-out{
+  font-size: 20px;
+  height: fit-content;
+  width: fit-content;
+  padding: 13px 25px;
+  background: rgb(134, 134, 134);
+  color: #fff;
+  border-radius: 5px;
+  cursor: not-allowed;
+  
+}
+
+/*  */

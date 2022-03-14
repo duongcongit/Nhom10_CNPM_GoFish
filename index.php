@@ -27,7 +27,7 @@ if (mysqli_num_rows($result) == 0) {
 </head>
 
 <body>
-    <!--  -->
+    <!-- Modal -->
     <div class="modal fade modal-add-to-cart-success" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div>
@@ -211,7 +211,7 @@ if (mysqli_num_rows($result) == 0) {
                                 <div class="product-price-action">
                                     <p class="product-price"><?= number_format($each['price'], 0, '.', '.') ?>đ</p>
                                     <div class="product-action">
-                                        <button type="button" class="btn-add-to-cart"><i class="bi bi-cart-fill"></i>
+                                        <button type="button" class="btn-add-to-cart"><i class="bi bi-cart-plus-fill"></i>
                                         </button>
                                     </div>
                                 </div>
@@ -246,7 +246,7 @@ if (mysqli_num_rows($result) == 0) {
                                     <p class="product-price"><?= number_format($each['price'], 0, '.', '.') ?>đ</p>
                                     <div class="product-action">
                                         <p class="sold-out">Hết hàng</p>
-                                        <!-- <button type="button" class="btn-action"><i class="bi bi-cart-fill"></i></button> -->
+                                        <!-- <button type="button" class="btn-add-to-cart"><i class="bi bi-cart-plus-fill"></i></button> -->
                                     </div>
                                 </div>
                             </div>
@@ -279,7 +279,7 @@ if (mysqli_num_rows($result) == 0) {
                                 <div class="product-price-action">
                                     <p class="product-price"><?= number_format($each['price'], 0, '.', '.') ?>đ</p>
                                     <div class="product-action">
-                                        <button type="button" class="btn-action"><i class="bi bi-cart-fill"></i>
+                                        <button type="button" class="btn-action"><i class="bi bi-cart-plus-fill"></i>
                                         </button>
                                     </div>
                                 </div>
@@ -313,7 +313,7 @@ if (mysqli_num_rows($result) == 0) {
                                 <div class="product-price-action">
                                     <p class="product-price"><?= number_format($each['price'], 0, '.', '.') ?>đ</p>
                                     <div class="product-action">
-                                        <button type="button" class="btn-action"><i class="bi bi-cart-fill"></i>
+                                        <button type="button" class="btn-action"><i class="bi bi-cart-plus-fill"></i>
                                         </button>
                                     </div>
                                 </div>
@@ -347,7 +347,7 @@ if (mysqli_num_rows($result) == 0) {
                                 <div class="product-price-action">
                                     <p class="product-price"><?= number_format($each['price'], 0, '.', '.') ?>đ</p>
                                     <div class="product-action">
-                                        <button type="button" class="btn-action"><i class="bi bi-cart-fill"></i>
+                                        <button type="button" class="btn-action"><i class="bi bi-cart-plus-fill"></i>
                                         </button>
                                     </div>
                                 </div>

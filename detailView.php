@@ -7,15 +7,25 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="assets/css/detail.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="./assets/js/scripts.js"></script>
   <title>Chi tiết sản phẩm</title>
 </head>
 
 <body>
-  <header>
+  <!-- Modal -->
+  <div class="modal fade modal-add-to-cart-success" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div>
+        <img src="./assets/img/tick-icon.png" alt="img" class="mt-5">
+        <p class="mt-4 fs-5">Sản phẩm đã được thêm vào giỏ hàng</p>
+      </div>
+    </div>
+  </div>
+  <!--  -->
+  <header class="fixed-top">
     <div class="header-top container-fluid">
       <div class="wrapper ms-5 me-3">
         <div class="initial ms-5 pe-2">
@@ -42,8 +52,7 @@
             <img src="assets/img/gofish-logo.png" alt="">
           </button>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon" style="color: #000;"></span>
         </button>
         <div class="collapse navbar-collapse ms-5" id="navbarSupportedContent">
@@ -54,8 +63,7 @@
             </div>
           </div>
           <li class="nav-item dropdown ms-5" style="border-right: 1px solid rgb(238, 221, 221);">
-            <a class="nav-link me-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
+            <a class="nav-link me-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <div class="text-nav">
                 <i class="bi bi-person-circle"></i> Tài khoản
                 <i class="bi bi-caret-down-fill"></i>
@@ -124,52 +132,45 @@
 
   </header>
   <?php
-    /*Kiểm tra xem có nhận được mã sản phẩm từ trang chủ*/
-    if(isset($_GET['id']))
-    {
-        //Lấy mã sản phẩm và thông tin của sản phẩm đã chọn
-        $iditem = $_GET['id'];
-        //sql lấy thông tin của sản phẩm
-        $sql = "SELECT users.id,users.username,users.email,users.phone,users.address,products.productName,products.category,products.price,products.detail,products.stock,products.image
+  /*Kiểm tra xem có nhận được mã sản phẩm từ trang chủ*/
+  if (isset($_GET['id'])) {
+    //Lấy mã sản phẩm và thông tin của sản phẩm đã chọn
+    $iditem = $_GET['id'];
+    //sql lấy thông tin của sản phẩm
+    $sql = "SELECT users.id,users.username,users.email,users.phone,users.address,products.productName,products.category,products.price,products.detail,products.stock,products.image
         FROM products,users where products.userid = users.id and products.productID  = '$iditem' and products.status = '1'";
 
-        //Thực thi câu lệnh
-        $res = mysqli_query($conn, $sql);
+    //Thực thi câu lệnh
+    $res = mysqli_query($conn, $sql);
 
-        //Đếm số bản ghi
-        $count = mysqli_num_rows($res);
-        //Kiểm tra xem bản ghi có tồn tại không
-        if($count==1)
-        {
-            //Lấy dữ liệu từ database
-            $row = mysqli_fetch_assoc($res);
-            $tenSanPham = $row['productName'];
-            $theLoai = $row['category'];
-            $price = $row['price'];
-            $chiTiet = $row['detail'];
-            $conLai = $row['stock'];
-            $hinhAnh = $row['image'];
-            $hinhAnhString = explode(',',$hinhAnh);
-            $hinhAnh1 = $hinhAnhString[0];
-            $hinhAnh2 = $hinhAnhString[1];
-            $userName = $row['username'];
-            $userEmail = $row['email'];
-            $userPhone = $row['phone'];
-            $userID = $row['id'];
-        }
-        else
-        {
-            //Chuyển hướng về trang chủ
-            header('location:'.SITEURL);
-        }
-
+    //Đếm số bản ghi
+    $count = mysqli_num_rows($res);
+    //Kiểm tra xem bản ghi có tồn tại không
+    if ($count == 1) {
+      //Lấy dữ liệu từ database
+      $row = mysqli_fetch_assoc($res);
+      $tenSanPham = $row['productName'];
+      $theLoai = $row['category'];
+      $price = $row['price'];
+      $chiTiet = $row['detail'];
+      $conLai = $row['stock'];
+      $hinhAnh = $row['image'];
+      $hinhAnhString = explode(',', $hinhAnh);
+      $hinhAnh1 = $hinhAnhString[0];
+      $hinhAnh2 = $hinhAnhString[1];
+      $userName = $row['username'];
+      $userEmail = $row['email'];
+      $userPhone = $row['phone'];
+      $userID = $row['id'];
+    } else {
+      //Chuyển hướng về trang chủ
+      header('location:' . SITEURL);
     }
-    else
-    {
-        //Chuyển hướng về trang chủ
-        header('location:'.SITEURL);
-    }
-    ?>
+  } else {
+    //Chuyển hướng về trang chủ
+    header('location:' . SITEURL);
+  }
+  ?>
 
   <main style="background-color: aqua;">
     <section class="posts_slider container-fluid" style="padding: 0;">
@@ -197,13 +198,11 @@
             </div>
           </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-          data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
           <i class="bi bi-arrow-left"></i>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-          data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
           <i class="bi bi-arrow-right"></i>
           <span class="visually-hidden">Next</span>
         </button>
@@ -222,34 +221,28 @@
         <div class="row" style='padding-top: 70px'>
           <!-- Đặt sản phẩm -->
           <div class="row border p-3 border-success rounded info-item" style="background-color: #ddd">
-            <div
-              style='font-size:22px;font-weight:500;padding:10px;background-color:blue;color:#fff;border-radius:8px;width:220px;margin-left:12px'>
+            <div style='font-size:22px;font-weight:500;padding:10px;background-color:blue;color:#fff;border-radius:8px;width:220px;margin-left:12px'>
               Thông tin sản phẩm
             </div>
             <div class="row">
               <div class="item-menu-img col-md-5">
-                <?php               
-                  //Kiểm tra hình ảnh
-                  if($hinhAnh=="")
-                  {
-                      //nếu không có
-                      echo "<div class='error'>Image not Available.</div>";
-                  }
-                  else
-                  {
-                      //nếu có
-              ?>
-                <img src="<?php echo SITEURL; ?>assets/img/products/<?php echo $hinhAnh1; ?>" alt="Item-img"
-                  style="max-height: 400px;width:100%" class="img-fluid mt-3">
-                <img src="<?php echo SITEURL; ?>assets/img/products/<?php echo $hinhAnh2; ?>" alt="Item-img"
-                  style="max-height: 400px;width:100%" class="img-fluid mt-3">
                 <?php
-                    }
-                  
-              ?>
+                //Kiểm tra hình ảnh
+                if ($hinhAnh == "") {
+                  //nếu không có
+                  echo "<div class='error'>Image not Available.</div>";
+                } else {
+                  //nếu có
+                ?>
+                  <img src="<?php echo SITEURL; ?>assets/img/products/<?php echo $hinhAnh1; ?>" alt="Item-img" style="max-height: 400px;width:100%" class="img-fluid mt-3">
+                  <img src="<?php echo SITEURL; ?>assets/img/products/<?php echo $hinhAnh2; ?>" alt="Item-img" style="max-height: 400px;width:100%" class="img-fluid mt-3">
+                <?php
+                }
+
+                ?>
 
               </div>
-              <form method="POST" class="order col-md-7 mt-3">
+              <div class="order col-md-7 mt-3">
                 <!-- Chi tiết của sản phẩm và chọn thanh toán -->
                 <div class="item-menu-desc">
                   <h4 style='color:blue'>
@@ -273,7 +266,8 @@
                     <?php echo $theLoai ?>
                   </p>
                   <!-- <p><i class="bi bi-building me-3"></i>Mã người bán:
-                    <?php //echo $userID ?>
+                    <?php //echo $userID 
+                    ?>
                   </p> -->
                   <p><i class="bi bi-building me-3"></i>Người bán:
                     <?php echo $userName ?>
@@ -290,41 +284,31 @@
                     </span>
                     <?php echo $chiTiet; ?>
                   </p>
-                  <h4>Phương thức thanh toán</h4>
 
-                  <div class="d-flex ">
-                    <select class="form-select w-50" aria-label="Default select example" name="cast">
-                      <option selected value="Chuyển Khoản">Chuyển khoản</option>
-                      <option value="Tiền Mặt">Tiền Mặt</option>
-                    </select>
+
+                  <div class="item-num d-flex mt-5 mb-2">
+                    <h4 class="me-2">Số lượng</h4>
+                    <ul class="pagination justify-content-end">
+                      <li class="page-item page-item-btn-decrease">
+                      <a class="page-link bi bi-dash-lg" id="btn-decrease" type="button"></a>
+                      </li>
+                      <li class="page-item">
+                        <input type="text" id="input-quantity" class="page-link px-2 text-dark" autocomplete="off" value="1" style="width: 50px;">
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link bi-plus-lg" id="btn-increase" type="button"></a>
+                      </li>
+                    </ul>
                   </div>
-
-                  <h4 class="mt-3">Chọn số lượng</h4>
-                  <div class="item-num d-flex  mt-3">
-                    <div class="order-label me-3">
-                      <?php
-                      echo "<input type='number' class='input' name='quantity1' id='quantity1' min='1' max='$conLai' value ='1'>";
-                      echo '<br>';
-                  ?>
-                    </div>
-                  </div>
-
-
-                  <p class="mt-3" id="price">Tổng Tiền: <span id="item_price">
-                      <?php echo $price ?>
-                    </span></p>
-
                 </div>
 
 
+                <div>
+                  <!-- <p class="sold-out">Hết hàng</p> -->
+                  <p type="button" class="bi bi-cart-plus-fill btn-add-to-cart"><span class="ms-1">Thêm vào giỏ hàng</span></p>
+                </div>
 
-                <button type="submit" name="submit1" value="" style='font-size:25px;font-weight:500;width:250px'
-                  class="btn btn-success mt-3">
-                  <i class="bi bi-cart"></i> Thêm vào giỏ
-                </button>
-                <input type="submit" name="submit" value="Mua ngay" style='font-size:25px;font-weight:500;color:#fff'
-                  class="btn btn-warning mt-3">
-              </form>
+              </div>
             </div>
           </div>
 
@@ -350,9 +334,7 @@
                 <div class="col-md-6">
                   <div class="row">
                     <div class="col-md-5">
-                      <img
-                        src="https://cakienghoanglam.com/thumb/225x220/1/upload/sanpham/ca-canh-bien-platinum-percula-clownfish.jpg"
-                        alt="">
+                      <img src="https://cakienghoanglam.com/thumb/225x220/1/upload/sanpham/ca-canh-bien-platinum-percula-clownfish.jpg" alt="">
                     </div>
                     <div class="col-md-7">
                       <h4>Mua cá rồng và những điều cần biết</h4>
@@ -383,9 +365,7 @@
                 <div class="col-md-6">
                   <div class="row">
                     <div class="col-md-5">
-                      <img
-                        src="https://cakienghoanglam.com/thumb/225x220/1/upload/sanpham/ca-canh-bien-platinum-percula-clownfish.jpg"
-                        alt="">
+                      <img src="https://cakienghoanglam.com/thumb/225x220/1/upload/sanpham/ca-canh-bien-platinum-percula-clownfish.jpg" alt="">
                     </div>
                     <div class="col-md-7">
                       <h4>Mua cá rồng và những điều cần biết</h4>
@@ -416,9 +396,7 @@
                 <div class="col-md-6">
                   <div class="row">
                     <div class="col-md-5">
-                      <img
-                        src="https://cakienghoanglam.com/thumb/225x220/1/upload/sanpham/ca-canh-bien-platinum-percula-clownfish.jpg"
-                        alt="">
+                      <img src="https://cakienghoanglam.com/thumb/225x220/1/upload/sanpham/ca-canh-bien-platinum-percula-clownfish.jpg" alt="">
                     </div>
                     <div class="col-md-7">
                       <h4>Mua cá rồng và những điều cần biết</h4>
@@ -432,9 +410,7 @@
                 <div class="col-md-6">
                   <div class="row">
                     <div class="col-md-5">
-                      <img
-                        src="https://cakienghoanglam.com/thumb/225x220/1/upload/sanpham/ca-canh-bien-platinum-percula-clownfish.jpg"
-                        alt="">
+                      <img src="https://cakienghoanglam.com/thumb/225x220/1/upload/sanpham/ca-canh-bien-platinum-percula-clownfish.jpg" alt="">
                     </div>
                     <div class="col-md-7">
                       <h4>Thi công hồ thủy sinh cần quan tâm những vấn đề gì?</h4>
@@ -447,13 +423,11 @@
               </div>
             </div>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="prev">
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
             <i class="bi bi-arrow-left"></i>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="next">
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
             <i class="bi bi-arrow-right"></i>
             <span class="visually-hidden">Next</span>
           </button>
@@ -468,9 +442,7 @@
       <div class="row">
         <div class="col-md-4">
           <div class=" logo-footer">
-            <img class="col-md-6 img-fluid"
-              src="https://images.squarespace-cdn.com/content/v1/5cef069f124fff000125b347/1559169045380-V07V99DGIM6IQ01H0Z2U/gofish-logo.png"
-              alt="">
+            <img class="col-md-6 img-fluid" src="https://images.squarespace-cdn.com/content/v1/5cef069f124fff000125b347/1559169045380-V07V99DGIM6IQ01H0Z2U/gofish-logo.png" alt="">
           </div>
         </div>
         <div class="col-md mt-2">
@@ -543,30 +515,7 @@
     <i class="bi bi-messenger"></i>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
-  <script>
-    // JS xử lý tổng tiền thanh toán
-    $(document).ready(function () {
-      $(".input").on('input', function () {
-        var moneyString1 = $("#price").text();
-        var money1 = parseInt(moneyString1);
-        var number1 = document.getElementById('quantity1').value;
-        number1 = parseInt(number1);
-
-        if (Number.isNaN(number1)) {
-          number1 = 0;
-        }
-
-        $("#item_price").text(money1 * number1);
-
-      })
-
-    });
-
-
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 
 </html>

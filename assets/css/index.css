@@ -446,7 +446,7 @@ box-shadow: 0 0 0 0 rgba(15, 117, 188, 0);
 /* Style for modal alert add to cart success */
 .modal-add-to-cart-success div div{
   color: white;
-  background-color: rgba(80, 80, 80, 0.7);
+  background-color: rgba(53, 53, 53, 0.7);
   height: 200px;
   width: 500px;
   border-radius: 10px;
