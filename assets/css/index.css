@@ -104,7 +104,7 @@
 
 .menu {
   background-color: rgb(91, 228, 221);
-  height: 40px;
+  height: fit-content;
 }
 .menu .wrapper {
   display: flex;
@@ -121,6 +121,7 @@
   align-items: center;
   justify-content: space-between;
   position: relative;
+  margin-bottom: 2px;
 }
 .main-nav .nav-item {
   align-items: center;
@@ -204,6 +205,7 @@ ul.products li:hover .product-info a {
 .product-item .product-price{
   background: linear-gradient(to right, rgb(87, 39, 199), rgb(155, 131, 223));
 }
+
 ul.products li .product-info a {
   display: block;
   text-decoration: none;
@@ -424,3 +426,33 @@ transform: scale(0.9);
 box-shadow: 0 0 0 0 rgba(15, 117, 188, 0); 
 } 
 }
+
+
+/* Style for text when product is sold out */
+.sold-out{
+  height: 40px;
+  line-height: 40px;
+  width: fit-content;
+  padding: 0px 5px;
+  margin: 0px 0px 0px -7px;
+  background: rgb(99, 99, 99);
+  color: #fff;
+  border: 0px;
+  outline: 0px;
+  border-top-right-radius: 10px;
+  cursor: not-allowed;
+}
+
+/* Style for modal alert add to cart success */
+.modal-add-to-cart-success div div{
+  color: white;
+  background-color: rgba(80, 80, 80, 0.7);
+  height: 200px;
+  width: 500px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+
+
+/*  */
