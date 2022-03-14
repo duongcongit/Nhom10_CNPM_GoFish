@@ -29,7 +29,7 @@ include "../partials/header.php";
 
 <div class="alert alert-success alert-dismissible d-flex align-items-center 
 <?php
-if (!isset($_SESSION['editProdSucsess']) && !isset($_SESSION['addProdSucsess']) && !isset($_SESSION['upProdStockSucsess'])) {
+if (!isset($_SESSION['editProdSucsess']) && !isset($_SESSION['addProdSucsess']) && !isset($_SESSION['upProdStockSucsess']) && !isset($_SESSION['deleteProdSucsess']) && !isset($_SESSION['deleteAllProdSucsess'])) {
     echo "d-none";
 }
 ?>
@@ -38,13 +38,13 @@ if (!isset($_SESSION['editProdSucsess']) && !isset($_SESSION['addProdSucsess']) 
     <div>
         <p class="d-inline">
             <?php
-            if (isset($_SESSION['addProdSucsess'])) {
-                echo $_SESSION['addProdSucsess'];
-                unset($_SESSION['addProdSucsess']);
+            if (isset($_SESSION['deleteProdSucsess'])) {
+                echo $_SESSION['deleteProdSucsess'];
+                unset($_SESSION['deleteProdSucsess']);
             }
-            if (isset($_SESSION['editProdSucsess'])) {
-                echo $_SESSION['editProdSucsess'];
-                unset($_SESSION['editProdSucsess']);
+            if (isset($_SESSION['deleteAllProdSucsess'])) {
+                echo $_SESSION['deleteAllProdSucsess'];
+                unset($_SESSION['deleteAllProdSucsess']);
             }
             ?>
         </p>
@@ -160,6 +160,19 @@ if (!isset($_SESSION['editProdSucsess']) && !isset($_SESSION['addProdSucsess']) 
         <!--  -->
     </div>
 
+</div>
+
+<div class="col-12 mt-3 flex-row-reverse d-flex">
+    <div class="box-button">
+        <a type="button" href="./index.php" class="btn btn-secondary ms-auto text-white">Đóng</a>
+        <?php
+        if($count_products>0){
+            ?>
+            <a onclick="return confirm('Bạn chắc chắn muốn xóa toàn bộ sản phẩm đăng bán?')" type="button" href="./process-deleteAll-product.php" class="btn ms-auto text-white" style="background-color:red"><i class="bi bi-plus-circle-fill me-1"></i> Xóa hết</a>
+        <?php
+        }
+        ?>
+    </div>
 </div>
 <!-- Content end-->
 
