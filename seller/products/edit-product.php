@@ -90,8 +90,8 @@ if (isset($_GET['productid']) && isset($_GET['productsku'])) {
                         </div>
                         <div class="col-md-12 pe-4">
                             <div class="input-group mb-3">
-                                <span class="pe-3" dir="rtl" style="min-width: 161px;"><span class="text-danger" style="font-weight: 500;">*</span> Mã SKU</span>
-                                <input name="prodSKUEdit" type="text" class="form-control" placeholder="Mã SKU tùy chỉnh" value="<?php echo $prodInf['productSKU'] ?>" data-curr_prod_sku="<?php echo $prodInf['productSKU'] ?>">
+                                <span class="pe-3" dir="rtl" style="min-width: 161px;"><span class="text-danger" style="font-weight: 500;"></span> Mã SKU</span>
+                                <input name="prodSKUEdit" type="text" class="form-control" placeholder="Tùy chọn" value="<?php echo $prodInf['productSKU'] ?>" data-curr_prod_sku="<?php echo $prodInf['productSKU'] ?>">
                             </div>
                             <p class="text-danger" id="prodSKUEditHelp" dir="ltr" style="margin-left: 161px; font-weight: 500; font-size: 15px"></p>
                         </div>
