@@ -136,7 +136,7 @@ if (!isset($_SESSION['editProdSucsess']) && !isset($_SESSION['addProdSucsess']) 
                             </td>
                             <td class="text-center"><?= $row['sold']; ?></td>
                             <td class="text-center">
-                                <a href="./delete-product.php?productid=<?php echo $row['productID'];?>" class="bi bi-pencil-square fs-5"></a>
+                                <a onclick="return confirm('Bạn chắc chắn muốn xóa <?php echo $row['productName']; ?> ?')" href="./process-delete-product.php?productid=<?php echo $row['productID']; ?>" class="bi bi-trash fs-5"></a>
                             </td>
                         </tr>
                     <?php

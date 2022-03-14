@@ -13,6 +13,8 @@ if (isset($_POST['btnEditProduct'])) {
     $prodImg        = "";
     // $statusMsgUploadImg = "";
 
+
+    // Get status of image in database is exist or not
     $ispt1empty =  $_POST['isphoto1editempty'];
     $ispt2empty =  $_POST['isphoto2editempty'];
     $ispt3empty =  $_POST['isphoto3editempty'];
@@ -20,7 +22,12 @@ if (isset($_POST['btnEditProduct'])) {
     $img2Status = "no";
     $img3Status = "no";
 
-    // echo $ispt1empty;
+
+    if($prodSKU == ""){$prodSKU = "NULL";}
+    // Gen random character to set name for prducts image
+    $temp_word = array_merge(range('a', 'z'));
+    shuffle($temp_word);
+    $randChr = substr(implode($temp_word), 0, 20) . rand(000, 999);
 
 
     // Process upload products image
@@ -32,7 +39,7 @@ if (isset($_POST['btnEditProduct'])) {
         $targetDir = "../../assets/img/products/";
         $fileName_tmp = basename($_FILES["prodImg1Edit"]["name"]);
         $fileType = pathinfo($fileName_tmp, PATHINFO_EXTENSION);
-        $prodImage1 = $prodID . "-1." . $fileType;
+        $prodImage1 = $randChr . "-1." . $fileType;
         $targetFilePath = $targetDir . $prodImage1;
         $allowTypes = array('jpg', 'png', 'jpeg');
         //
@@ -62,7 +69,7 @@ if (isset($_POST['btnEditProduct'])) {
         if ($img1Status == "yes") {
             $prodImg = $prodImg . "," . $ispt2empty;
         } else if ($img1Status == "no") {
-            $prodImg = $prodImg . $prodID . "-1." . explode(".", $ispt2empty)[1];
+            $prodImg = $prodImg . $randChr . "-1." . explode(".", $ispt2empty)[1];
         }
         $img2Status = "yes";
     } else if (isset($_FILES['prodImg2Edit']) && !empty($_FILES["prodImg2Edit"]["name"])) {
@@ -72,11 +79,11 @@ if (isset($_POST['btnEditProduct'])) {
         $prodImage2 = "";
         $prodImage2_temp = "";
         if ($img1Status == "no") {
-            $prodImage2 = $prodID . "-1." . $fileType;
-            $prodImage2_temp = $prodID . "-1." . $fileType;
+            $prodImage2 = $randChr . "-1." . $fileType;
+            $prodImage2_temp = $randChr . "-1." . $fileType;
         } else {
-            $prodImage2 = "," . $prodID . "-2." . $fileType;
-            $prodImage2_temp = $prodID . "-2." . $fileType;
+            $prodImage2 = "," . $randChr . "-2." . $fileType;
+            $prodImage2_temp = $randChr . "-2." . $fileType;
         }
         $targetFilePath = $targetDir . $prodImage2_temp;
         $allowTypes = array('jpg', 'png', 'jpeg');
@@ -108,13 +115,13 @@ if (isset($_POST['btnEditProduct'])) {
             if ($img1Status == "yes") {
                 $prodImg = $prodImg . "," . $ispt3empty;
             } else if ($img1Status == "no") {
-                $prodImg = $prodImg . "," . $prodID . "-2." . explode(".", $ispt3empty)[1];
+                $prodImg = $prodImg . "," . $randChr . "-2." . explode(".", $ispt3empty)[1];
             }
         } else if ($img2Status == "no") {
             if ($img1Status == "yes") {
-                $prodImg = $prodImg . "," . $prodID . "-2." . explode(".", $ispt3empty)[1];
+                $prodImg = $prodImg . "," . $randChr . "-2." . explode(".", $ispt3empty)[1];
             } else if ($img1Status == "no") {
-                $prodImg = $prodImg . $prodID . "-1." . explode(".", $ispt3empty)[1];
+                $prodImg = $prodImg . $randChr . "-1." . explode(".", $ispt3empty)[1];
             }
         }
         $img3Status = "yes";
@@ -129,19 +136,19 @@ if (isset($_POST['btnEditProduct'])) {
         //
         if ($img2Status == "yes") {
             if ($img1Status == "yes") {
-                $prodImage3 = "," . $prodID . "-3." . $fileType;
-                $prodImage3_temp = $prodID . "-3." . $fileType;
+                $prodImage3 = "," . $randChr . "-3." . $fileType;
+                $prodImage3_temp = $randChr . "-3." . $fileType;
             } else if ($img1Status == "no") {
-                $prodImage3 = "," . $prodID . "-2." . $fileType;
-                $prodImage3_temp = $prodID . "-2." . $fileType;
+                $prodImage3 = "," . $randChr . "-2." . $fileType;
+                $prodImage3_temp = $randChr . "-2." . $fileType;
             }
         } else if ($img2Status == "no") {
             if ($img1Status == "yes") {
-                $prodImage3 = "," . $prodID . "-2." . $fileType;
-                $prodImage3_temp = $prodID . "-2." . $fileType;
+                $prodImage3 = "," . $randChr . "-2." . $fileType;
+                $prodImage3_temp = $randChr . "-2." . $fileType;
             } else if ($img1Status == "no") {
-                $prodImage3 = $prodID . "-1." . $fileType;
-                $prodImage3_temp = $prodID . "-1." . $fileType;
+                $prodImage3 = $randChr . "-1." . $fileType;
+                $prodImage3_temp = $randChr . "-1." . $fileType;
             }
         }
         //
