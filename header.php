@@ -10,13 +10,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./assets/css/index.css">
+    <link rel="stylesheet" href="<?php echo SITEURL ?>assets/css/index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="./assets/js/scripts.js"></script>
+    <script src="<?php echo SITEURL ?>assets/js/scripts.js"></script>
 </head>
 
 <body>
-    <!-- Modal -->
+    <!-- Modal add to cart success -->
     <div class="modal fade modal-add-to-cart-success" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div>
@@ -30,7 +30,7 @@
         <div class="header-top container-fluid">
             <div class="wrapper ms-5 me-3">
                 <div class="initial ms-5 pe-2">
-                    <a href="./seller/">Kênh người bán</a>
+                    <a href="<?php echo SITEURL ?>seller/">Kênh người bán</a>
                 </div>
                 <div class="initial ms-2 pe-2">
                     <a href="">Tải ứng dụng</a>
@@ -48,9 +48,9 @@
         </div>
         <div class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-logo ms-5" href="index.php">
+                <a class="navbar-logo ms-5" href="<?php echo SITEURL ?>index.php">
                     <button type="button" class="btn btn-light ms-2">
-                        <img src="assets/img/gofish-logo.png" alt="">
+                        <img src="<?php echo SITEURL ?>assets/img/gofish-logo.png" alt="">
                     </button>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,16 +76,16 @@
                             if (isset($_SESSION['id'])) {
                             ?>
                                 <div class="logout" style="border-bottom: 1px solid pink   ;">
-                                    <a href="logout.php" class="text-danger">Đăng xuất</a>
+                                    <a href="<?php echo SITEURL ?>logout.php" class="text-danger">Đăng xuất</a>
                                 </div>
                             <?php
                             } else {
                             ?>
                                 <div class="login" style="border-bottom: 1px solid pink   ;">
-                                    <a href="login.php" class="text-danger">Đăng nhập</a>
+                                    <a href="<?php echo SITEURL ?>login.php" class="text-danger">Đăng nhập</a>
                                 </div>
                                 <div class="signup">
-                                    <a href="signup.php" class="text-danger">Đăng Ký</a>
+                                    <a href="<?php echo SITEURL ?>signup.php" class="text-danger">Đăng Ký</a>
                                 </div>
                             <?php
                             }
@@ -93,7 +93,7 @@
 
                         </ul>
                     </li>
-                    <a href="" class="notifi ms-5 text-danger fs-5" style="font-weight: 600; line-height: 30px;position:relative;">
+                    <a href="#" class="notifi ms-5 text-danger fs-5" style="font-weight: 600; line-height: 30px;position:relative;">
                         <i class="bi bi-bell fs-4"></i><span class="fs-5">Thông báo</span>
                     </a>
                     <!-- Quick view cart -->
@@ -107,14 +107,14 @@
                             </div>
                             <div style="width: 100%;" class="mb-4 d-flex justify-content-between align-items-center">
                                 <div>
-                                    <img src="./assets/img/ca-canh-bien-hoang-gia-bien-do-regal-angelfish-red-sea.jpg" alt="" class="product-avatar-list" style="width: 50px;">
+                                    <img src="<?php echo SITEURL ?>assets/img/ca-canh-bien-hoang-gia-bien-do-regal-angelfish-red-sea.jpg" alt="" class="product-avatar-list" style="width: 50px;">
                                     <span class="quick-produc-name">Cá cảnh biển hoàng gia</span>
                                 </div>
                                 <span class="text-danger fs-6 quick-product-price"><sup><u>đ</u></sup>450.000</span>
                             </div>
                             <div style="width: 100%;" class="mb-4 d-flex justify-content-between align-items-center">
                                 <div>
-                                    <img src="./assets/img/ca-canh-bien-hoang-gia-bien-do-regal-angelfish-red-sea.jpg" alt="" class="product-avatar-list" style="width: 50px;">
+                                    <img src="<?php echo SITEURL ?>assets/img/ca-canh-bien-hoang-gia-bien-do-regal-angelfish-red-sea.jpg" alt="" class="product-avatar-list" style="width: 50px;">
                                     <span class="quick-produc-name">Cá cảnh biển hoàng gia</span>
                                 </div>
                                 <span class="text-danger fs-6 quick-product-price"><sup><u>đ</u></sup>450.000</span>
@@ -122,7 +122,7 @@
                             <!--  -->
                             <div class="d-flex justify-content-between align-items-center">
                                 <p class="text-muted mb-2" style="font-size: 15px;">3 Sản phẩm trong giỏ hàng</p>
-                                <a href="#" class="btn btn-danger mb-3">Xem giỏ hàng</a>
+                                <a href="<?php echo SITEURL ?>user/cart" class="btn btn-danger mb-3">Xem giỏ hàng</a>
                             </div>
                         </div>
                     </div>
