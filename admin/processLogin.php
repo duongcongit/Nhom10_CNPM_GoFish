@@ -14,8 +14,8 @@ $result = mysqli_query($conn, $sql);
 if(mysqli_num_rows($result) == 1){
     $row = mysqli_fetch_array($result);
     if($password == $row['password']){
-        $_SESSION['id']=$row['id'];
-        $_SESSION['user'] = $row['username'];
+        $_SESSION['adminID']=$row['id'];
+        $_SESSION['adminName'] = $row['username'];
         header('location: index.php');
         exit();
     }
