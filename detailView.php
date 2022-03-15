@@ -1,137 +1,13 @@
-<?php include('config/constants.php'); ?>
-<!DOCTYPE html>
-<html lang="en">
+<?php
+// include constants and header
+require './config/constants.php';
+require './header.php';
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="assets/css/detail.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="./assets/js/scripts.js"></script>
-  <title>Chi tiết sản phẩm</title>
-</head>
+?>
 
-<body>
-  <!-- Modal -->
-  <div class="modal fade modal-add-to-cart-success" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div>
-        <img src="./assets/img/tick-icon.png" alt="img" class="mt-5">
-        <p class="mt-4 fs-5">Sản phẩm đã được thêm vào giỏ hàng</p>
-      </div>
-    </div>
-  </div>
-  <!--  -->
-  <header class="fixed-top">
-    <div class="header-top container-fluid">
-      <div class="wrapper ms-5 me-3">
-        <div class="initial ms-5 pe-2">
-          <a href="./seller/">Kênh người bán</a>
-        </div>
-        <div class="initial ms-2 pe-2">
-          <a href="">Tải ứng dụng</a>
-        </div>
-        <div class="social ms-2 pe-2">
-          <span style="color: rgb(150, 157, 21);">Kết nối</span>
-          <a href=""><i class="bi bi-facebook text-primary"></i></a>
-          <a href=""><i class="bi bi-tiktok text-dark"></i></a>
-          <a href=""><i class="bi bi-instagram text-info me-5"></i></a>
-        </div>
-        <div class="slogan ms-auto">
-          <p class="me-5">Gofish - Thả hồn vào sự huyền dịu của thiên nhiên</p>
-        </div>
-      </div>
-    </div>
-    <div class="navbar navbar-expand-lg">
-      <div class="container-fluid">
-        <a class="navbar-logo ms-5" href="index.php">
-          <button type="button" class="btn btn-light ms-2">
-            <img src="assets/img/gofish-logo.png" alt="">
-          </button>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon" style="color: #000;"></span>
-        </button>
-        <div class="collapse navbar-collapse ms-5" id="navbarSupportedContent">
-          <div class="search ms-5" style="display: inline;">
-            <div style="display: inline-flex;">
-              <span class="input-group-text" id="addon-wrapping"><i class="bi bi-search"></i></span>
-              <input type="text" class="form-control p-3" placeholder="Search for fish, product...">
-            </div>
-          </div>
-          <li class="nav-item dropdown ms-5" style="border-right: 1px solid rgb(238, 221, 221);">
-            <a class="nav-link me-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <div class="text-nav">
-                <i class="bi bi-person-circle"></i> Tài khoản
-                <i class="bi bi-caret-down-fill"></i>
-              </div>
-              </i>
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="width: 150px; text-align: center;">
-              <div class="login" style="border-bottom: 1px solid pink   ;">
-                <a href="login.php">Đăng nhập</a>
-              </div>
-              <div class="signup">
-                <a href="signup.php">Đăng Ký</a>
-              </div>
 
-            </ul>
-          </li>
-          <a href="" class="notifi ms-5">
-            <i class="bi bi-bell"></i> Thông báo
-          </a>
-          <a href="" class="cart ms-5">
-            <i class="bi bi-cart"></i> Giỏ hàng
-          </a>
-        </div>
-      </div>
-    </div>
 
-    <!-- Menu -->
-    <div class="menu">
-      <div class="wrapper container ms-5 me-5">
-        <ul class="main-nav ms-5">
-          <li class="nav-item ms-5">
-            <a class="nav-link active" href="index.php">
-              <div class="text-nav" style="font-style: normal; font-size: 18px;">Trang chủ</div>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">
-              <div class="text-nav" style="font-style: normal; font-size: 18px;">Sản phẩm</div>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">
-              <div class="text-nav" style="font-style: normal; font-size: 18px;">Giới thiệu</div>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">
-              <div class="text-nav" style="font-style: normal; font-size: 18px;">
-                <i class="bi bi-info-circle"></i> Hỗ trợ
-              </div>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">
-              <div class="text-nav" style="font-style: normal; font-size: 18px;">Tin tức</div>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">
-              <div class="text-nav" style="font-style: normal; font-size: 18px;">Liên hệ</div>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-  </header>
-  <?php
+<?php
   /*Kiểm tra xem có nhận được mã sản phẩm từ trang chủ*/
   if (isset($_GET['id'])) {
     //Lấy mã sản phẩm và thông tin của sản phẩm đã chọn
@@ -290,10 +166,10 @@
                     <h4 class="me-2">Số lượng</h4>
                     <ul class="pagination justify-content-end">
                       <li class="page-item page-item-btn-decrease">
-                      <a class="page-link bi bi-dash-lg" id="btn-decrease" type="button"></a>
+                        <a class="page-link bi bi-dash-lg" id="btn-decrease" type="button"></a>
                       </li>
                       <li class="page-item">
-                        <input type="text" id="input-quantity" class="page-link px-2 text-dark" autocomplete="off" value="1" style="width: 50px;">
+                        <input type="text" id="input-quantity-detail" class="page-link px-2 text-dark" autocomplete="off" value="1" style="width: 50px;">
                       </li>
                       <li class="page-item">
                         <a class="page-link bi-plus-lg" id="btn-increase" type="button"></a>
@@ -304,8 +180,8 @@
 
 
                 <div>
-                  <!-- <p class="sold-out">Hết hàng</p> -->
-                  <p type="button" class="bi bi-cart-plus-fill btn-add-to-cart"><span class="ms-1">Thêm vào giỏ hàng</span></p>
+                  <!-- <p class="sold-out-detail">Hết hàng</p> -->
+                  <p type="button" class="bi bi-cart-plus-fill btn-add-to-cart-detail"><span class="ms-1">Thêm vào giỏ hàng</span></p>
                 </div>
 
               </div>
