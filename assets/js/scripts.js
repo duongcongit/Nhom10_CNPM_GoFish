@@ -1,15 +1,30 @@
 $(document).ready(function () {
-  // Show Show alert add to cart success when click button in index.php
+  function add_to_cart(productID, quantity) {
+    $.ajax({
+      url: "./user/cart/proccess-add-to-cart.php",
+      type: "POST",
+      data: {
+        productID: productID,
+        quantity: quantity,
+      },
+      success: function (data) {
+        // Create modal alert add to cart success
+        var modalAddCartSucc = bootstrap.Modal.getOrCreateInstance(
+          document.querySelector(".modal-add-to-cart-success")
+        );
+        // Show alert add to cart success
+        modalAddCartSucc.show();
+        setTimeout(function () {
+          modalAddCartSucc.hide();
+        }, 3000);
+      },
+    });
+  }
+
+  // Envent click button add to cart in index.php
   $(".btn-add-to-cart").on("click", function () {
-    // Create modal alert add to cart success
-    var modalAddCartSucc = bootstrap.Modal.getOrCreateInstance(
-      document.querySelector(".modal-add-to-cart-success")
-    );
-    // Show alert add to cart success
-    modalAddCartSucc.show();
-    setTimeout(function () {
-      modalAddCartSucc.hide();
-    }, 3000);
+    var productID = $(this).data("product_id");
+    add_to_cart(productID, "1");
   });
 
   // Check input quantity
@@ -32,7 +47,7 @@ $(document).ready(function () {
     }
   });
 
-  // Show Show alert add to cart success when click button in detailView.php
+  // Event click button add to cart in detailView.php
   $(".btn-add-to-cart-detail").on("click", function () {
     // Create modal alert add to cart success
     var modalAddCartSucc = bootstrap.Modal.getOrCreateInstance(
