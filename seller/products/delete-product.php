@@ -129,7 +129,7 @@ if (!isset($_SESSION['editProdSucsess']) && !isset($_SESSION['addProdSucsess']) 
                                     </div>
                                 </div>
                             </td>
-                            <td><?= $row['productSKU']; ?></td>
+                            <td><?= $row['productID']; ?></td>
                             <td><?= $row['category']; ?></td>
                             <td><?= $row['price']; ?>đ</td>
                             <td class="text-center"><?= $row['stock']; ?>
