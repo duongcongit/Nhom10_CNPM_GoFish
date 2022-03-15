@@ -96,37 +96,11 @@
                     <a href="#" class="notifi ms-5 text-danger fs-5" style="font-weight: 600; line-height: 30px;position:relative;">
                         <i class="bi bi-bell fs-4"></i><span class="fs-5">Thông báo</span>
                     </a>
-                    <!-- Quick view cart -->
+                    <!-- Quick view cart start -->
                     <div class="cart ms-5 text-danger fs-5 quick-cart mt-3" style="font-weight: 600; line-height: 30px;position:relative;">
-                        <p type="button" class="bi bi-cart-fill fs-4"><span class="fs-5">Giỏ hàng</span></p>
-                        <p id="count-cart" class="">1</p>
-                        <div class="quick-cart-list text-dark container-fluid px- mb-0">
-                            <div class="text-muted fs-6 mb-3">
-                                Sản phẩm mới thêm
-                                <!-- <hr class="mt-0"> -->
-                            </div>
-                            <div style="width: 100%;" class="mb-4 d-flex justify-content-between align-items-center">
-                                <div>
-                                    <img src="<?php echo SITEURL ?>assets/img/ca-canh-bien-hoang-gia-bien-do-regal-angelfish-red-sea.jpg" alt="" class="product-avatar-list" style="width: 50px;">
-                                    <span class="quick-produc-name">Cá cảnh biển hoàng gia</span>
-                                </div>
-                                <span class="text-danger fs-6 quick-product-price"><sup><u>đ</u></sup>450.000</span>
-                            </div>
-                            <div style="width: 100%;" class="mb-4 d-flex justify-content-between align-items-center">
-                                <div>
-                                    <img src="<?php echo SITEURL ?>assets/img/ca-canh-bien-hoang-gia-bien-do-regal-angelfish-red-sea.jpg" alt="" class="product-avatar-list" style="width: 50px;">
-                                    <span class="quick-produc-name">Cá cảnh biển hoàng gia</span>
-                                </div>
-                                <span class="text-danger fs-6 quick-product-price"><sup><u>đ</u></sup>450.000</span>
-                            </div>
-                            <!--  -->
-                            <div class="d-flex justify-content-between align-items-center">
-                                <p class="text-muted mb-2" style="font-size: 15px;">3 Sản phẩm trong giỏ hàng</p>
-                                <a href="<?php echo SITEURL ?>user/cart" class="btn btn-danger mb-3">Xem giỏ hàng</a>
-                            </div>
-                        </div>
+                        
                     </div>
-                    <!--  -->
+                    <!-- Quick view cart end -->
 
                 </div>
             </div>

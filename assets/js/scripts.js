@@ -1,4 +1,21 @@
 $(document).ready(function () {
+  //
+  function get_qcart_data() {
+    var test;
+    $.ajax({
+      url: "./user/cart/get-quick-view-cart-data.php",
+      type: "POST",
+      data: {
+        test: test,
+      },
+      success: function (data) {
+        $(".quick-cart").html(data);
+      },
+    });
+  }
+
+  get_qcart_data();
+  //
   function add_to_cart(productID, quantity) {
     $.ajax({
       url: "./user/cart/proccess-add-to-cart.php",
@@ -14,13 +31,15 @@ $(document).ready(function () {
         );
         // Show alert add to cart success
         modalAddCartSucc.show();
+        //
+        get_qcart_data();
+        //
         setTimeout(function () {
           modalAddCartSucc.hide();
         }, 3000);
       },
     });
   }
-
   // Envent click button add to cart in index.php
   $(".btn-add-to-cart").on("click", function () {
     var productID = $(this).data("product_id");
