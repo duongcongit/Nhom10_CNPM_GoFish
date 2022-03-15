@@ -1,6 +1,6 @@
 $(document).ready(function () {
-  //
-  function get_qcart_data() {
+  // Function get data quick view cart
+  function get_quick_cart_data() {
     var test;
     $.ajax({
       url: "./user/cart/get-quick-view-cart-data.php",
@@ -13,12 +13,30 @@ $(document).ready(function () {
       },
     });
   }
+  // Get data quick view cart
+  get_quick_cart_data();
 
-  get_qcart_data();
+  // Function get data for cart view
+  function get_cart_data() {
+    var test;
+    $.ajax({
+      url: "get-cart-data.php",
+      type: "POST",
+      data: {
+        test: test,
+      },
+      success: function (data) {
+        $("#cart-view").html(data);
+      },
+    });
+  }
+  // Get data quick view cart
+  get_cart_data();
+
   //
   function add_to_cart(productID, quantity) {
     $.ajax({
-      url: "./user/cart/proccess-add-to-cart.php",
+      url: "./user/cart/process-add-to-cart.php",
       type: "POST",
       data: {
         productID: productID,
@@ -31,8 +49,8 @@ $(document).ready(function () {
         );
         // Show alert add to cart success
         modalAddCartSucc.show();
-        //
-        get_qcart_data();
+        // Update quick view cart
+        get_quick_cart_data();
         //
         setTimeout(function () {
           modalAddCartSucc.hide();
@@ -59,9 +77,7 @@ $(document).ready(function () {
           .removeAttr("disabled")
           .css("background", "#3d1a1a");
       }, 2000);
-    }
-    //
-    if ($(this).val() > $(this).data("prod_stock")) {
+    } else if ($(this).val() > $(this).data("prod_stock")) {
       $(".btn-add-to-cart-detail")
         .attr("disabled", "disabled")
         .css("background", "gray");
@@ -137,7 +153,7 @@ $(document).ready(function () {
   });
 
   // Show alert confirm when click button clear cart
-  $(".btn-clear-cart").on("click", function () {
+  $(document).on("click", ".btn-clear-cart", function () {
     // Create modal confirm clear cart
     var modalConfClearCart = bootstrap.Modal.getOrCreateInstance(
       document.querySelector(".md-conf-remove-from-cart")
@@ -145,41 +161,129 @@ $(document).ready(function () {
     $("#conf-remove-from-cart-content").text(
       "Bạn có muốn xóa tất cả các sản phẩm khỏi giỏ hàng?"
     );
-    // Show alert confirm claer cart
+    // Show alert confirm clear cart
     modalConfClearCart.show();
+    // Remove all product from cart
+    $("#btn-conf-remove-cart").on("click", function () {
+      var all = "all";
+      $.ajax({
+        url: "process-remove-from-cart.php",
+        type: "POST",
+        data: {
+          all: all,
+        },
+        success: function (data) {},
+      });
+      //
+      modalConfClearCart.hide();
+      get_cart_data();
+    });
+    //
   });
 
   // Show alert confirm when click button remove a product from cart
-  $(".btn-remove-cart").on("click", function () {
+  $(document).on("click", ".btn-remove-cart", function () {
+    var productID = $(this).data("prodid");
     // Create modal confirm
     var modalConfRmCart = bootstrap.Modal.getOrCreateInstance(
       document.querySelector(".md-conf-remove-from-cart")
     );
     $("#conf-remove-from-cart-content").text(
-      "Bạn có muốn xóa sản phẩm đang chọn khỏi giỏ hàng?"
+      "Bạn có muốn xóa sản phẩm khỏi giỏ hàng?"
     );
     // Show alert confirm
     modalConfRmCart.show();
+    // Remove product from cart
+    $("#btn-conf-remove-cart").on("click", function () {
+      $.ajax({
+        url: "process-remove-from-cart.php",
+        type: "POST",
+        data: {
+          productID: productID,
+        },
+        success: function (data) {},
+      });
+      //
+      modalConfRmCart.hide();
+      get_cart_data();
+    });
+    //
   });
 
+  // Function update quantity
+  function update_quantity(productID, quantity) {
+    $.ajax({
+      url: "process-update-quantity.php",
+      type: "POST",
+      data: {
+        quantity: quantity,
+        productID: productID,
+      },
+      success: function (data) {},
+    });
+  }
   // Check input quantity
-  $("#input-quantity-cart").on("change", function () {
+  $(document).on("change", ".input-quantity-cart", function () {
     let numPattern = /^[0-9]+$/;
+    var prodID = $(this).data("prodid");
+    var stock = $(this).data("prod_stock");
+
     if (numPattern.test($(this).val()) == false) {
       $(this).val("1");
+    } else if ($(this).val() > stock) {
+      $(this).val(stock);
     }
+    //
+    var quantity = $(this).val();
+    // Update quantity in database
+    update_quantity(prodID, quantity);
   });
+
+  // Function Update when quantity is over stock
+  function update_all_quantity() {
+    setTimeout(function () {
+      for (let i = 0; i < $(".input-quantity-cart").length; i++) {
+        var object = $(".input-quantity-cart:eq(" + i + ")");
+        var prodID = object.data("prodid");
+        var stock = object.data("prod_stock");
+        if (object.val() > stock) {
+          update_quantity(prodID, stock);
+          get_cart_data();
+        }
+      }
+    }, 2000);
+  }
+  // Call func
+  update_all_quantity();
+
   // When click button increase quantity
-  $("#btn-increase-cart").on("click", function () {
-    var currQuantity = $("#input-quantity-cart").val();
-    $("#input-quantity-cart").val(parseInt(currQuantity) + 1);
-  });
-  // When click button decrease quantity
-  $("#btn-decrease-cart").on("click", function () {
-    var currQuantity = $("#input-quantity-cart").val();
-    if (parseInt(currQuantity) > 1) {
-      $("#input-quantity-cart").val(parseInt(currQuantity) - 1);
+  $(document).on("click", ".btn-increase-cart", function () {
+    var prodID = $(this).data("prodid");
+    var stock = $(this).data("prod_stock");
+    var inpQuantity = $("input[data-prodid='" + prodID + "']");
+    var currQuantity = inpQuantity.val();
+    //
+    if (inpQuantity.val() < 8000) {
+      inpQuantity.val(parseInt(currQuantity) + 1);
     }
+    //
+    var quantity = inpQuantity.val();
+    // Update quantity in database
+    update_quantity(prodID, quantity);
+  });
+
+  // When click button decrease quantity
+  $(document).on("click", ".btn-decrease-cart", function () {
+    var prodID = $(this).data("prodid");
+    var inpQuantity = $("input[data-prodid='" + prodID + "']");
+    var currQuantity = inpQuantity.val();
+    if (parseInt(currQuantity) > 1) {
+      inpQuantity.val(parseInt(currQuantity) - 1);
+    }
+    //
+    var quantity = inpQuantity.val();
+    // Update quantity in database
+    update_quantity(prodID, quantity);
   });
 
   //

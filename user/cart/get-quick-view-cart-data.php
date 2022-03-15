@@ -2,9 +2,11 @@
 require '../../config/constants.php';
 
 $userID         = $_SESSION['id'];
+//
 $sql_count_prod = "SELECT * FROM cart WHERE userID='$userID';";
 $num_prod       = $conn->query($sql_count_prod)->num_rows;
 
+//
 $sql_data_qcart = "SELECT products.productName,price,image FROM cart,products WHERE cart.userID='$userID' AND cart.productID=products.productID ORDER BY time_add DESC LIMIT 0,5;";
 $res_data_qcart = $conn->query($sql_data_qcart);
 
