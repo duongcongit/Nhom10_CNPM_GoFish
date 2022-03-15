@@ -28,36 +28,59 @@ $(document).ready(function () {
   });
 
   // Check input quantity
-  $("#input-quantity").on("change", function () {
+  $("#input-quantity-detail").mouseleave(function () {
     let numPattern = /^[0-9]+$/;
     if (numPattern.test($(this).val()) == false) {
+      $(".btn-add-to-cart-detail")
+        .attr("disabled", "disabled")
+        .css("background", "gray");
       $(this).val("1");
+      setTimeout(function () {
+        $(".btn-add-to-cart-detail")
+          .removeAttr("disabled")
+          .css("background", "#3d1a1a");
+      }, 2000);
+    }
+    //
+    if ($(this).val() > $(this).data("prod_stock")) {
+      $(".btn-add-to-cart-detail")
+        .attr("disabled", "disabled")
+        .css("background", "gray");
+      $(this).val($(this).data("prod_stock"));
+      setTimeout(function () {
+        $(".btn-add-to-cart-detail")
+          .removeAttr("disabled")
+          .css("background", "#3d1a1a");
+      }, 1000);
     }
   });
   // When click button increase quantity
   $("#btn-increase").on("click", function () {
-    var currQuantity = $("#input-quantity").val();
-    $("#input-quantity").val(parseInt(currQuantity) + 1);
+    var currQuantity = $("#input-quantity-detail").val();
+    $("#input-quantity-detail").val(parseInt(currQuantity) + 1);
   });
   // When click button decrease quantity
   $("#btn-decrease").on("click", function () {
-    var currQuantity = $("#input-quantity").val();
+    var currQuantity = $("#input-quantity-detail").val();
     if (parseInt(currQuantity) > 1) {
-      $("#input-quantity").val(parseInt(currQuantity) - 1);
+      $("#input-quantity-detail").val(parseInt(currQuantity) - 1);
     }
   });
 
   // Event click button add to cart in detailView.php
   $(".btn-add-to-cart-detail").on("click", function () {
-    // Create modal alert add to cart success
-    var modalAddCartSucc = bootstrap.Modal.getOrCreateInstance(
-      document.querySelector(".modal-add-to-cart-success")
-    );
-    // Show alert add to cart success
-    modalAddCartSucc.show();
-    setTimeout(function () {
-      modalAddCartSucc.hide();
-    }, 3000);
+    var quantity = $("#input-quantity-detail").val();
+    var productID = $(this).data("product_id");
+    add_to_cart(productID, quantity);
+    // // Create modal alert add to cart success
+    // var modalAddCartSucc = bootstrap.Modal.getOrCreateInstance(
+    //   document.querySelector(".modal-add-to-cart-success")
+    // );
+    // // Show alert add to cart success
+    // modalAddCartSucc.show();
+    // setTimeout(function () {
+    //   modalAddCartSucc.hide();
+    // }, 3000);
   });
 
   // Scripts for Cart page
