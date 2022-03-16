@@ -62,7 +62,7 @@ include dirname(__FILE__) . '/login-check.php';
         <div class="row">
 
             <!-- Sidebar start -->
-            <div class="container sidebar">
+            <div class="container sidebar sidebar-show">
                 <!-- Sidebar menu start-->
                 <div class="sidebar-menu">
                     <ul class="">
@@ -72,7 +72,6 @@ include dirname(__FILE__) . '/login-check.php';
                                 <span class="sidebar-item-text">Thống kê bán hàng</span>
                             </a>
                         </li>
-                        <hr>
                         <li>
                             <a href="#" class="nav-link link-dark
                                 ">
@@ -80,7 +79,6 @@ include dirname(__FILE__) . '/login-check.php';
                                 <span class="sidebar-item-text">Quản lý đơn hàng</span>
                             </a>
                         </li>
-                        <hr>
                         <li>
                             <a class="nav-link link-dark tour-btn ms-2" type="button">
                                 <img src="<?php echo SITEURL ?>seller/assets/img/product-icon.png" alt="" style="width: 30px;">
@@ -90,25 +88,23 @@ include dirname(__FILE__) . '/login-check.php';
                             <ul class="tour-show">
                                 <li><a href="<?php echo SITEURL ?>seller/products/index.php" class="">Tất cả sản phẩm</a></li>
                                 <li><a href="<?php echo SITEURL ?>seller/products/add-product.php" class="">Thêm sản phẩm</a></li>
+                                <li><a href="<?php echo SITEURL ?>seller/products/delete-product.php" class="">Xóa sản phẩm</a></li>
                                 <li><a href="#" class="">Quản lý tồn kho</a></li>
                                 <li><a href="#" class="">Sản phẩm bị khóa</a></li>
                             </ul>
                         </li>
-                        <hr>
                         <li>
                             <a href="#" class="nav-link link-dark">
                                 <i class="bi bi-wallet"></i>
                                 <span class="sidebar-item-text">Tài chính</span>
                             </a>
                         </li>
-                        <hr>
                         <li>
                             <a href="#" class="nav-link link-dark">
                                 <i class="bi bi-person"></i>
                                 <span class="sidebar-item-text">Hồ sơ</span>
                             </a>
                         </li>
-                        <hr>
                         <li>
                             <a href="#" class="nav-link link-dark">
                                 <i class="bi bi-question-square"></i>
@@ -129,4 +125,4 @@ include dirname(__FILE__) . '/login-check.php';
             <!-- Sidebar end -->
 
             <!-- Content start-->
-            <div class="col main-right container-fluid row show">
+            <div class="col main-right container-fluid row ">

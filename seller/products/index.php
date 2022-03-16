@@ -154,7 +154,10 @@ if (!isset($_SESSION['editProdSucsess']) && !isset($_SESSION['addProdSucsess']) 
             $count_products = $res_products->num_rows;
             ?>
             <h3 class="ms-2" id="label-count-prod"><?php echo $count_products ?> Sản phẩm </h3>
-            <a type="button" href="./add-product.php" class="btn btn-danger ms-auto"><i class="bi bi-plus-circle-fill me-1"></i>Thêm một sản phẩm mới</a>
+            <div class="box-button">
+                <a type="button" href="./delete-product.php" class="btn ms-auto text-white" style="background-color:red"><i class="bi bi-plus-circle-fill me-1"></i> Xóa Sản Phẩm</a>
+                <a type="button" href="./add-product.php" class="btn btn-info ms-auto text-white"><i class="bi bi-plus-circle-fill me-1"></i> Thêm 1 sản phẩm mới</a>
+            </div>
         </div>
         <!--  -->
         <table class="styled-table">

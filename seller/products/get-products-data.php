@@ -71,7 +71,7 @@ if (isset($_POST['tableID'])) {
                 <td><?= $row['productSKU']; ?></td>
                 <td><?= $row['category']; ?></td>
                 <td><?= $row['price']; ?>đ</td>
-                <td><?= $row['stock']; ?>
+                <td class="text-center"><?= $row['stock']; ?>
                     <?php
                     if ($row['status'] == 3) {
                     ?>
@@ -85,8 +85,8 @@ if (isset($_POST['tableID'])) {
                     }
                     ?>
                 </td>
-                <td><?= $row['sold']; ?></td>
-                <td>
+                <td class="text-center"><?= $row['sold']; ?></td>
+                <td class="text-center">
                     <?php
                     if ($row['status'] == 3) {
                     ?>

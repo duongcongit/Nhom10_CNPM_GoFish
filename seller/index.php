@@ -114,8 +114,12 @@ include "./partials/header.php";
 <!--  -->
 
 <!--  -->
+<!-- Lấy ngày tháng hiện tại -->
+<?php
+  $today = date("d/m/Y");
+?>
 <div class="col-md-12 alan shadow">
-    <h3 class="mt-2 ms-3">Phân tích bán hàng <span class="fs-6 text-muted">(Hôm nay 6/3/2022 GMT+7)</span></h3>
+    <h3 class="mt-2 ms-3">Phân tích bán hàng <span class="fs-6 text-muted">(Hôm nay <?php echo $today ?> GMT+7)</span></h3>
     <div class="col-md-12 h-50 d-flex flex-column justify-content-center align-items-center">
     </div>
 </div>
