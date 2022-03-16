@@ -182,7 +182,12 @@ if (isset($_GET['id'])) {
 
               <div>
                 <?php
-                if ($conLai == 0) {
+                if ($userID == $_SESSION['id']) {
+                ?>
+                  <p class="sold-out-detail">Sản phẩm của bạn</p>
+                <?php
+                }
+                else if ($conLai == 0) {
                 ?>
                   <p class="sold-out-detail">Hết hàng</p>
                 <?php

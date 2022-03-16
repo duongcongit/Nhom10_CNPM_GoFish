@@ -81,7 +81,11 @@ if (mysqli_num_rows($result) == 0) {
                                 <p class="product-price"><?= number_format($each['price'], 0, '.', '.') ?>đ</p>
                                 <div class="product-action">
                                     <?php
-                                    if ($each['stock'] == 0) {
+                                    if ($each['userID'] == $_SESSION['id']) {
+                                    ?>
+                                        <p class="sold-out">Sản phẩm của bạn</p>
+                                    <?php
+                                    } else if ($each['stock'] == 0) {
                                     ?>
                                         <p class="sold-out">Hết hàng</p>
                                     <?php
@@ -125,7 +129,11 @@ if (mysqli_num_rows($result) == 0) {
                                 <p class="product-price"><?= number_format($each['price'], 0, '.', '.') ?>đ</p>
                                 <div class="product-action">
                                     <?php
-                                    if ($each['stock'] == 0) {
+                                    if ($each['userID'] == $_SESSION['id']) {
+                                    ?>
+                                        <p class="sold-out">Sản phẩm của bạn</p>
+                                    <?php
+                                    } else if ($each['stock'] == 0) {
                                     ?>
                                         <p class="sold-out">Hết hàng</p>
                                     <?php
@@ -169,7 +177,11 @@ if (mysqli_num_rows($result) == 0) {
                                 <p class="product-price"><?= number_format($each['price'], 0, '.', '.') ?>đ</p>
                                 <div class="product-action">
                                     <?php
-                                    if ($each['stock'] == 0) {
+                                    if ($each['userID'] == $_SESSION['id']) {
+                                    ?>
+                                        <p class="sold-out">Sản phẩm của bạn</p>
+                                    <?php
+                                    } else if ($each['stock'] == 0) {
                                     ?>
                                         <p class="sold-out">Hết hàng</p>
                                     <?php
@@ -213,7 +225,11 @@ if (mysqli_num_rows($result) == 0) {
                                 <p class="product-price"><?= number_format($each['price'], 0, '.', '.') ?>đ</p>
                                 <div class="product-action">
                                     <?php
-                                    if ($each['stock'] == 0) {
+                                    if ($each['userID'] == $_SESSION['id']) {
+                                    ?>
+                                        <p class="sold-out">Sản phẩm của bạn</p>
+                                    <?php
+                                    } else if ($each['stock'] == 0) {
                                     ?>
                                         <p class="sold-out">Hết hàng</p>
                                     <?php
@@ -257,7 +273,11 @@ if (mysqli_num_rows($result) == 0) {
                                 <p class="product-price"><?= number_format($each['price'], 0, '.', '.') ?>đ</p>
                                 <div class="product-action">
                                     <?php
-                                    if ($each['stock'] == 0) {
+                                    if ($each['userID'] == $_SESSION['id']) {
+                                    ?>
+                                        <p class="sold-out">Sản phẩm của bạn</p>
+                                    <?php
+                                    } else if ($each['stock'] == 0) {
                                     ?>
                                         <p class="sold-out">Hết hàng</p>
                                     <?php
