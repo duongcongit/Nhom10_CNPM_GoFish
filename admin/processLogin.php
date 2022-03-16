@@ -8,7 +8,7 @@ if(empty($_POST['user']) || empty($_POST['pass'])) {
 $user = htmlspecialchars($_POST['user']);
 $password = htmlspecialchars($_POST['pass'], ENT_QUOTES);
 
-$sql = "SELECT * from admin where  username = '$user' ";
+$sql = "SELECT * from admins where  username = '$user' ";
 
 $result = mysqli_query($conn, $sql);
 if(mysqli_num_rows($result) == 1){
@@ -16,7 +16,7 @@ if(mysqli_num_rows($result) == 1){
     if($password == $row['password']){
         $_SESSION['adminID']=$row['id'];
         $_SESSION['adminName'] = $row['username'];
-        header('location: index.php');
+        header('location: admin.php');
         exit();
     }
     else{

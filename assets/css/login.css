@@ -48,7 +48,7 @@ body {
 
 .wrapper .card {
     max-width: 400px;
-    min-height: 450px;
+    min-height: 300px;
     margin: 30px;
     background: linear-gradient(to right, rgba(50,197,246,1) 0%, rgba(0,68,255,1) 100%);
     overflow: hidden;

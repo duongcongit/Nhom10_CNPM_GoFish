@@ -36,7 +36,8 @@ include "./partials/loginCheck.php";
                             <img src="../seller/assets/img/logo-1.png" alt="" class="logo">
 
                         </a>
-                        <a class="navbar-brand me-auto" href="../seller/">Trang Quản Trị</a>
+                        <a class="navbar-brand me-auto" href="./admin.php">Trang Quản Trị</a>
+                        <a class="navbar-brand ms-auto" href="#"><i class="bi bi-person-workspace me-2"></i><?php echo $_SESSION['adminName'] ?></a>
                     </div>
                 </nav>
                 <!-- Navbars end -->
@@ -57,7 +58,7 @@ include "./partials/loginCheck.php";
                     <ul class="">
                         <li>
                             <a href="./admin.php" class="nav-link link-dark">
-                                <i class="bi bi-speedometer2"></i>
+                            <i class="bi bi-person-circle"></i>
                                 <span class="sidebar-item-text">Quản lý tài khoản</span>
                             </a>
                         </li>
@@ -72,7 +73,7 @@ include "./partials/loginCheck.php";
                         </li>
                         <hr style="width: 100%;">
                         <li>
-                            <a href="../seller/partials/log-out.php" class="nav-link link-dark">
+                            <a href="./partials/logout.php" class="nav-link link-dark">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span class="sidebar-item-text">Đăng xuất</span>
                             </a>
@@ -89,19 +90,6 @@ include "./partials/loginCheck.php";
 
 <div class="col-md-12 mt-2 mb-3 nav-page">
     <h5 class="text-muted"><a href="../admin.php">Trang quản trị</a> / </span><a href="./products.php">Quản lý sản phẩm</a></h5>
-</div>
-<!--  -->
-<div class="alert alert-success alert-dismissible alert-update-success d-flex align-items-center d-none" role="alert">
-    <i class="bi bi-check-circle-fill me-2" width="24" height="24"></i>
-    <div>
-        <p id="alert-success-content" class="d-inline"></p><strong id="alert-success-taget"></strong><span> thành công!</span>
-    </div>
-    <button type="button" class="btn-close" onclick="removeAlert()"></button>
-    <script>
-        function removeAlert() {
-            $(".alert-update-success").addClass("d-none");
-        }
-    </script>
 </div>
 
 <div class="col-md-12 manage-products shadow">
@@ -136,6 +124,11 @@ include "./partials/loginCheck.php";
                 <button class="btn btn-secondary col-md-4 ms-auto  px-4" style="max-width: 150px; border-radius: 7px; max-height: 50px;">Nhập lại</button>
             </div>
         </form>
+        <span class="mt-3 mb-3">
+            <?php
+                include "../config/session.php";
+            ?>
+        </span>
     </div>
 
     <div class="col-md-12 mt-3">

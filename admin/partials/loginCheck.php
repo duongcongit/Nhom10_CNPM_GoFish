@@ -1,5 +1,6 @@
 <?php
+
 if (!isset($_SESSION['adminID'])) {
-    header("location: ../login.php");
+    header("location: ./login.php");
 }
 ?>

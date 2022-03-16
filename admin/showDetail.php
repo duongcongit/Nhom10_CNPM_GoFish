@@ -16,8 +16,20 @@ if($countrs == 1){
     $stock = $row['stock'];
     $img = $row['image'];
     $imgString = explode(',',$img);
-    $img1 = $imgString[0];
-    $img2 = $imgString[1];
+    $countimg=count($imgString);
+    if($countimg== 3){
+      $img1 = $imgString[0];
+      $img2 = $imgString[1];
+      $img3 = $imgString[2];
+    }
+    else if($countimg == 2){
+      $img1 = $imgString[0];
+      $img2 = $imgString[1];
+    }
+    elseif($countimg == 1){
+      $img1 = $imgString[0];
+
+    }
     $userName = $row['username'];
     $email = $row['email'];
     $phone = $row['phone'];      
@@ -61,7 +73,8 @@ if($countrs == 1){
               <img src="../seller/assets/img/logo-1.png" alt="" class="logo">
 
             </a>
-            <a class="navbar-brand me-auto" href="../seller/">Trang Quản Trị</a>
+            <a class="navbar-brand me-auto" href="./admin.php">Trang Quản Trị</a>
+            <a class="navbar-brand ms-auto" href="#"><i class="bi bi-person-workspace me-2"></i><?php echo $_SESSION['adminName'] ?></a>
           </div>
         </nav>
         <!-- Navbars end -->
@@ -82,7 +95,7 @@ if($countrs == 1){
           <ul class="">
             <li>
               <a href="./admin.php" class="nav-link link-dark">
-                <i class="bi bi-speedometer2"></i>
+              <i class="bi bi-person-circle"></i>
                 <span class="sidebar-item-text">Quản lý tài khoản</span>
               </a>
             </li>
@@ -97,7 +110,7 @@ if($countrs == 1){
             </li>
             <hr style="width: 100%;">
             <li>
-              <a href="../seller/partials/log-out.php" class="nav-link link-dark">
+              <a href="../partials/log-out.php" class="nav-link link-dark">
                 <i class="bi bi-box-arrow-right"></i>
                 <span class="sidebar-item-text">Đăng xuất</span>
               </a>
@@ -132,7 +145,7 @@ if($countrs == 1){
                       //nếu không có
                       echo "<div class='error'>Image not Available.</div>";
                   }
-                  else
+                  elseif($countimg == 3)
                   {
                       //nếu có
               ?>
@@ -140,11 +153,28 @@ if($countrs == 1){
                     style="max-height: 200px;width:100%" class="img-fluid mt-3">
                   <img src="../assets/img/products/<?php echo $img2; ?>" alt="Ảnh <?php echo $prdname; ?>"
                     style="max-height: 200px;width:100%" class="img-fluid mt-3">
+                    <img src="../assets/img/products/<?php echo $img3; ?>" alt="Ảnh <?php echo $prdname; ?>"
+                    style="max-height: 200px;width:100%" class="img-fluid mt-3">
 
                   <?php
                     }
-                  
-              ?>
+                    elseif($countimg==2){
+                      ?>
+                      <img src="../assets/img/products/<?php echo $img1; ?>" alt="Ảnh <?php echo $prdname; ?>"
+                    style="max-height: 200px;width:100%" class="img-fluid mt-3">
+                    <img src="../assets/img/products/<?php echo $img2; ?>" alt="Ảnh <?php echo $prdname; ?>"
+                    style="max-height: 200px;width:100%" class="img-fluid mt-3">
+                    <?php
+                    }
+                    elseif($countimg==1){
+                      ?>
+                      <img src="../assets/img/products/<?php echo $img1; ?>" alt="Ảnh <?php echo $prdname; ?>"
+                    style="max-height: 200px;width:100%" class="img-fluid mt-3">
+                    
+                    <?php  
+                  }
+                  ?>
+              
 
                 </div>
                 <form action="deleteProduct.php?id=<?php echo $prdid; ?>" method="POST" class="order col-md-7 mt-3">
@@ -213,11 +243,11 @@ if($countrs == 1){
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
-                            Bạn có chắc chắn muốn xóa sản phẩm <span class="text-danger"><?php echo $prdname; ?></span> này chứ?
+                            Bạn có chắc chắn muốn xóa sản phẩm <span class="text-danger"><?php echo $prdname; ?></span> của người bán:<span class="text-danger"><?php echo $userName; ?></span> này chứ?
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                            <input type="submit" class="btn btn-danger" value="Xóa"></input>
+                            <input type="submit" class="btn btn-danger" value="Xóa" name="btnDel"></input>
                           </div>
                         </div>
                       </div>
