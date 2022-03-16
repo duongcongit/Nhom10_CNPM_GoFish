@@ -1,6 +1,6 @@
 <?php
 include "../config/constants.php";
-// include "./partials/loginCheck.php";
+include "./partials/loginCheck.php";
 ?> 
 <?php
 
@@ -71,20 +71,6 @@ $_SESSION['userID'] = $_SESSION['id'];
                                 ">
                                 <i class="bi bi-basket"></i>
                                 <span class="sidebar-item-text">Quản lý sản phẩm</span>
-                            </a>
-                        </li>
-                        <hr>
-                        <li>
-                            <a href="#" class="nav-link link-dark">
-                                <i class="bi bi-person"></i>
-                                <span class="sidebar-item-text">Hồ sơ</span>
-                            </a>
-                        </li>
-                        <hr>
-                        <li>
-                            <a href="#" class="nav-link link-dark">
-                                <i class="bi bi-question-square"></i>
-                                <span class="sidebar-item-text">Hỗ trợ</span>
                             </a>
                         </li>
                         <hr style="width: 100%;">
@@ -260,31 +246,6 @@ if (!isset($_SESSION['editProdSucsess']) && !isset($_SESSION['addProdSucsess']) 
                                     <th><?php echo $row['address']; ?></th>
                                     <th><?php echo $row['email']; ?></th>
                                     <th><?php echo $row['username']; ?></th>
-                                    <!-- <th>
-                                        <button type="button" class="btn btn-primary btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <i class="bi bi-trash"></i>
-                                        </button>
-                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Xác nhận tác vụ</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <h5 class="modal-main" id="exampleModalLabel">Xóa tài khoản sẽ xóa hết sản phẩm và giỏ hàng của Tài khoản</h5>
-                                                        <h5 class="modal-main" id="exampleModalLabel">Bạn có chắc chắn muốn xóa?<?php echo $row['fullname']; ?></h5>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary btn-danger">
-                                                            <a class="text-white text-decoration-none" href="processDeleteAcc.php?id=<?php echo $row['id']; ?>">Xác nhận xóa</a>
-                                                        </button>
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy bỏ</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>  
-                                    </th> -->
                                     <th>
                                     <a onclick="return confirm('Xóa tài khoản sẽ xóa hết sản phẩm và giỏ hàng của tài khoản! Bạn có chắc chắn muốn xóa? ')" type="button"  class="btn ms-auto text-warning" 
                                         href="processDeleteAcc.php?id=<?php echo $row['id']; ?>">
