@@ -121,7 +121,7 @@ include "./partials/loginCheck.php";
                         <input type="text" class="form-control" placeholder="Nhập vào" >
                     </div>
                 </div>
-                <button class="btn btn-secondary col-md-4 ms-auto  px-4" style="max-width: 150px; border-radius: 7px; max-height: 50px;">Nhập lại</button>
+                <button class="btn btn-secondary text-dark col-md-4 ms-auto  px-4" style="max-width: 150px; border-radius: 7px; max-height: 50px;">Nhập lại</button>
             </div>
         </form>
         <span class="mt-3 mb-3">
