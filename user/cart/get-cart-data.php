@@ -9,8 +9,10 @@ $userName = $res_user['fullname'];
 $userPhone = $res_user['phone'];
 $userAddr = $res_user['address'];
 //
-$sql_get_data_cart = "SELECT products.productID,products.productName,price,image,stock,cart.quantity FROM cart,products WHERE cart.userID='$userID' AND cart.productID=products.productID ORDER BY time_add DESC;";
-$result = $conn->query($sql_get_data_cart);
+$sql_select_seller = "SELECT DISTINCT id,fullname FROM cart,products,users WHERE cart.productID=products.productID AND products.userID=users.id AND cart.userID='$userID' ORDER BY time_add DESC;";
+$result_seller = $conn->query($sql_select_seller);
+//
+
 //
 ?>
 
@@ -23,7 +25,7 @@ $result = $conn->query($sql_get_data_cart);
 <?php
 
 
-if ($result->num_rows > 0) {
+if ($result_seller->num_rows > 0) {
 ?>
     <div class="col-md-12 col-lg-9 mb-5">
         <div class="prod-cart-info mb-4 col-md-12 bg-light d-flex align-items-center px-3 py-2">
@@ -35,39 +37,43 @@ if ($result->num_rows > 0) {
         </div>
         <!-- Shop -->
         <?php
-        while ($res = $result->fetch_assoc()) {
+        while ($res_seller = $result_seller->fetch_assoc()) {
             // Get seller infor
-            $sql_get_seller_info = "SELECT users.id,users.fullname FROM users,products WHERE products.userID=users.id AND productID='{$res['productID']}'";
-            $res_seller = $conn->query($sql_get_seller_info)->fetch_assoc();
         ?>
             <div class="prod-cart-info col-md-12 bg-light px-3 py-2 mb-4">
                 <div class="col-md-12"><input class="btn-check-shop me-1 form-check-input" type="checkbox" style="cursor: pointer;">
                     <i class="bi bi-shop m-1"></i><?php echo $res_seller['fullname'] ?>
                 </div>
                 <!-- Product -->
-                <div class="prod-info mb-0 mt-3 col-md-12 bg-light d-flex d-flex align-items-center px-3 py-2">
-                    <div style="width: 40%;" class="mb-4 d-flex align-items-center">
-                        <input class="btn-check-product me-1 form-check-input" type="checkbox" style="cursor: pointer;">
-                        <img src="<?php echo SITEURL ?>assets/img/products/<?php echo explode(",", $res['image'])[0]; ?>" alt="" class="product-avatar-list" style="width: 70px;">
-                        <span class="quick-produc-name ms-2 pe-3"><?php echo $res['productName']; ?></span>
+                <?php
+                $sql_get_prod_data = "SELECT products.productID,products.productName,price,image,stock,cart.quantity FROM cart,products WHERE cart.userID='$userID' AND cart.productID=products.productID AND products.userID='{$res_seller['id']}' ORDER BY time_add DESC;";
+                $result_prod = $conn->query($sql_get_prod_data);
+                while ($res_prod = $result_prod->fetch_assoc()) {
+                ?>
+                    <div class="prod-info mb-0 mt-3 col-md-12 bg-light d-flex d-flex align-items-center px-3 py-2">
+                        <div style="width: 40%;" class="mb-4 d-flex align-items-center">
+                            <input class="btn-check-product me-1 form-check-input" type="checkbox" style="cursor: pointer;">
+                            <img src="<?php echo SITEURL ?>assets/img/products/<?php echo explode(",", $res_prod['image'])[0]; ?>" alt="" class="product-avatar-list" style="width: 70px;">
+                            <span class="quick-produc-name ms-2 pe-3"><?php echo $res_prod['productName']; ?></span>
+                        </div>
+                        <div class="mb-4" style="width: 20%;"><?php echo $res_prod['price']; ?><u class="ms-1">đ</u></div>
+                        <div style="width: 20%;">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link bi bi-dash-lg btn-decrease-cart" type="button" data-prodid="<?php echo $res_prod['productID'] ?>" data-prod_stock="<?php echo $res_prod['stock']; ?>"></a>
+                                </li>
+                                <li class="page-item">
+                                    <input type="text" class="page-link px-2 text-dark input-quantity-cart" autocomplete="off" data-prodid="<?php echo $res_prod['productID'] ?>" data-prod_stock="<?php echo $res_prod['stock']; ?>" value="<?php echo $res_prod['quantity']; ?>" style="width: 40px;">
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link bi-plus-lg btn-increase-cart" type="button" data-prodid="<?php echo $res_prod['productID'] ?>" data-prod_stock="<?php echo $res_prod['stock']; ?>"></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 20%;" class="text-danger mb-4">852.000<u class="ms-1">đ</u></div>
+                        <div class="mb-4"><i type="button" class="bi bi-trash text-muted fs-5 btn-remove-cart" data-prodid="<?php echo $res_prod['productID'] ?>"></i></div>
                     </div>
-                    <div class="mb-4" style="width: 20%;"><?php echo $res['price']; ?><u class="ms-1">đ</u></div>
-                    <div style="width: 20%;">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link bi bi-dash-lg btn-decrease-cart" type="button" data-prodid="<?php echo $res['productID'] ?>" data-prod_stock="<?php echo $res['stock']; ?>"></a>
-                            </li>
-                            <li class="page-item">
-                                <input type="text" class="page-link px-2 text-dark input-quantity-cart" autocomplete="off" data-prodid="<?php echo $res['productID'] ?>" data-prod_stock="<?php echo $res['stock']; ?>" value="<?php echo $res['quantity']; ?>" style="width: 40px;">
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link bi-plus-lg btn-increase-cart" type="button" data-prodid="<?php echo $res['productID'] ?>" data-prod_stock="<?php echo $res['stock']; ?>"></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div style="width: 20%;" class="text-danger mb-4">852.000<u class="ms-1">đ</u></div>
-                    <div class="mb-4"><i type="button" class="bi bi-trash text-muted fs-5 btn-remove-cart" data-prodid="<?php echo $res['productID'] ?>"></i></div>
-                </div>
+                <?php } ?>
                 <!-- Product -->
             </div>
         <?php } ?>
