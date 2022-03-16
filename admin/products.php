@@ -65,8 +65,8 @@ include "./partials/loginCheck.php";
                         <hr>
                         <hr>
                         <li>
-                            <a class="nav-link link-dark tour-btn ms-2" type="button" href="./products.php">
-                                <img src="../seller/assets/img/product-icon.png" alt="" style="width: 30px;">
+                            <a class="nav-link link-dark tour-btn" type="button" href="./products.php">
+                            <i class="bi bi-basket"></i>
                                 <span class="sidebar-item-text ms-3 ">Quản lý sản phẩm</span>
                             </a>
                             
