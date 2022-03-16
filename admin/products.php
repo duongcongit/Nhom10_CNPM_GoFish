@@ -57,7 +57,7 @@ include "./partials/loginCheck.php";
                 <div class="sidebar-menu">
                     <ul class="">
                         <li>
-                            <a href="./admin.php" class="nav-link link-dark">
+                            <a href="account.php" class="nav-link link-dark">
                             <i class="bi bi-person-circle"></i>
                                 <span class="sidebar-item-text">Quản lý tài khoản</span>
                             </a>
@@ -65,7 +65,7 @@ include "./partials/loginCheck.php";
                         <hr>
                         <hr>
                         <li>
-                            <a class="nav-link link-dark tour-btn" type="button" href="./products.php">
+                            <a class="nav-link link-dark tour-btn" type="button" href="products.php">
                             <i class="bi bi-basket"></i>
                                 <span class="sidebar-item-text ms-3 ">Quản lý sản phẩm</span>
                             </a>

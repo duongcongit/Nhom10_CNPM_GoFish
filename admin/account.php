@@ -60,7 +60,7 @@ $_SESSION['userID'] = $_SESSION['id'];
                 <div class="sidebar-menu">
                     <ul class="">
                         <li>
-                            <a href="<?php echo SITEURL ?>admin/account.php" class="nav-link link-dark">
+                            <a href="account.php" class="nav-link link-dark">
                                 <i class="bi bi-person-circle"></i>
                                 <span class="sidebar-item-text">Quản lý tài khoản</span>
                             </a>
@@ -75,7 +75,7 @@ $_SESSION['userID'] = $_SESSION['id'];
                         </li>
                         <hr style="width: 100%;">
                         <li>
-                            <a href="#" class="nav-link link-dark">
+                            <a href="./partials/logout.php" class="nav-link link-dark">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span class="sidebar-item-text">Đăng xuất</span>
                             </a>

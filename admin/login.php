@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (isset($_SESSION['adminID'])) {
+    header('location: ./account.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

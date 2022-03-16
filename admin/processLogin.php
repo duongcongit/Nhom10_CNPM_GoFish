@@ -16,7 +16,7 @@ if(mysqli_num_rows($result) == 1){
     if($password == $row['password']){
         $_SESSION['adminID']=$row['id'];
         $_SESSION['adminName'] = $row['username'];
-        header('location: admin.php');
+        header('location: account.php');
         exit();
     }
     else{
