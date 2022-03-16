@@ -19,7 +19,7 @@ session_start();
 <header class="header-navbar container-fluid fixed-top">
     <nav class="navbar navbar-light">
     <div class="container ">
-        <a class="navbar-brand" href="./index.php">
+        <a class="navbar-brand" href="../index.php">
         <img src="./assets/img/GF-home.png" alt="" class="img-fluid">
         </a>
     </div>
@@ -40,7 +40,7 @@ session_start();
                 <input type="password" placeholder="Mật Khẩu" required class="form-control" id="pwd" name="pass">  
             </div>
             <div class="my-3"> 
-                <input type="submit" value="Đăng nhập" class="btn btn-primary" name= "btnLogIn" id="btnLogIn"> 
+                <input type="submit" value="Đăng nhập" class="btn btn-primary" name= "btnLogIn"> 
             </div>
             <small> 
             <?php
