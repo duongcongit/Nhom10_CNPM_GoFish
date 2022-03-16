@@ -107,15 +107,6 @@ $(document).ready(function () {
     var quantity = $("#input-quantity-detail").val();
     var productID = $(this).data("product_id");
     add_to_cart(productID, quantity);
-    // // Create modal alert add to cart success
-    // var modalAddCartSucc = bootstrap.Modal.getOrCreateInstance(
-    //   document.querySelector(".modal-add-to-cart-success")
-    // );
-    // // Show alert add to cart success
-    // modalAddCartSucc.show();
-    // setTimeout(function () {
-    //   modalAddCartSucc.hide();
-    // }, 3000);
   });
 
   // Scripts for Cart page
@@ -143,13 +134,16 @@ $(document).ready(function () {
   });
 
   // Select a product
-  $(".btn-check-product").change(function () {
-    // if(this.checked){
-    // }
-    // else{
-    //   $("#btn-check-all-cart").prop('checked', false);
-    //   $(".btn-check-shop").prop('checked', false);
-    // }
+  $(document).on("change", ".btn-check-product", function () {
+    var prodID = $(this).data("prodid");
+    if (this.checked) {
+      //
+    } else {
+      $("#btn-check-all-cart").prop("checked", false);
+      $(".btn-check-shop").prop("checked", false);
+    }
+    //
+    update_total_price();
   });
 
   // Show alert confirm when click button clear cart
@@ -222,21 +216,70 @@ $(document).ready(function () {
       success: function (data) {},
     });
   }
+  //
+  // Function format price
+  function format_price(price) {
+    var value = price.toString();
+    var price_formatted = "";
+    var d = 0;
+    for (let i = value.length - 1; i >= 0; i--) {
+      price_formatted = price_formatted + value[i];
+      d++;
+      if (d % 3 == 0 && d != value.length) {
+        price_formatted = price_formatted + ".";
+      }
+    }
+    //
+    price_formatted = price_formatted.split("").reverse().join("");
+    return price_formatted;
+  }
+  //
+  function update_amount(productID, price, quantity) {
+    var amount = price * quantity;
+    $(".amount[data-prodid='" + productID + "']").html(
+      format_price(amount) + '<u class="ms-1">đ</u>'
+    );
+    //
+    $(".btn-check-product[data-prodid='" + productID + "']").attr(
+      "data-amount",
+      parseInt(amount)
+    );
+  }
+  //
+  function update_total_price() {
+    var num_inp = $(".btn-check-product").length;
+    var amount = 0;
+    for (let i = 0; i < num_inp; i++) {
+      var inp = $(".btn-check-product:eq(" + i + ")");
+      if (inp.is(":checked")) {
+        amount = amount + parseInt(inp.data("amount"));
+      }
+    }
+    //$(".btn-check-product:eq(0)").data("amount");
+    //
+    $(".total-price").html(format_price(amount) + '<u class="ms-1">đ</u>');
+  }
+
   // Check input quantity
   $(document).on("change", ".input-quantity-cart", function () {
     let numPattern = /^[0-9]+$/;
     var prodID = $(this).data("prodid");
+    var prodPrice = $(this).data("prod_price");
     var stock = $(this).data("prod_stock");
 
     if (numPattern.test($(this).val()) == false) {
       $(this).val("1");
     } else if ($(this).val() > stock) {
       $(this).val(stock);
+    } else if ($(this).val() == 0) {
+      $(this).val("1");
     }
     //
     var quantity = $(this).val();
     // Update quantity in database
     update_quantity(prodID, quantity);
+    update_amount(prodID, prodPrice, quantity);
+    update_total_price();
   });
 
   // Function Update when quantity is over stock
@@ -259,23 +302,28 @@ $(document).ready(function () {
   // When click button increase quantity
   $(document).on("click", ".btn-increase-cart", function () {
     var prodID = $(this).data("prodid");
+    var prodPrice = $(this).data("prod_price");
     var stock = $(this).data("prod_stock");
-    var inpQuantity = $("input[data-prodid='" + prodID + "']");
+    var inpQuantity = $(".input-quantity-cart[data-prodid='" + prodID + "']");
     var currQuantity = inpQuantity.val();
     //
-    if (inpQuantity.val() < 8000) {
+    if (inpQuantity.val() < stock) {
       inpQuantity.val(parseInt(currQuantity) + 1);
     }
     //
     var quantity = inpQuantity.val();
     // Update quantity in database
     update_quantity(prodID, quantity);
+    // get_cart_data();
+    update_amount(prodID, prodPrice, quantity);
+    update_total_price();
   });
 
   // When click button decrease quantity
   $(document).on("click", ".btn-decrease-cart", function () {
     var prodID = $(this).data("prodid");
-    var inpQuantity = $("input[data-prodid='" + prodID + "']");
+    var prodPrice = $(this).data("prod_price");
+    var inpQuantity = $(".input-quantity-cart[data-prodid='" + prodID + "']");
     var currQuantity = inpQuantity.val();
     if (parseInt(currQuantity) > 1) {
       inpQuantity.val(parseInt(currQuantity) - 1);
@@ -284,6 +332,9 @@ $(document).ready(function () {
     var quantity = inpQuantity.val();
     // Update quantity in database
     update_quantity(prodID, quantity);
+    // get_cart_data();
+    update_amount(prodID, prodPrice, quantity);
+    update_total_price();
   });
 
   //

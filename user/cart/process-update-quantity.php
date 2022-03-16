@@ -7,7 +7,7 @@ if (isset($_POST['productID']) && isset($_POST['quantity'])) {
     $quantity  = $_POST['quantity'];
     $userID    = $_SESSION['id'];
 
-    // Check if product is exist or not in database
+    // Update quantity
     $sql_update_quantity= "UPDATE cart SET quantity='$quantity',time_add=current_timestamp() WHERE userID='$userID' AND productID='$productID';";
     $num = $conn->query($sql_update_quantity);
 }
