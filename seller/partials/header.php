@@ -62,7 +62,7 @@ include dirname(__FILE__) . '/login-check.php';
         <div class="row">
 
             <!-- Sidebar start -->
-            <div class="container sidebar sidebar-show">
+            <div class="container sidebar">
                 <!-- Sidebar menu start-->
                 <div class="sidebar-menu">
                     <ul class="">
@@ -125,4 +125,4 @@ include dirname(__FILE__) . '/login-check.php';
             <!-- Sidebar end -->
 
             <!-- Content start-->
-            <div class="col main-right container-fluid row ">
+            <div class="col main-right container-fluid row show">

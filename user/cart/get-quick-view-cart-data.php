@@ -7,7 +7,7 @@ $sql_count_prod = "SELECT * FROM cart WHERE userID='$userID';";
 $num_prod       = $conn->query($sql_count_prod)->num_rows;
 
 //
-$sql_data_qcart = "SELECT products.productName,price,image FROM cart,products WHERE cart.userID='$userID' AND cart.productID=products.productID ORDER BY time_add DESC LIMIT 0,5;";
+$sql_data_qcart = "SELECT products.*,price FROM cart,products WHERE cart.userID='$userID' AND cart.productID=products.productID ORDER BY time_add DESC LIMIT 0,5;";
 $res_data_qcart = $conn->query($sql_data_qcart);
 
 ?>
@@ -22,15 +22,17 @@ $res_data_qcart = $conn->query($sql_data_qcart);
     <?php
     while ($res = $res_data_qcart->fetch_assoc()) {
         $prodName = $res['productName'];
+        $sql_img1 = "SELECT * FROM product_image WHERE productID='{$res['productID']}' AND image LIKE '1%'";
+        $img1 = $conn->query($sql_img1)->fetch_assoc()['image'];
     ?>
         <div style="width: 100%;" class="mb-4 d-flex justify-content-between align-items-center">
             <div>
-                <img src="<?php echo SITEURL ?>assets/img/products/<?php echo explode(",", $res['image'])[0]; ?>" alt="" class="product-avatar-list" style="width: 50px;">
+                <img src="<?php echo SITEURL ?>assets/img/products/<?php echo $img1 ?>" alt="" class="product-avatar-list" style="width: 50px;">
                 <span class="quick-produc-name">
                     <?php
                     if (strlen($prodName) > 35) {
                         echo substr($prodName, 0, 35) . "...";
-                    }else{
+                    } else {
                         echo $prodName;
                     }
                     ?>

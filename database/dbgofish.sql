@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 16, 2022 lúc 05:19 PM
+-- Thời gian đã tạo: Th3 17, 2022 lúc 07:06 PM
 -- Phiên bản máy phục vụ: 10.4.22-MariaDB
 -- Phiên bản PHP: 8.1.2
 
@@ -62,7 +62,37 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`userID`, `productID`, `quantity`, `time_add`) VALUES
-(2, 71, 2, '2022-03-16 15:42:22');
+(2, 17, 1, '2022-03-17 18:06:07'),
+(2, 21, 1, '2022-03-17 18:06:05'),
+(2, 22, 1, '2022-03-17 18:06:04'),
+(2, 23, 3, '2022-03-17 18:06:28'),
+(2, 25, 1, '2022-03-17 18:06:10'),
+(2, 30, 2, '2022-03-17 18:06:18'),
+(2, 33, 1, '2022-03-17 18:06:12'),
+(2, 34, 1, '2022-03-17 18:06:13');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL,
+  `categoryName` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `categories`
+--
+
+INSERT INTO `categories` (`id`, `categoryName`) VALUES
+(1, 'Cá, tép, ốc cảnh'),
+(2, 'Cây thủy sinh'),
+(3, 'Thức ăn'),
+(4, 'Bể cá'),
+(5, 'Phụ kiện hồ cá'),
+(6, 'Phụ kiện thủy sinh');
 
 -- --------------------------------------------------------
 
@@ -74,13 +104,12 @@ CREATE TABLE `products` (
   `productID` int(11) NOT NULL,
   `productSKU` char(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `productName` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `category` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `categoryID` int(11) NOT NULL,
   `detail` varchar(5000) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` int(11) NOT NULL,
   `stock` int(11) NOT NULL,
   `sold` int(11) NOT NULL,
   `status` int(11) NOT NULL,
-  `image` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
   `userID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -88,31 +117,87 @@ CREATE TABLE `products` (
 -- Đang đổ dữ liệu cho bảng `products`
 --
 
-INSERT INTO `products` (`productID`, `productSKU`, `productName`, `category`, `detail`, `price`, `stock`, `sold`, `status`, `image`, `userID`) VALUES
-(63, 'FH74HD', 'Cá bút chì DỌN DẸP hồ thuỷ sinh', 'Cá, tép, ốc cảnh', 'Đặc điểm của cá bút chì thái:\r\n- Tên khoa học: crossocheilus oblongus\r\n- Xuất xứ: Thái Lan.\r\n- Kích thước: 5-7 cm.\r\n- Màu sắc: trắng và đen.\r\n- Thức ăn: Là giống cá ăn tạp, đặc biệt là rêu hại, nhớt lũa… (nên hạn chế \r\n cho cá ăn bột cám để cá có thể giúp bạn dọn vệ sinh nhé).\r\n- Tuổi thọ: 5-6 năm.', 20000, 45, 0, 1, '63-1.jpg,63-2.jpg', 2),
-(64, 'TEPCAM', 'Tép cam một trong những dòng tép cảnh dễ thương nhất', 'Cá, tép, ốc cảnh', 'Với một màu vàng cam phủ đầy khắp mình, tép cam là dòng tép cảnh được anh em chơi thủy sinh tép cảnh chơi phổ biến bậc nhất hiện nay.', 10000, 500, 0, 1, '64-1.jpg,64-2.jpg', 2),
-(65, 'NANAW', 'Ráy nana white dòng cây thủy sinh cao cấp dễ trồng', 'Cây thủy sinh', 'Ráy nana white hay còn gọi là ráy trắng là dòng cây thủy sinh được rất nhiều anh em giới chơi thuỷ sinh săn lùng bởi vẻ đẹp sang trọng của chúng.', 300000, 215, 0, 1, '65-1.jpg,65-2.jpg', 1),
-(66, 'MYLITTLEOCEAN', 'Bể cá mini dành cho hồ cá biển OF My Little Ocean', 'Bể cá', 'Bể cá mini dành cho hồ cá biển OF My Little Ocean thích hợp với những anh em mới bắt đầu chơi, bởi bộ sản phẩm trang bị hệ thống phụ kiện cho một hồ cá biển', 2700000, 66, 0, 1, '66-1.jpg,66-2.jpg', 3),
-(68, 'AQUABLUELED', 'Đèn led thủy sinh siêu sáng Aquablue nhiều kích thước', 'Phụ kiện thủy sinh', 'Đèn led thủy sinh siêu sáng Aquablue nhiều kích thước như Aquablue 30,45,60,80,100,120cm. Đèn led Aquablue cho ra ánh sáng 10000k 65LM siêu sáng.', 300000, 641, 0, 1, '68-1.jpg', 1),
-(69, 'RLBL1', 'Tép rili đen hay còn gọi là rili carbon', 'Cá, tép, ốc cảnh', 'Rili đen hay còn gọi là rili carbon là dòng tép cảnh đẹp với đặc điểm nổi bật là các khoang màu đen phân cách bởi phần thân giữa trong suốt rất thu hút người chơi.', 15000, 900, 0, 1, '69-1.jpg', 3),
-(70, 'OCTAO1', 'Ốc Táo vệ sinh hồ chuyên ăn thức ăn thừa và phân cá', 'Cá, tép, ốc cảnh', 'Ốc Táo hiện nay đang rất được ưa chuộng không chỉ làm cảnh trong hồ thủy sinh, mà chúng còn có tác dụng dọn vệ sinh hồ vô cùng hiệu quả.', 10000, 400, 0, 1, '70-1.jpg', 3),
-(71, 'CA856H', 'Cá phượng hoàng lam', 'Cá, tép, ốc cảnh', 'Đặc điểm của cá phượng hoàng lam:\r\nMàu sắc: màu xanh lam.\r\nKích thước: 3-6 cm.\r\nTên khoa học: Mikrogeophagus ramirezi.\r\nThức ăn: cá phượng hoàng là giống cá ăn tạp, có thể ăn bột cám, trùn chỉ, bo bo…\r\nNhiệt độ nước thích hợp: 26-30 độ C.\r\nĐộ pH nước: 5,5- 6.\r\nXuất xứ: cá được nhân giống tại Việt Nam.\r\nGiá bán: 25.000 VND / 1 con.', 25000, 550, 0, 1, '71-1.jpg', 1),
-(72, 'CAXECAN', 'Cá XECAN (cá tứ vân).', 'Cá, tép, ốc cảnh', 'Đặc điểm của cá xecan thuỷ sinh:\r\nTên khoa học: Puntius tetrazona.\r\nXuất xứ: Cambodia (nhân giống tại Việt Nam).\r\nMàu sắc: nhiều màu.\r\nĐặc điểm nhận dạng: có 4 sọc đen.\r\nTuổi thọ: 5 năm.\r\nĐộ pH nước: 5,5 – 7.\r\nĐộ cứng nước: đến 6 dgH.\r\nNhiệt độ nước: 21-30 độ C.', 10000, 256, 0, 1, '72-1.jpg', 3),
-(74, 'HCPT045', 'Hồ thuỷ sinh bố cục tượng phật và đá trầm tích.', 'Bể cá', 'Hãng sản xuất: Thuỷ Sinh Xanh', 1400000, 26, 0, 1, '74-1.jpg', 1),
-(75, 'HCTX009', 'Hồ thuỷ sinh mini mẫu TX-009', 'Bể cá', 'Đặc điểm nỗi bật của hồ thuỷ sinh mini để bàn mẫu TX-009:\r\nKích thước hồ: 50x33x35 (dài-rộng-cao)\r\nĐầy đủ phụ kiện, tặng kèm cá khi lắp đặt.\r\nDễ chăm sóc, dễ vệ sinh.\r\nSử dụng hồ kính Đúc nên rất an toàn khi có trẻ em.\r\nBố cục tươi mát, có thể nuôi thêm TÉP và ỐC cảnh.\r\nThuỷ sinh xanh hỗ trợ sửa chữa bảo hành.', 2500000, 32, 0, 1, '75-1.jpg', 1),
-(76, 'HCTX011', 'Hồ thủy sinh mini mẫu TX-011', 'Bể cá', 'Đặc điểm nỗi bật của hồ thuỷ sinh mini để bàn mẫu TX-011:\r\nKích thước hồ: 40x23x27 (dài-rộng-cao)\r\nĐầy đủ phụ kiện, tặng kèm cá khi lắp đặt.\r\nDễ chăm sóc, dễ vệ sinh.\r\nSử dụng hồ kính Đúc nên rất an toàn khi có trẻ em.\r\nBố cục tươi mát, có thể nuôi thêm TÉP và ỐC cảnh.\r\nThuỷ sinh xanh hỗ trợ sửa chữa bảo hành.', 6300000, 160, 0, 1, '76-1.jpg', 3),
-(77, 'CAYNGM053', 'Cỏ ngưu mao chiên lùn xoè “loại 1” chất lượng.', 'Cây thủy sinh', 'Cỏ ngưu mao chiên trồng tiền cảnh hồ thuỷ sinh:\r\nCỏ có dạng hình lá kim, màu xanh tươi.\r\nVị trí trồng: nên trồng cỏ ngưu mao chiên ở vị trí tiền cảnh (vị trí phía trước bể cá). Có thể trồng giữa các vách đá, tạo cảnh núi đá.\r\nNhiệt độ nước: 20-27 độ C.\r\nĐộ pH nước: 6-7,5.\r\nYêu cầu ánh sáng và chất dinh dưỡng: cao.', 30000, 346, 0, 1, '77-1.jpg', 3),
-(78, 'VAY-OC-DO', 'Vảy ốc đỏ dòng cây thủy sinh dễ trồng không cần co2', 'Cây thủy sinh', 'Cây thủy sinh Vảy ốc đỏ là dòng cây dễ trồng thường được anh em chơi thủy sinh sử dụng làm trang trí bể cá, bể thủy sinh. Do đặc thù không cần co2 vẫn phát triển tốt nên Vảy ốc đỏ được rất nhiều anh em chơi thủy sinh yêu thích.', 25000, 500, 0, 1, '78-1.jpg', 1),
-(80, 'DLEDOA', 'Đèn Led Chihiros chuyên dụng cho hồ thủy sinh dòng A Series', 'Phụ kiện hồ cá', 'Đèn Led Chihiros là mẫu đèn led cao cấp chuyên dụng cho hồ thủy sinh, Đèn Led Chihiros Dòng A Series phù hợp với hầu hết các loại cây thủy sinh.', 365000, 0, 0, 1, '80-1.jpg', 3),
-(81, 'AT304S', 'Máy bơm Atman 304s thế hệ mới tiết kiệm điện', 'Phụ kiện hồ cá', 'Máy bơm Atman 304s có mã sản phẩm là at-304s là loại máy bơm bể cá thể hệ mới của hãng Atman, một thương hiệu đến từ Trung Quốc, thiết kế nhỏ gọn và an toà', 130000, 64, 0, 1, '81-1.jpg', 1),
-(82, 'HAILEA60', 'Máy sủi oxy dự phòng cúp điện Hailea CP60', 'Phụ kiện hồ cá', 'Hailea CP60 là loại máy sủi oxy công suất cao dự phòng khi cúp điện nhờ hệ thống acquy tics điện bên trong máy sủi. Máy vận hành mạnh và êm.', 1600000, 60, 0, 1, '82-1.jpg,82-2.jpg', 3),
-(83, 'KOIFOOD', 'Thức ăn chuyên dụng cho cá Koi Sera Koi Professional Summer', 'Thức ăn', 'Thức ăn chuyên dụng cho cá Koi Sera Koi Professional Summer được chế biến theo công thức đặc biệt cung cấp hàm lượng protein / chất béo cân bằng.', 1450000, 60, 0, 1, '83-1.jpg,83-2.jpg', 2),
-(84, 'OFDISC', 'Thức ăn cho cá Dĩa OF Pro Discus', 'Thức ăn', 'Thức ăn cho cá Dĩa OF Pro Discus được chế tạo với công thức đặc chuẩn cho các loài cá Dĩa như Red Melon, Blue Turquoise, Albino, Pigeon Blood...', 140000, 200, 0, 1, '84-1.jpg,84-2.jpg', 1),
-(85, 'FLAHAN', 'Thức ăn nhập khẩu cho cá La Hán JBL NovoFlower Maxi', '', 'JBL NovoFlower Maxi là loại thức ăn cho cá cảnh La Hán được sản xuất và nhập khẩu từ Đức, thức ăn dạng cám hạt hỗ trợ cho cá La Hán tăng kích thước đầu.', 370000, 60, 0, 1, '85-1.jpg,85-2.jpg', 1),
-(86, '0KAGAYAKI', 'Thức ăn cho cá Koi Kagayaki Koi Food Growth', 'Thức ăn', 'Kagayaki Koi Food Growth là loại thức ăn dạng cám hạt chuyên hỗ trợ cho cá Koi kích màu sắc, phân dải màu chuẩn không bị lem có nguồn gốc Sigapore.', 500000, 250, 0, 1, '86-1.jpg', 2),
-(87, 'BELUCGIAC', 'Set bể cá mini hình lục giác cực đẹp Aquael Hexa Set Aquarium', 'Bể cá', 'Aquael Hexa Set Aquarium là loại bể cá mini trọn bộ bao gồm đèn, hồ và lọc. Đây là mẫu bể cá mini vô cùng độc đáo với thiết kế hình lục giác mới lạ.', 3600000, 55, 0, 1, '87-1.jpg,87-2.jpg', 1),
-(88, 'CANGUSAC', 'CÁ BA ĐUÔI NGŨ SẮC', 'Cá, tép, ốc cảnh', 'Nếu bạn đang muốn tìm mua một chú cá Ba Đuôi Ngũ Sắc đẹp, lộng lẫy mà vẫn chưa tìm được cửa hàng bán cá cảnh đẹp tại TPHCM, thì cửa hàng cá cảnh Trung Tín là địa chỉ đáng tin cậy để bạn chọn mua. Ngoài cá loại cá cảnh thì cửa hàng hiện đang bán rất nhiều mặc hàng khác nhau phục vụ cho việc thiết kế một hồ cá cảnh sinh động nhất.', 78000, 657, 0, 1, '88-1.jpg,88-2.jpg', 2),
-(89, 'CASACGAM', 'CÁ SẶC GẤM', 'Cá, tép, ốc cảnh', 'Cá Sặc Gấm là một trong những loại cá cảnh độc đáo và đẹp mắt được nhiều dân chơi cá cảnh yêu thích và nuôi trong bể cảnh. Đặc biệt, cá sặc gấm còn được đánh giá là loại cá dễ nuôi, có thể thích hợp với những người mới chơi bể cảnh.', 105000, 0, 0, 1, '89-1.jpg', 1);
+INSERT INTO `products` (`productID`, `productSKU`, `productName`, `categoryID`, `detail`, `price`, `stock`, `sold`, `status`, `userID`) VALUES
+(16, 'VANG-SOC', 'Tép vàng sọc Yellow Golden Line shrimp', 1, 'Tép vàng sọc có cái tên gọi tiếng anh là Yellow Golden Line shrimp, là một trong những dòng tép cảnh nhập khẩu thu hút rất nhiều người chơi bởi vẻ đẹp của chúng', 20000, 234, 0, 1, 2),
+(17, 'TBB1', 'Tỳ bà bướm dòng cá vệ sinh hồ tuyệt mỹ', 1, 'Tỳ bà bướm là dòng cá cảnh với chức năng vệ sinh các loại thức ăn dư thừa có trong hồ thủy sinh và cá cảnh, chúng siêng năng hoạt động và đạt hiệu quả cao trong việc vệ sinh hồ.', 20000, 354, 0, 1, 1),
+(18, 'OCTAO1', 'Ốc Táo vệ sinh hồ chuyên ăn thức ăn thừa và phân cá', 1, 'Ốc Táo hiện nay đang rất được ưa chuộng không chỉ làm cảnh trong hồ thủy sinh, mà chúng còn có tác dụng dọn vệ sinh hồ vô cùng hiệu quả.', 10000, 0, 0, 1, 3),
+(19, 'RLBL1', 'Tép rili đen hay còn gọi là rili carbon', 1, 'Rili đen hay còn gọi là rili carbon là dòng tép cảnh đẹp với đặc điểm nổi bật là các khoang màu đen phân cách bởi phần thân giữa trong suốt rất thu hút người chơi.', 15000, 5466, 0, 1, 1),
+(20, 'CAXECAN', 'Cá xecan xanh có sọc.', 1, 'Tên khoa học: Gymnocorymbus ternetzi\r\nHình dáng cá: oval.\r\nĐộ pH: 6,0 – 7,5\r\nNhiệt độ: 21-30 độ C\r\nĐộ cứng nước: 4 đến 8 dKH\r\nTính cách: Hung hăn nhẹ.\r\nMàu sắc: xanh lá và đen.\r\nTuổi thọ: 3-5 năm (môi trường bể kính).', 15000, 576, 0, 1, 2),
+(21, 'CLV', 'CÁ LÔNG VŨ', 1, 'Tên tiếng Việt khác: Lông gà\r\nNguồn gốc: Cá nhập\r\nChiều dài cá (cm): >8 \r\nNhiệt độ nước (C): 25-28\r\nĐộ cứng nước (dH): 5 - 20\r\nĐộ pH: 6-8\r\nTầng nước ở: đáy\r\nSinh sản: Cá đẻ trứng, khó cho sinh sản, tuy nhiên hiện đã sản xuất giống thành công (có sử dụng hormone) ở Indonesia và có thể ở Malaysia.', 90000, 657, 0, 1, 3),
+(22, 'CRCUUSUNG', 'CÁ RỒNG CỬU SỪNG', 1, 'Cá rất khỏe và dễ nuôi. Cá hoạt động về đêm, khả năng nhìn kém nhưng khứu giác rất phát triển để tìm mồi. Cá có cơ quan hô hấp phụ, thường lên đớp khí và có thể trườn ra khỏi nước.\r\nTên tiếng Việt khác: Khủng long vàng\r\nNguồn gốc: Cá nhập ngoại\r\nChiều dài cá lớn nhất (cm): 50\r\nNhiệt độ nước (C): 24-28\r\nĐộ cứng nước (dH): 5-20\r\nĐộ pH: 6-8\r\nTầng nước ở: tầng đáy\r\nSinh sản: Cá đẻ trứng trên cây thủy sinh, thụ tinh ngoài \r\nHình thức nuôi: nuôi ghép với một số loại cá, nuôi đơn lẻ', 130000, 6879, 0, 1, 1),
+(23, 'BETTAA2', 'CÁ BETTA XANH ĐEN', 1, 'Gần gũi với tự nhiên và biển cả nhất chính là giống cá betta với gam màu xanh độc đáo, đẹp mắt. Không hiểu vì sao nhưng khi sở hữu màu xanh biển, các chú betta dường như trở nên phát sáng và lớp vảy lấp lánh tựa như một dải ngân hà thu nhỏ trong bể cá vậy. Cá thường điểm thêm màu tím thơ mộng, chẳng hạn như dòng Koi demeter đang được bán tại cửa hàng Shopheo.com.', 100000, 458, 0, 1, 3),
+(24, 'VAY-OC-DO', 'Vảy ốc đỏ dòng cây thủy sinh dễ trồng không cần co2', 2, 'Cây thủy sinh Vảy ốc đỏ là dòng cây dễ trồng thường được anh em chơi thủy sinh sử dụng làm trang trí bể cá, bể thủy sinh. Do đặc thù không cần co2 vẫn phát triển tốt nên Vảy ốc đỏ được rất nhiều anh em chơi thủy sinh yêu thích.', 25000, 764, 0, 1, 2),
+(25, 'RAY-JAPAN', 'Ráy nana japan loại cây thủy sinh đẹp dễ chăm sóc', 2, 'Ráy nana japan là một trong những dòng cây thủy sinh đẹp, dễ trồng, dễ chăm sóc đặc biệt là ráy nana Japan có thể trồng được nhiều vị trí bên trong hồ thủy sinh.', 50000, 768, 0, 1, 3),
+(26, 'NULL', 'Cây thủy sinh Thanh Đản Hồng', 2, 'Thanh Đản Hồng là dòng cây thủy sinh dễ trồng, dễ chăm sóc, bạn có thể dùng làm trang trí bể cá cảnh, bể thủy sinh đều rất đẹp. Thanh Đản Hồng cũng có thể trồng mà không cần đất nền.', 35000, 467, 0, 1, 1),
+(27, 'NANA-WHITE', 'Ráy trắng Nana white hàng ngọn lẻ', 2, 'Nana white là một loại cây trồng thủy sinh thuộc họ ráy, có thể trộng cạn hoặc bán cạn đều được. Ráy trắng Nana white có những chiếc lá trắng tinh khôi tạo nên nét riêng biệt.', 90000, 475, 0, 1, 2),
+(28, 'EVERRED1', 'Thức ăn cho cá cảnh La Hán XO EVER RED', 3, 'Thức ăn cho cá cảnh La Hán XO EVER RED được sản xuất tại Singapore hỗ trợ tăng màu cho cá La Hán và tăng kích thước đầu của cá.', 30000, 87, 0, 1, 1),
+(29, 'NOVOTAB', 'Thức ăn viên dán cho cá cảnh JBL NOVO TAB', 3, 'JBL NOVO TAB là dạng thức ăn cho cá cảnh có hình dạng viên thuốc nén, có thể dán lên trên mặt kính hoặc thả xuống đáy phù hợp với nhiều dòng cá cảnh khác nhau.', 140000, 769, 0, 1, 3),
+(30, '0KAGAYAKI', 'Thức ăn cho cá Koi Kagayaki Koi Food Growth', 3, 'Kagayaki Koi Food Growth là loại thức ăn dạng cám hạt chuyên hỗ trợ cho cá Koi kích màu sắc, phân dải màu chuẩn không bị lem có nguồn gốc Sigapore.', 500000, 54, 0, 1, 1),
+(31, 'KOISR12', 'Thức ăn cho cá koi Sera Koi Professional Color tăng màu chuẩn', 3, 'Thức ăn cho cá koi Sera Koi Professional Color giúp cá tăng màu chuẩn ở các dải màu. Đây là loại thức ăn chuẩn mực cho cá Koi hỗ trợ toàn diện về thể chất cho những chú cá Koi.', 1650000, 37, 0, 1, 3),
+(32, 'BELUCGIAC', 'Set bể cá mini hình lục giác cực đẹp Aquael Hexa Set Aquarium', 4, 'Aquael Hexa Set Aquarium là loại bể cá mini trọn bộ bao gồm đèn, hồ và lọc. Đây là mẫu bể cá mini vô cùng độc đáo với thiết kế hình lục giác mới lạ.', 3600000, 24, 0, 1, 2),
+(33, 'BECAMINI', 'Mẫu bể cá mini nhập khẩu Aquael Classic Oval Aquarium Set 40', 4, 'Bể cá mini nhập khẩu Aquael Classic Oval Aquarium Set 40 được trang bị hồ, đèn, lọc nội bộ rất nhỏ gọn cho anh em chơi thủy sinh và cá cảnh.', 2100000, 45, 0, 1, 1),
+(34, 'TX004', 'Hồ thuỷ sinh mini mẫu TX-004', 4, 'Đặc điểm nỗi bật của hồ thuỷ sinh mini để bàn mẫu TX-004:\r\nKích thước hồ: 35x20x23 (dài-rộng-cao)\r\nĐầy đủ phụ kiện, tặng kèm cá khi lắp đặt.\r\nDễ chăm sóc, dễ vệ sinh.\r\nSử dụng hồ kính Đúc nên rất an toàn khi có trẻ em.\r\nBố cục tươi mát, có thể nuôi thêm TÉP và ỐC cảnh.\r\nThuỷ sinh xanh hỗ trợ sửa chữa bảo hành.', 1200000, 32, 0, 1, 3),
+(35, 'TX013', 'Hồ thuỷ sinh mini mẫu TX-013, Bố cục núi đá', 4, 'Đặc điểm nỗi bật của hồ thuỷ sinh mini để bàn mẫu TX-013:\r\nKích thước hồ: 60x35x40 (dài-rộng-cao)\r\nĐầy đủ phụ kiện, tặng kèm cá khi lắp đặt.\r\nDễ chăm sóc, dễ vệ sinh.\r\nSử dụng hồ kính Đúc nên rất an toàn khi có trẻ em.\r\nBố cục tươi mát, có thể nuôi thêm TÉP và ỐC cảnh.\r\nThuỷ sinh xanh hỗ trợ sửa chữa bảo hành.', 6000000, 54, 0, 1, 2),
+(36, 'DF1000', 'Lọc thùng Atman DF-1000 thiết bị lọc cao cấp', 5, 'Lọc thùng Atman DF-1000 là sản phẩm thiết bị lọc cao cấp đến từ hãng nổi tiếng từ Trung Quốc, một hãng chuyên sản xuất phụ kiện thủy sinh và cá cảnh.', 1250000, 54, 0, 1, 3),
+(37, 'HAILEA60', 'Máy sủi oxy dự phòng cúp điện Hailea CP60', 5, '', 1600000, 64, 0, 1, 2),
+(38, 'NENGOMTHUYMOC', 'Nền gốm thủy mộc chuyên trang trí bể cá và thủy sinh', 6, 'Có lẽ những anh em chơi thủy sinh và cá cảnh đã không còn xa lạ với bộ nền gốm thủy mộc, nền gốm có đặc điểm nổi bật là một màu đỏ nhạt làm nổi bật cảnh vật bên trong hồ.', 20000, 6853, 0, 1, 2),
+(39, 'MALE1', 'Vật liệu lọc Matrix', 6, 'Matrix là loại vật liệu lọc cao cấp của hãng Seachem, là loại đá lọc tự nhiên có cấu trúc mô xốp và bề mặt nhám làm nơi cư trú cho vi sinh cực kì hữu hiệu.', 240000, 356, 0, 1, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `product_image`
+--
+
+CREATE TABLE `product_image` (
+  `productID` int(11) NOT NULL,
+  `image` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `product_image`
+--
+
+INSERT INTO `product_image` (`productID`, `image`) VALUES
+(16, '1gpsyekubzmovhtfjcqrl69.jpg'),
+(16, '2mdbjshatlcnxprzvikug386.jpg'),
+(17, '1vajehkurlmobnpigtdzs775.jpg'),
+(17, '2vajehkurlmobnpigtdzs775.jpg'),
+(18, '1qwjvfumniklstzogehrp614.jpg'),
+(19, '1runihdpmqcswtfvjbole126.jpg'),
+(20, '1jrxuvnpizwcaelbmtskd475.jpg'),
+(20, '2jrxuvnpizwcaelbmtskd475.jpg'),
+(21, '1qnbgoxcdfymuivakzhjt880.jpg'),
+(22, '1nvgirxopqfejkbzycswt264.jpg'),
+(23, '1sgltojfmrwqdekyvuhni504.jpg'),
+(24, '1crqjbgzpkhlsvtndyoma296.jpg'),
+(24, '2crqjbgzpkhlsvtndyoma296.jpg'),
+(25, '1hakbmzgscytnxwpejdfq97.jpg'),
+(26, '1amfglhiyozpkruvswbed929.jpg'),
+(26, '2amfglhiyozpkruvswbed929.jpg'),
+(27, '1tzpwkgvcnhyubsormiad793.jpg'),
+(27, '2tzpwkgvcnhyubsormiad793.jpg'),
+(28, '1tcydnprqxbahkefijmzw781.jpg'),
+(28, '2tcydnprqxbahkefijmzw781.jpg'),
+(29, '1fhwdkjzpxqseuyabnmcv964.jpg'),
+(29, '2fhwdkjzpxqseuyabnmcv964.jpg'),
+(30, '1lpubxfazochjesgtqwyr370.jpg'),
+(30, '2lpubxfazochjesgtqwyr370.jpg'),
+(31, '1vwpyesajnluzfchbmkdg296.jpg'),
+(31, '2vwpyesajnluzfchbmkdg296.jpg'),
+(32, '1fhkdrjpgvxtwmibsauqz370.jpg'),
+(32, '2fhkdrjpgvxtwmibsauqz370.jpg'),
+(33, '1pemrinfuvhgsaqdcyjkz772.jpg'),
+(34, '1nhdbgsefqacyzilkrvxj394.jpg'),
+(34, '2nhdbgsefqacyzilkrvxj394.jpg'),
+(35, '1fjgsvbuqaznoexymhkci865.jpg'),
+(35, '2fjgsvbuqaznoexymhkci865.jpg'),
+(36, '1frxwmgtuvijbcqzohady506.jpg'),
+(36, '2frxwmgtuvijbcqzohady506.jpg'),
+(37, '1nrcmjwkxvspyeiutgazl994.jpg'),
+(38, '1sgxvzpilkaunecdtyrfw527.jpg'),
+(39, '1pixjalhkncsbotmefgwv858.jpg'),
+(39, '2pixjalhkncsbotmefgwv858.jpg');
 
 -- --------------------------------------------------------
 
@@ -160,11 +245,24 @@ ALTER TABLE `cart`
   ADD KEY `productID` (`productID`);
 
 --
+-- Chỉ mục cho bảng `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`productID`),
-  ADD KEY `userID` (`userID`);
+  ADD KEY `userID` (`userID`),
+  ADD KEY `categoryID` (`categoryID`);
+
+--
+-- Chỉ mục cho bảng `product_image`
+--
+ALTER TABLE `product_image`
+  ADD PRIMARY KEY (`productID`,`image`);
 
 --
 -- Chỉ mục cho bảng `users`
@@ -183,10 +281,16 @@ ALTER TABLE `admins`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT cho bảng `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
@@ -203,7 +307,14 @@ ALTER TABLE `cart`
 -- Các ràng buộc cho bảng `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`categoryID`) REFERENCES `categories` (`id`);
+
+--
+-- Các ràng buộc cho bảng `product_image`
+--
+ALTER TABLE `product_image`
+  ADD CONSTRAINT `product_image_ibfk_1` FOREIGN KEY (`productID`) REFERENCES `products` (`productID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

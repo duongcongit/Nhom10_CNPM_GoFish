@@ -13,8 +13,7 @@ if (isset($_GET['id'])) {
   //Lấy mã sản phẩm và thông tin của sản phẩm đã chọn
   $iditem = $_GET['id'];
   //sql lấy thông tin của sản phẩm
-  $sql = "SELECT users.id,users.username,users.email,users.phone,users.address,products.productName,products.productSKU,products.category,products.price,products.detail,products.stock,products.image
-        FROM products,users where products.userid = users.id and products.productID  = '$iditem' and products.status = '1'";
+  $sql = "SELECT products.*,users.phone,users.email,users.username,categoryName FROM products,users,categories where products.categoryID=categories.id and products.userid = users.id and products.productID  = '$iditem' and products.status = '1'";
 
   //Thực thi câu lệnh
   $res = mysqli_query($conn, $sql);
@@ -25,20 +24,19 @@ if (isset($_GET['id'])) {
   if ($count == 1) {
     //Lấy dữ liệu từ database
     $row = mysqli_fetch_assoc($res);
+    $id = $row['productID'];
     $tenSanPham = $row['productName'];
     $sku = $row['productSKU'];
-    $theLoai = $row['category'];
+    $theLoai = $row['categoryName'];
     $price = $row['price'];
     $chiTiet = $row['detail'];
     $conLai = $row['stock'];
-    $hinhAnh = $row['image'];
-    $hinhAnhString = explode(',', $hinhAnh);
-    $hinhAnh1 = $hinhAnhString[0];
-    $hinhAnh2 = $hinhAnhString[1];
     $userName = $row['username'];
     $userEmail = $row['email'];
     $userPhone = $row['phone'];
-    $userID = $row['id'];
+    $userID = $row['userID'];
+    // Lấy dữ liệu hình ảnh
+    $hinhAnh1 = $conn->query("SELECT * FROM product_image WHERE productID='$id' AND image LIKE '1%'")->fetch_assoc()['image'];
   } else {
     //Chuyển hướng về trang chủ
     header('location:' . SITEURL);
@@ -105,14 +103,14 @@ if (isset($_GET['id'])) {
             <div class="item-menu-img col-md-5">
               <?php
               //Kiểm tra hình ảnh
-              if ($hinhAnh == "") {
+              if ($hinhAnh1 == "") {
                 //nếu không có
                 echo "<div class='error'>Image not Available.</div>";
               } else {
                 //nếu có
               ?>
                 <img src="<?php echo SITEURL; ?>assets/img/products/<?php echo $hinhAnh1; ?>" alt="Item-img" style="max-height: 400px;width:100%" class="img-fluid mt-3">
-                <img src="<?php echo SITEURL; ?>assets/img/products/<?php echo $hinhAnh2; ?>" alt="Item-img" style="max-height: 400px;width:100%" class="img-fluid mt-3">
+                <!-- <img src="<?php //echo SITEURL; ?>assets/img/products/<?php //echo $hinhAnh2; ?>" alt="Item-img" style="max-height: 400px;width:100%" class="img-fluid mt-3"> -->
               <?php
               }
 
