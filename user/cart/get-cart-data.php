@@ -46,17 +46,20 @@ if ($result_seller->num_rows > 0) {
                 </div>
                 <!-- Product -->
                 <?php
-                $sql_get_prod_data = "SELECT products.productID,products.productName,price,image,stock,cart.quantity 
+                $sql_get_prod_data = "SELECT products.productID,products.productName,price,stock,cart.quantity 
                 FROM cart,products WHERE cart.userID='$userID' AND cart.productID=products.productID 
                 AND products.userID='{$res_seller['id']}' ORDER BY time_add DESC;";
                 $result_prod = $conn->query($sql_get_prod_data);
+                //
                 while ($res_prod = $result_prod->fetch_assoc()) {
                     $amount = $res_prod['price'] * $res_prod['quantity'];
+                    $sql_img1 = "SELECT * FROM product_image WHERE productID='{$res_prod['productID']}' AND image LIKE '1%'";
+                    $img1 = $conn->query($sql_img1)->fetch_assoc()['image'];
                 ?>
                     <div class="prod-info mb-0 mt-3 col-md-12 bg-light d-flex d-flex align-items-center px-3 py-2">
                         <div style="width: 40%;" class="mb-4 d-flex align-items-center">
                             <input class="btn-check-product me-1 form-check-input" type="checkbox" style="cursor: pointer;" data-prodid="<?php echo $res_prod['productID'] ?>" data-amount="<?php echo $amount; ?>">
-                            <img src="<?php echo SITEURL ?>assets/img/products/<?php echo explode(",", $res_prod['image'])[0]; ?>" alt="" class="product-avatar-list" style="width: 70px;">
+                            <img src="<?php echo SITEURL ?>assets/img/products/<?php echo $img1 ?>" alt="" class="product-avatar-list" style="width: 70px;">
                             <span class="quick-produc-name ms-2 pe-3"><?php echo $res_prod['productName']; ?></span>
                         </div>
                         <div class="mb-4" style="width: 20%;"><?php echo number_format($res_prod['price'], 0, '.', '.'); ?><u class="ms-1">đ</u></div>

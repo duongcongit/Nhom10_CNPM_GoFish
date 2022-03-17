@@ -61,17 +61,20 @@ if (mysqli_num_rows($result) == 0) {
         </div>
         <!--  -->
         <?php
-        $sql_fish = "SELECT * FROM products WHERE category='Cá, tép, ốc cảnh' order by productID desc";
+        $sql_fish = "SELECT * FROM products WHERE categoryID='1' order by productID desc";
         $result_fish = mysqli_query($conn, $sql_fish);
         ?>
         <!--  -->
         <ul class="products ms-5 me-5 d-flex justify-content-start">
-            <?php foreach ($result_fish as $each) { ?>
+            <?php foreach ($result_fish as $each) {
+                $sql_img1 = "SELECT * FROM product_image WHERE productID='{$each['productID']}' AND image LIKE '1%'";
+                $img1 = $conn->query($sql_img1)->fetch_assoc();
+            ?>
                 <li>
                     <div class="product-item list-group" style="height: 400px;">
                         <div class="product-top">
                             <a href="detailView.php?id=<?= $each['productID'] ?>">
-                                <img src="assets/img/products/<?= explode(",", $each['image'])[0]; ?>" alt="">
+                                <img src="assets/img/products/<?= $img1['image']; ?>" alt="">
                             </a>
                         </div>
                         <div class="product-info">
@@ -109,17 +112,20 @@ if (mysqli_num_rows($result) == 0) {
         </div>
         <!--  -->
         <?php
-        $sql_tree = "SELECT * FROM products WHERE category='Cây thủy sinh' order by productID desc";
+        $sql_tree = "SELECT * FROM products WHERE categoryID='2' order by productID desc";
         $result_tree = mysqli_query($conn, $sql_tree);
         ?>
         <!--  -->
         <ul class="products ms-5 me-5 d-flex justify-content-start">
-            <?php foreach ($result_tree as $each) { ?>
+            <?php foreach ($result_tree as $each) {
+                $sql_img1 = "SELECT * FROM product_image WHERE productID='{$each['productID']}' AND image LIKE '1%'";
+                $img1 = $conn->query($sql_img1)->fetch_assoc();
+            ?>
                 <li>
                     <div class="product-item list-group" style="height: 400px;">
                         <div class="product-top">
                             <a href="detailView.php?id=<?= $each['productID'] ?>">
-                                <img src="assets/img/products/<?= explode(",", $each['image'])[0]; ?>" alt="">
+                                <img src="assets/img/products/<?= $img1['image']; ?>" alt="">
                             </a>
                         </div>
                         <div class="product-info">
@@ -157,17 +163,20 @@ if (mysqli_num_rows($result) == 0) {
         </div>
         <!--  -->
         <?php
-        $sql_aquarium = "SELECT * FROM products WHERE category='Bể cá' order by productID desc";
+        $sql_aquarium = "SELECT * FROM products WHERE categoryID='4' order by productID desc";
         $result_aquarium = mysqli_query($conn, $sql_aquarium);
         ?>
         <!--  -->
         <ul class="products ms-5 me-5 d-flex justify-content-start">
-            <?php foreach ($result_aquarium as $each) { ?>
+            <?php foreach ($result_aquarium as $each) {
+                $sql_img1 = "SELECT * FROM product_image WHERE productID='{$each['productID']}' AND image LIKE '1%'";
+                $img1 = $conn->query($sql_img1)->fetch_assoc();
+            ?>
                 <li>
                     <div class="product-item list-group" style="height: 400px;">
                         <div class="product-top">
                             <a href="detailView.php?id=<?= $each['productID'] ?>">
-                                <img src="assets/img/products/<?= explode(",", $each['image'])[0]; ?>" alt="">
+                                <img src="assets/img/products/<?= $img1['image']; ?>" alt="">
                             </a>
                         </div>
                         <div class="product-info">
@@ -205,17 +214,20 @@ if (mysqli_num_rows($result) == 0) {
         </div>
         <!--  -->
         <?php
-        $sql_food = "SELECT * FROM products WHERE category='Thức ăn' order by productID desc";
+        $sql_food = "SELECT * FROM products WHERE categoryID='3' order by productID desc";
         $result_food = mysqli_query($conn, $sql_food);
         ?>
         <!--  -->
         <ul class="products ms-5 me-5 d-flex justify-content-start">
-            <?php foreach ($result_food as $each) { ?>
+            <?php foreach ($result_food as $each) {
+                $sql_img1 = "SELECT * FROM product_image WHERE productID='{$each['productID']}' AND image LIKE '1%'";
+                $img1 = $conn->query($sql_img1)->fetch_assoc();
+            ?>
                 <li>
                     <div class="product-item list-group" style="height: 400px;">
                         <div class="product-top">
                             <a href="detailView.php?id=<?= $each['productID'] ?>">
-                                <img src="assets/img/products/<?= explode(",", $each['image'])[0]; ?>" alt="">
+                                <img src="assets/img/products/<?= $img1['image']; ?>" alt="">
                             </a>
                         </div>
                         <div class="product-info">
@@ -253,17 +265,20 @@ if (mysqli_num_rows($result) == 0) {
         </div>
         <!--  -->
         <?php
-        $sql_accessory = "SELECT * FROM products WHERE category='Phụ kiện hồ cá' or category='Phụ kiện thủy sinh' order by productID desc";
+        $sql_accessory = "SELECT * FROM products WHERE categoryID='5' OR categoryID='6' order by productID desc";
         $result_accessory = mysqli_query($conn, $sql_accessory);
         ?>
         <!--  -->
         <ul class="products ms-5 me-5 d-flex justify-content-start">
-            <?php foreach ($result_accessory as $each) { ?>
+            <?php foreach ($result_accessory as $each) {
+                $sql_img1 = "SELECT * FROM product_image WHERE productID='{$each['productID']}' AND image LIKE '1%'";
+                $img1 = $conn->query($sql_img1)->fetch_assoc();
+            ?>
                 <li>
                     <div class="product-item list-group" style="height: 400px;">
                         <div class="product-top">
                             <a href="detailView.php?id=<?= $each['productID'] ?>">
-                                <img src="assets/img/products/<?= explode(",", $each['image'])[0]; ?>" alt="">
+                                <img src="assets/img/products/<?= $img1['image']; ?>" alt="">
                             </a>
                         </div>
                         <div class="product-info">
