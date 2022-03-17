@@ -72,7 +72,6 @@ include dirname(__FILE__) . '/login-check.php';
                                 <span class="sidebar-item-text">Thống kê bán hàng</span>
                             </a>
                         </li>
-
                         <li>
                             <a href="#" class="nav-link link-dark
                                 ">
@@ -80,7 +79,6 @@ include dirname(__FILE__) . '/login-check.php';
                                 <span class="sidebar-item-text">Quản lý đơn hàng</span>
                             </a>
                         </li>
-
                         <li>
                             <a class="nav-link link-dark tour-btn ms-2" type="button">
                                 <img src="<?php echo SITEURL ?>seller/assets/img/product-icon.png" alt="" style="width: 30px;">
@@ -95,21 +93,18 @@ include dirname(__FILE__) . '/login-check.php';
                                 <li><a href="#" class="">Sản phẩm bị khóa</a></li>
                             </ul>
                         </li>
-
                         <li>
                             <a href="#" class="nav-link link-dark">
                                 <i class="bi bi-wallet"></i>
                                 <span class="sidebar-item-text">Tài chính</span>
                             </a>
                         </li>
-
                         <li>
                             <a href="#" class="nav-link link-dark">
                                 <i class="bi bi-person"></i>
                                 <span class="sidebar-item-text">Hồ sơ</span>
                             </a>
                         </li>
-
                         <li>
                             <a href="#" class="nav-link link-dark">
                                 <i class="bi bi-question-square"></i>

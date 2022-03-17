@@ -19,7 +19,9 @@ if (isset($_POST['tableID'])) {
     }
 
 
-    $sqlTotalRow    = "SELECT * FROM products WHERE $productStatus userID = '{$_SESSION['userID']}'";
+    $sqlTotalRow    = "SELECT products.productID,products.productSKU,products.productName,products.categoryID,products.detail,products.price,products.stock,products.sold,products.status,
+    product_image.image,categories.categoryName FROM products,product_image,categories WHERE $productStatus userID = '{$_SESSION['userID']}' and product_image.productID=products.productID and products.categoryID=categories.id and product_image.image LIKE '1%'";
+    echo $sqlTotalRow;
     $totalRow       = $conn->query($sqlTotalRow)->num_rows;
     $numPage        = ceil($totalRow / $numRow);
     $start          = ($page - 1) * $numRow;
@@ -69,7 +71,7 @@ if (isset($_POST['tableID'])) {
                     </div>
                 </td>
                 <td><?= $row['productSKU']; ?></td>
-                <td><?= $row['category']; ?></td>
+                <td><?= $row['categoryName']; ?></td>
                 <td><?= $row['price']; ?>đ</td>
                 <td class="text-center"><?= $row['stock']; ?>
                     <?php
