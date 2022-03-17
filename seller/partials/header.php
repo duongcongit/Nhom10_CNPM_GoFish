@@ -125,4 +125,4 @@ include dirname(__FILE__) . '/login-check.php';
             <!-- Sidebar end -->
 
             <!-- Content start-->
-            <div class="col main-right container-fluid row show">
+            <div class="col main-right container-fluid row ">
