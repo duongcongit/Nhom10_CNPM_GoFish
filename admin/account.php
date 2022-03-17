@@ -2,12 +2,7 @@
 include "../config/constants.php";
 include "./partials/loginCheck.php";
 ?> 
-<?php
 
-//
-$_SESSION['userID'] = $_SESSION['id'];
-
-?>
 
 
 

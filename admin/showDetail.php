@@ -4,32 +4,20 @@ include "../config/constants.php";
 include "./partials/loginCheck.php";
 
 $prdid = $_GET['id'];
-$prdsql="SELECT users.id,users.username,users.email,users.phone,users.address,products.productName,products.category,products.price,products.detail,products.stock,products.image FROM products,users where products.userid = users.id and products.productID  = '$prdid'";
+$prdsql="SELECT products.*, users.*, categories.categoryName  
+FROM products,users,categories 
+where products.categoryID=categories.id and
+ products.userid = users.id  and
+ products.productID='$prdid'";
 $resultsql = mysqli_query($conn,$prdsql);
 $countrs = mysqli_num_rows($resultsql);
 if($countrs == 1){
     $row=mysqli_fetch_assoc($resultsql);
     $prdname = $row['productName'];
-    $categoy = $row['category'];
+    $category = $row['categoryName'];
     $price = $row['price'];
     $detail = $row['detail'];
     $stock = $row['stock'];
-    $img = $row['image'];
-    $imgString = explode(',',$img);
-    $countimg=count($imgString);
-    if($countimg== 3){
-      $img1 = $imgString[0];
-      $img2 = $imgString[1];
-      $img3 = $imgString[2];
-    }
-    else if($countimg == 2){
-      $img1 = $imgString[0];
-      $img2 = $imgString[1];
-    }
-    elseif($countimg == 1){
-      $img1 = $imgString[0];
-
-    }
     $userName = $row['username'];
     $email = $row['email'];
     $phone = $row['phone'];      
@@ -49,7 +37,7 @@ if($countrs == 1){
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
+  <title>Chi Tiết Sản Phẩm</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
@@ -137,47 +125,27 @@ if($countrs == 1){
             <div class="row  p-3 ">
               <div class="row">
                 <div class="item-menu-img col-md-4">
-                  <?php               
-                  //Kiểm tra hình ảnh
-                  if($img=="")
-                  {
-                      //nếu không có
-                      echo "<div class='error'>Image not Available.</div>";
-                  }
-                  elseif($countimg == 3)
-                  {
-                      //nếu có
-              ?>
-                  <img src="../assets/img/products/<?php echo $img1; ?>" alt="Ảnh <?php echo $prdname; ?>"
-                    style="max-height: 200px;width:100%" class="img-fluid mt-3">
-                  <img src="../assets/img/products/<?php echo $img2; ?>" alt="Ảnh <?php echo $prdname; ?>"
-                    style="max-height: 200px;width:100%" class="img-fluid mt-3">
-                    <img src="../assets/img/products/<?php echo $img3; ?>" alt="Ảnh <?php echo $prdname; ?>"
-                    style="max-height: 200px;width:100%" class="img-fluid mt-3">
-
+                  <?php          
+                  $imgsql="SELECT * FROM product_image Where productID='$prdid'";
+                  $resimg= mysqli_query($conn,$imgsql);
+                  if (mysqli_num_rows($resimg) > 0){
+                    while($rowimg = mysqli_fetch_assoc($resimg)){
+                      ?>
+                      <img src="../assets/img/products/<?php echo $rowimg['image']; ?>" alt="Ảnh <?php echo $prdname; ?>"
+                      style="max-height: 200px;width:100%" class="img-fluid mt-3">
                   <?php
                     }
-                    elseif($countimg==2){
-                      ?>
-                      <img src="../assets/img/products/<?php echo $img1; ?>" alt="Ảnh <?php echo $prdname; ?>"
-                    style="max-height: 200px;width:100%" class="img-fluid mt-3">
-                    <img src="../assets/img/products/<?php echo $img2; ?>" alt="Ảnh <?php echo $prdname; ?>"
-                    style="max-height: 200px;width:100%" class="img-fluid mt-3">
-                    <?php
-                    }
-                    elseif($countimg==1){
-                      ?>
-                      <img src="../assets/img/products/<?php echo $img1; ?>" alt="Ảnh <?php echo $prdname; ?>"
-                    style="max-height: 200px;width:100%" class="img-fluid mt-3">
-                    
-                    <?php  
+                  }
+                  else{
+                  ?>
+                    <img src="../assets/img/products/photonotavailaible.jpg" alt="Ảnh Không Tồn Tại"
+                      style="max-height: 200px;width:100%" class="img-fluid mt-3">
+                  <?php
                   }
                   ?>
-              
-
                 </div>
                 <form action="deleteProduct.php?id=<?php echo $prdid; ?>" method="POST" class="order col-md-7 mt-3">
-                  <!-- Chi tiết của sản phẩm  -->
+                   <!-- Chi tiết của sản phẩm  -->
                   <div class="item-menu-desc ms-5 ">
                     <h4 class="text-center" style='color:blue'>
                       <?php echo $prdname; ?>
@@ -198,7 +166,7 @@ if($countrs == 1){
                     </p>
                     <p><i class="bi bi-flag me-3"></i>Loại Hình:
                       <span style='color:red;font-weight:500;font-size:1rem'>
-                        <?php echo $categoy ?>
+                        <?php echo $category ?>
                       </span>
                     </p>
                     <p><i class="bi bi-building me-3"></i>Người bán:
