@@ -40,18 +40,20 @@ if (isset($_SESSION['id'])) {
             <!-- Shop -->
             <?php
             while ($res_seller = $result_seller->fetch_assoc()) {
-                // Get seller infor
+                // Get products data
+                $sql_get_prod_data = "SELECT products.productID,products.productName,price,stock,cart.quantity 
+                FROM cart,products WHERE cart.userID='$userID' AND cart.productID=products.productID 
+                AND products.userID='{$res_seller['id']}' ORDER BY time_add DESC;";
+                $result_prod = $conn->query($sql_get_prod_data);
+                // Get number of products
+                $num_prod = $result_prod->num_rows;
             ?>
                 <div class="prod-cart-info col-md-12 bg-light px-3 py-2 mb-4">
-                    <div class="col-md-12"><input class="btn-check-shop me-1 form-check-input" type="checkbox" style="cursor: pointer;">
+                    <div class="col-md-12"><input class="btn-check-shop me-1 form-check-input" data-seller_id="<?php echo $res_seller['id']; ?>" data-num_prod="<?php echo $num_prod; ?>" type="checkbox" style="cursor: pointer;">
                         <i class="bi bi-shop m-1"></i><?php echo $res_seller['fullname'] ?>
                     </div>
                     <!-- Product -->
                     <?php
-                    $sql_get_prod_data = "SELECT products.productID,products.productName,price,stock,cart.quantity 
-                FROM cart,products WHERE cart.userID='$userID' AND cart.productID=products.productID 
-                AND products.userID='{$res_seller['id']}' ORDER BY time_add DESC;";
-                    $result_prod = $conn->query($sql_get_prod_data);
                     //
                     while ($res_prod = $result_prod->fetch_assoc()) {
                         $amount = $res_prod['price'] * $res_prod['quantity'];
@@ -60,7 +62,7 @@ if (isset($_SESSION['id'])) {
                     ?>
                         <div class="prod-info mb-0 mt-3 col-md-12 bg-light d-flex d-flex align-items-center px-3 py-2">
                             <div style="width: 40%;" class="mb-4 d-flex align-items-center">
-                                <input class="btn-check-product me-1 form-check-input" type="checkbox" style="cursor: pointer;" data-prodid="<?php echo $res_prod['productID'] ?>" value="<?php echo $amount; ?>">
+                                <input class="btn-check-product me-1 form-check-input" type="checkbox" style="cursor: pointer;" data-seller_id="<?php echo $res_seller['id']; ?>" data-prodid="<?php echo $res_prod['productID'] ?>" value="<?php echo $amount; ?>">
                                 <img src="<?php echo SITEURL ?>assets/img/products/<?php echo $img1 ?>" alt="" class="product-avatar-list" style="width: 70px;">
                                 <span class="quick-produc-name ms-2 pe-3"><?php echo $res_prod['productName']; ?></span>
                             </div>

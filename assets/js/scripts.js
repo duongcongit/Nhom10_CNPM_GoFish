@@ -210,7 +210,7 @@ $(document).ready(function () {
   })
   // --- Event click button select products in cart
   // Select all
-  $("#btn-check-all-cart").change(function () {
+  $(document).on("change", "#btn-check-all-cart", function () {
     if (this.checked) {
       $(".btn-check-shop").prop("checked", true);
       $(".btn-check-product").prop("checked", true);
@@ -218,28 +218,47 @@ $(document).ready(function () {
       $(".btn-check-shop").prop("checked", false);
       $(".btn-check-product").prop("checked", false);
     }
+    //
+    update_total_price();
   });
 
   // Select a shop
-  $(".btn-check-shop").change(function () {
+  $(document).on("change", ".btn-check-shop", function () {
+    var sellerID = $(this).data("seller_id");
     if (this.checked) {
-      $(".btn-check-product").prop("checked", true);
-    } else {
+      $(".btn-check-product[data-seller_id='" + sellerID + "']").prop("checked", true);
+    } 
+    else {
       $("#btn-check-all-cart").prop("checked", false);
-      $(".btn-check-product").prop("checked", false);
+      $(".btn-check-product[data-seller_id='" + sellerID + "']").prop("checked", false);
     }
+    //
+    update_total_price();
   });
 
   // Select a product
   $(document).on("change", ".btn-check-product", function () {
-    var prodID = $(this).data("prodid");
+    // var prodID = $(this).data("prodid");
+    var sellerID = $(this).data("seller_id");
+    var num_prod_of_seller = $(".btn-check-shop[data-seller_id='" + sellerID + "']").data("num_prod");
     if (this.checked) {
+      var num_checked = 0;
+      var inp_prod = $(".btn-check-product[data-seller_id='" + sellerID + "']");
+      for(let i = 0; i<num_prod_of_seller; i++){
+        if(inp_prod.is(":checked")){
+          num_checked++;
+        }
+      }
+      //
+      if(num_checked == num_prod_of_seller){
+        $(".btn-check-shop[data-seller_id='" + sellerID + "']").prop("checked", true);
+      }
       //
     } else {
       $("#btn-check-all-cart").prop("checked", false);
-      $(".btn-check-shop").prop("checked", false);
+      $(".btn-check-shop[data-seller_id='" + sellerID + "']").prop("checked", false);
     }
-    //
+    
     update_total_price();
   });
 
