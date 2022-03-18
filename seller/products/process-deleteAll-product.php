@@ -9,6 +9,8 @@ while($row=mysqli_fetch_assoc($res))
     $productID = $row['productID'];
     $sqlx = "DELETE FROM product_image WHERE productID='$productID';";
     $resx = $conn->query($sqlx);
+    $sqly = "DELETE FROM cart WHERE productID='$productID';";
+    $resy = $conn->query($sqly);
 }
 
 $sql1 = "DELETE FROM products WHERE userID='$userIDPr';";
