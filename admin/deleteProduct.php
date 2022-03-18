@@ -14,7 +14,12 @@
                 $_SESSION['success'] = 'Xóa sản phẩm thành công!';
                 header("location: products.php"); 
                 exit();
-        }
+            }
+            else{
+                $_SESSION['error'] = 'Có lỗi';
+                header("location: products.php"); 
+                exit();
+            }
         }else{
             $_SESSION['error'] = 'Xóa sản phẩm thất bại!';
             header("location: products.php"); 
