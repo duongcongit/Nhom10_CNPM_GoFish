@@ -9,6 +9,8 @@ if (isset($_GET['productid'])) {
 
     $sql = "DELETE FROM products WHERE productID='$prodID' AND userID='$userIDPr';";
     $sql1 = "DELETE FROM product_image WHERE productID='$prodID'";
+    $sql2 = "DELETE FROM cart WHERE productID='$prodID'";
+    $res2 = $conn->query($sql2);
     $res1 = $conn->query($sql1);
     $res = $conn->query($sql);
     if ($res->num_rows == 0 && $res1->num_rows == 0) {
