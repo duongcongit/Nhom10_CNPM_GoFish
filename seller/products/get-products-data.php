@@ -19,9 +19,7 @@ if (isset($_POST['tableID'])) {
     }
 
 
-    $sqlTotalRow    = "SELECT products.productID,products.productSKU,products.productName,products.categoryID,products.detail,products.price,products.stock,products.sold,products.status,
-    product_image.image,categories.categoryName FROM products,product_image,categories WHERE $productStatus userID = '{$_SESSION['userID']}' and product_image.productID=products.productID and products.categoryID=categories.id and product_image.image LIKE '1%'";
-    echo $sqlTotalRow;
+    $sqlTotalRow    = "SELECT products.*,categoryName FROM products,categories WHERE products.categoryID=categories.id AND  $productStatus userID = '{$_SESSION['userID']}'";
     $totalRow       = $conn->query($sqlTotalRow)->num_rows;
     $numPage        = ceil($totalRow / $numRow);
     $start          = ($page - 1) * $numRow;
@@ -32,13 +30,14 @@ if (isset($_POST['tableID'])) {
     if ($totalRow > 0) {
 ?>
         <?php
-        $i = $start;
         while ($row = $result->fetch_assoc()) {
+            $sql_get_img1 = "SELECT * FROM product_image WHERE productID='{$row['productID']}' AND image LIKE '1%'";
+            $img1 = $conn->query($sql_get_img1)->fetch_assoc()['image'];
         ?>
             <tr>
                 <td class="row">
                     <div style="max-width: fit-content;">
-                        <img src="../../assets/img/products/<?php echo explode(",", $row['image'])[0]; ?>" alt="" class="product-avatar-list">
+                        <img src="../../assets/img/products/<?php echo $img1; ?>" alt="" class="product-avatar-list">
                     </div>
                     <div class="col row d-flex align-items-center">
                         <?php

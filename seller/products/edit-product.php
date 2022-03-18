@@ -8,7 +8,7 @@ if (isset($_GET['productid']) && isset($_GET['productsku'])) {
     $prodSKU = $_GET['productsku'];
     $userIDPr = $_SESSION['userID'];
 
-    $sql = "SELECT * FROM products WHERE productID='$prodID' AND productSKU='$prodSKU' AND userID='$userIDPr';";
+    $sql = "SELECT products.*,categoryName FROM products,categories WHERE products.categoryID=categories.id AND productID='$prodID' AND userID = '{$_SESSION['userID']}'";
     $res = $conn->query($sql);
     if ($res->num_rows == 0) {
         header("location:" . SITEURL . "seller/products/");
@@ -18,6 +18,8 @@ if (isset($_GET['productid']) && isset($_GET['productsku'])) {
     }
 
     //
+} else {
+    header("location:" . SITEURL . "seller/products/");
 }
 
 
@@ -66,8 +68,9 @@ if (isset($_GET['productid']) && isset($_GET['productsku'])) {
                         <div class="col-md-12 pe-4">
                             <div class="input-group mb-3">
                                 <span class="pe-3" dir="rtl" style="min-width: 161px;"><span class="text-danger" style="font-weight: 500;">*</span> Tên sản phẩm</span>
-                                <input name="prodNameEdit" type="text" class="form-control" placeholder="Nhập vào" value="<?php echo $prodInf['productName'] ?>">
+                                <input name="prodNameEdit" type="text" class="form-control" placeholder="Nhập vào" value="<?php echo $prodInf['productName'] ?>" data-curr_prod_name="<?php echo $prodInf['productName'] ?>">
                             </div>
+                            <p class="text-danger" id="prodNameEditHelp" dir="ltr" style="margin-left: 161px; font-weight: 500; font-size: 15px"></p>
                         </div>
                         <div class="col-md-12 pe-4">
                             <div class="input-group mb-3">
@@ -79,12 +82,15 @@ if (isset($_GET['productid']) && isset($_GET['productsku'])) {
                             <div class="input-group mb-3">
                                 <span class="pe-1" dir="rtl" style="min-width: 161px;"><span class="text-danger" style="font-weight: 500;">*</span> Danh mục sản phẩm</span>
                                 <select name="prodCategoryEdit" class="form-select" style="max-width: 500px;">
-                                    <option value="Cá, tép, ốc cảnh" <?php echo ($prodInf['category'] == "Cá, tép, ốc cảnh" ? "selected" : "") ?>>Cá, tép, ốc cảnh</option>
-                                    <option value="Cây thủy sinh" <?php echo ($prodInf['category'] == "Cây thủy sinh" ? "selected" : "") ?>>Cây thủy sinh</option>
-                                    <option value="Thức ăn" <?php echo ($prodInf['category'] == "Thức ăn" ? "selected" : "") ?>>Thức ăn</option>
-                                    <option value="Thức ăn" <?php echo ($prodInf['category'] == "Bể cá" ? "selected" : "") ?>>Bể cá</option>
-                                    <option value="Phụ kiện hồ cá" <?php echo ($prodInf['category'] == "Phụ kiện hồ cá" ? "selected" : "") ?>>Phụ kiện hồ cá</option>
-                                    <option value="Phụ kiện thủy sinh" <?php echo ($prodInf['category'] == "Phụ kiện thủy sinh" ? "selected" : "") ?>>Phụ kiện thủy sinh</option>
+                                    <?php
+                                    $sql_get_all_category = "SELECT * FROM categories";
+                                    $res_cat = $conn->query($sql_get_all_category);
+                                    while ($cat = $res_cat->fetch_assoc() ) {
+                                    ?>
+                                        <option value="<?php echo $cat['id']; ?>" <?php echo ($prodInf['categoryID'] == "{$cat['id']}" ? "selected" : "") ?>><?php echo $cat['categoryName']; ?></option>
+                                    <?php
+                                    }
+                                    ?>
                                 </select>
                             </div>
                         </div>
@@ -118,20 +124,19 @@ if (isset($_GET['productid']) && isset($_GET['productsku'])) {
                     </div>
                     <p class="ms-4 mb-4"><span class="text-danger" style="font-weight: 500;">(*)</span> Tối thiểu 1, tối đa 3 hình ảnh</p>
                     <div class="row ms-5">
-                        <!--  -->
+                        <!-- Image 1 -->
                         <?php
-                        $prodCurrImg = explode(",", $prodInf['image']);
-                        $numCurrImg = count($prodCurrImg);
-
+                        $sql_get_img1 = "SELECT * FROM product_image WHERE productID='{$prodInf['productID']}' AND image LIKE '1%';";
+                        $get_img1 = $conn->query($sql_get_img1);
                         ?>
-                        <!-- Photo 1 -->
                         <div class="card p-0 mb-3 me-3 d-flex justify-content-center" style="width: 200px;height: 200px;">
                             <input type="file" name="prodImg1Edit" id="photo-1-input" onchange="loadPhoto1(event)">
                             <label for="photo-1-input" type="button">
                                 <img id="photo-1-preview" src="
                                 <?php
-                                if ($numCurrImg >= 1) {
-                                    echo "../../assets/img/products/" . $prodCurrImg[0];
+                                if ($get_img1->num_rows == 1) {
+                                    $img1 = $get_img1->fetch_assoc()['image'];
+                                    echo "../../assets/img/products/" . $img1;
                                 } else {
                                     echo "../assets/img/no-image.png";
                                 }
@@ -144,7 +149,7 @@ if (isset($_GET['productid']) && isset($_GET['productsku'])) {
                                     <i class="bi bi-pencil-fill text-primary fs-5 ms-2"></i>
                                 </label>
                                 <i class="bi bi-trash-fill text-danger fs-5 ms-2" id="del-photo-1-edit" type="button"></i>
-                                <input type="hidden" name="isphoto1editempty" value="<?php echo ($numCurrImg >= 1 ? $prodCurrImg[0] : "TRUE") ?>">
+                                <input type="hidden" name="isphoto1editempty" value="<?php echo ($get_img1->num_rows == 1 ? $img1 : "TRUE") ?>">
                             </div>
                             <!--  -->
                         </div>
@@ -161,14 +166,19 @@ if (isset($_GET['productid']) && isset($_GET['productsku'])) {
                         </script>
                         <!--  -->
 
-                        <!-- Photo 2 -->
+                        <!-- Image 2 -->
+                        <?php
+                        $sql_get_img2 = "SELECT * FROM product_image WHERE productID='{$prodInf['productID']}' AND image LIKE '2%';";
+                        $get_img2 = $conn->query($sql_get_img2);
+                        ?>
                         <div class="card px-0 mb-3 me-3 d-flex justify-content-center align-items-center" style="width: 200px;height: 200px;background-size: contain;">
                             <input type="file" name="prodImg2Edit" id="photo-2-input" onchange="loadPhoto2(event)">
                             <label for="photo-2-input" type="button">
                                 <img id="photo-2-preview" src="
                                 <?php
-                                if ($numCurrImg >= 2) {
-                                    echo "../../assets/img/products/" . $prodCurrImg[1];
+                                if ($get_img2->num_rows == 1) {
+                                    $img2 = $get_img2->fetch_assoc()['image'];
+                                    echo "../../assets/img/products/" . $img2;
                                 } else {
                                     echo "../assets/img/no-image.png";
                                 }
@@ -181,7 +191,7 @@ if (isset($_GET['productid']) && isset($_GET['productsku'])) {
                                     <i class="bi bi-pencil-fill text-primary fs-5 ms-2"></i>
                                 </label>
                                 <i class="bi bi-trash-fill text-danger fs-5 ms-2" id="del-photo-2-edit" type="button"></i>
-                                <input type="hidden" name="isphoto2editempty" value="<?php echo ($numCurrImg >= 2 ? $prodCurrImg[1] : "TRUE") ?>">
+                                <input type="hidden" name="isphoto2editempty" value="<?php echo ($get_img2->num_rows == 1 ? $img2 : "TRUE") ?>">
                             </div>
                             <!--  -->
                         </div>
@@ -197,14 +207,19 @@ if (isset($_GET['productid']) && isset($_GET['productsku'])) {
                         </script>
                         <!--  -->
 
-                        <!-- Photo 3 -->
+                        <!-- Image 2 -->
+                        <?php
+                        $sql_get_img3 = "SELECT * FROM product_image WHERE productID='{$prodInf['productID']}' AND image LIKE '3%';";
+                        $get_img3 = $conn->query($sql_get_img3);
+                        ?>
                         <div class="card px-0 mb-3 me-3 d-flex justify-content-center align-items-center" style="width: 200px;height: 200px;background-size: contain;">
                             <input type="file" name="prodImg3Edit" id="photo-3-input" onchange="loadPhoto3(event)">
                             <label for="photo-3-input" type="button">
                                 <img id="photo-3-preview" src="
                                 <?php
-                                if ($numCurrImg >= 3) {
-                                    echo "../../assets/img/products/" . $prodCurrImg[2];
+                                if ($get_img3->num_rows == 1) {
+                                    $img3 = $get_img3->fetch_assoc()['image'];
+                                    echo "../../assets/img/products/" . $img3;
                                 } else {
                                     echo "../assets/img/no-image.png";
                                 }
@@ -217,7 +232,7 @@ if (isset($_GET['productid']) && isset($_GET['productsku'])) {
                                     <i class="bi bi-pencil-fill text-primary fs-5 ms-2"></i>
                                 </label>
                                 <i class="bi bi-trash-fill text-danger fs-5 ms-2" id="del-photo-3-edit" type="button"></i>
-                                <input type="hidden" name="isphoto3editempty" value="<?php echo ($numCurrImg >= 3 ? $prodCurrImg[2] : "TRUE") ?>">
+                                <input type="hidden" name="isphoto3editempty" value="<?php echo ($get_img3->num_rows == 1 ? $img3 : "TRUE") ?>">
                             </div>
                             <!--  -->
                         </div>

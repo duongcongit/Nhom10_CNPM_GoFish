@@ -33,6 +33,7 @@ include "../partials/header.php";
                                 <span class="pe-3" dir="rtl" style="min-width: 161px;"><span class="text-danger" style="font-weight: 500;">*</span> Tên sản phẩm</span>
                                 <input name="prodNameAdd" type="text" class="form-control" placeholder="Nhập vào">
                             </div>
+                            <p class="text-danger" id="prodNameAddHelp" dir="ltr" style="margin-left: 161px; font-weight: 500; font-size: 15px"></p>
                         </div>
                         <div class="col-md-12 pe-4">
                             <div class="input-group mb-3">
@@ -44,13 +45,16 @@ include "../partials/header.php";
                             <div class="input-group mb-3">
                                 <span class="pe-1" dir="rtl" style="min-width: 161px;"><span class="text-danger" style="font-weight: 500;">*</span> Danh mục sản phẩm</span>
                                 <select name="prodCategoryAdd" class="form-select" style="max-width: 500px;">
-                                    <option value="0" selected>Chọn danh mục sản phẩm</option>
-                                    <option value="Cá, tép, ốc cảnh">Cá, tép, ốc cảnh</option>
-                                    <option value="Cây thủy sinh">Cây thủy sinh</option>
-                                    <option value="Thức ăn">Thức ăn</option>
-                                    <option value="Bể cá">Bể cá</option>
-                                    <option value="Phụ kiện hồ cá">Phụ kiện hồ cá</option>
-                                    <option value="Phụ kiện thủy sinh">Phụ kiện thủy sinh</option>
+                                <option value="0">Chọn danh mục sản phẩm</option>
+                                <?php
+                                    $sql_get_all_category = "SELECT * FROM categories";
+                                    $res_cat = $conn->query($sql_get_all_category);
+                                    while ($cat = $res_cat->fetch_assoc() ) {
+                                    ?>
+                                        <option value="<?php echo $cat['id']; ?>"><?php echo $cat['categoryName']; ?></option>
+                                    <?php
+                                    }
+                                    ?>
                                 </select>
                             </div>
                         </div>

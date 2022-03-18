@@ -202,6 +202,37 @@ $(document).ready(function () {
     //event.preventDefault();
   });
 
+  // Check Name
+  $("[name='prodNameAdd']").on("change", function () {
+    var productName = $(this).val();
+    if (productName != "") {
+      $.ajax({
+        url: "check-product-name.php",
+        type: "POST",
+        data: { productName: productName },
+        success: function (data) {
+          var result = $.trim(data);
+          if (result == productName) {
+            $("#prodNameAddHelp").text(
+              "(!) Đã tồn tại sản phẩm khác có tên này trong gian hàng của bạn. Vui lòng kiểm tra lại!"
+            );
+            $("#prodNameAddHelp").css("color", "red");
+            $("#btn-add-product").attr("disabled", "disabled");
+          } else {
+            $("#prodNameAddHelp").text("");
+            $("#btn-add-product").removeAttr('disabled');
+          }
+        },
+        error: function (jqXHR, exception) {
+          //alert("Lỗi");
+        },
+      });
+    } else {
+      $("#prodNameAddHelp").text("");
+      $("#btn-add-product").removeAttr('disabled');
+    }
+  });
+
   // Check product SKU
 
   // Check SKU
@@ -219,8 +250,10 @@ $(document).ready(function () {
               "(!) Đã tồn tại sản phẩm khác có mã SKU này. Vui lòng kiểm tra lại!"
             );
             $("#prodSKUAddHelp").css("color", "red");
+            $("#btn-add-product").attr("disabled", "disabled");
           } else {
             $("#prodSKUAddHelp").text("");
+            $("#btn-add-product").removeAttr('disabled');
           }
         },
         error: function (jqXHR, exception) {
@@ -229,6 +262,7 @@ $(document).ready(function () {
       });
     } else {
       $("#prodSKUAddHelp").text("");
+      $("#btn-add-product").removeAttr('disabled');
     }
   });
 
@@ -303,6 +337,40 @@ $(document).ready(function () {
     //event.preventDefault();
   });
 
+  // Check product Name
+  $("[name='prodNameEdit']").on("change", function () {
+    var currProdName = $(this).data("curr_prod_name");
+    var newProductName = $(this).val();
+    if (newProductName != "") {
+      $.ajax({
+        url: "check-product-name.php",
+        type: "POST",
+        data: { productName: newProductName },
+        success: function (data) {
+          var result = $.trim(data);
+          if (result == newProductName && newProductName != currProdName) {
+            $("#prodNameEditHelp").text(
+              "(!) Đã tồn tại sản phẩm khác có tên này trong gian hàng của bạn. Vui lòng kiểm tra lại!");
+            $("#prodNameEditHelp").css("color", "red");
+            $("#btn-edit-product").attr("disabled", "disabled");
+          } else if (result == currProdSKU) {
+            $("#prodNameEditHelp").text("");
+            $("#btn-edit-product").removeAttr('disabled');
+          } else {
+            $("#prodNameEditHelp").text("");
+            $("#btn-edit-product").removeAttr('disabled');
+          }
+        },
+        error: function (jqXHR, exception) {
+          //alert("Lỗi");
+        },
+      });
+    } else {
+      $("#prodNameEditHelp").text("");
+      $("#btn-edit-product").removeAttr('disabled');
+    }
+  });
+
   // Check product SKU
   $("[name='prodSKUEdit']").on("change", function () {
     var currProdSKU = $(this).data("curr_prod_sku");
@@ -319,10 +387,13 @@ $(document).ready(function () {
               "(!) Đã tồn tại sản phẩm khác có mã SKU này. Vui lòng kiểm tra lại!"
             );
             $("#prodSKUEditHelp").css("color", "red");
+            $("#btn-edit-product").attr("disabled", "disabled");
           } else if (result == currProdSKU) {
             $("#prodSKUEditHelp").text("");
+            $("#btn-edit-product").removeAttr('disabled');
           } else {
             $("#prodSKUEditHelp").text("");
+            $("#btn-edit-product").removeAttr('disabled');
           }
         },
         error: function (jqXHR, exception) {
@@ -331,6 +402,7 @@ $(document).ready(function () {
       });
     } else {
       $("#prodSKUEditHelp").text("");
+      $("#btn-edit-product").removeAttr('disabled');
     }
   });
 
