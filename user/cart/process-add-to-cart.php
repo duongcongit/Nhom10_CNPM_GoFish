@@ -20,3 +20,6 @@ if (isset($_POST['productID']) && isset($_POST['quantity'])) {
         $conn->query($sql_insert_cart);
     }
 }
+else{
+    header("location:".SITEURL);
+}

@@ -110,7 +110,9 @@ if (isset($_GET['id'])) {
                 //nếu có
               ?>
                 <img src="<?php echo SITEURL; ?>assets/img/products/<?php echo $hinhAnh1; ?>" alt="Item-img" style="max-height: 400px;width:100%" class="img-fluid mt-3">
-                <!-- <img src="<?php //echo SITEURL; ?>assets/img/products/<?php //echo $hinhAnh2; ?>" alt="Item-img" style="max-height: 400px;width:100%" class="img-fluid mt-3"> -->
+                <!-- <img src="<?php //echo SITEURL; 
+                                ?>assets/img/products/<?php //echo $hinhAnh2; 
+                                                      ?>" alt="Item-img" style="max-height: 400px;width:100%" class="img-fluid mt-3"> -->
               <?php
               }
 
@@ -180,21 +182,34 @@ if (isset($_GET['id'])) {
 
               <div>
                 <?php
-                if ($userID == $_SESSION['id']) {
+                if (isset($_SESSION['id'])) {
+                  if ($userID == $_SESSION['id']) {
                 ?>
-                  <p class="sold-out-detail">Sản phẩm của bạn</p>
-                <?php
-                }
-                else if ($conLai == 0) {
-                ?>
-                  <p class="sold-out-detail">Hết hàng</p>
-                <?php
+                    <p class="sold-out-detail">Sản phẩm của bạn</p>
+                  <?php
+                  } else if ($conLai == 0) {
+                  ?>
+                    <p class="sold-out-detail">Hết hàng</p>
+                  <?php
+                  } else {
+                  ?>
+                    <button type="button" class="bi bi-cart-plus-fill btn-add-to-cart-detail" data-product_id="<?php echo $iditem ?>"><span class="ms-1">Thêm vào giỏ hàng</span>
+                    </button>
+                  <?php
+                  }
                 } else {
-                ?>
-                  <button type="button" class="bi bi-cart-plus-fill btn-add-to-cart-detail" data-product_id="<?php echo $iditem ?>"><span class="ms-1">Thêm vào giỏ hàng</span>
-                  </button>
+                  if ($conLai == 0) {
+                  ?>
+                    <p class="sold-out-detail">Hết hàng</p>
+                  <?php
+                  } else {
+                  ?>
+                    <a type="button" href="./login.php" class="text-decoration-none bi bi-cart-plus-fill btn-add-to-cart-detail-no-loged" data-product_id="<?php echo $iditem ?>"><span class="ms-1">Thêm vào giỏ hàng</span>
+                    </a>
                 <?php
+                  }
                 }
+
                 ?>
 
               </div>

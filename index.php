@@ -84,19 +84,35 @@ if (mysqli_num_rows($result) == 0) {
                                 <p class="product-price"><?= number_format($each['price'], 0, '.', '.') ?>đ</p>
                                 <div class="product-action">
                                     <?php
-                                    if ($each['userID'] == $_SESSION['id']) {
+                                    // If loged in
+                                    if (isset($_SESSION['id'])) {
+                                        if ($each['userID'] == $_SESSION['id']) {
                                     ?>
-                                        <p class="sold-out">Sản phẩm của bạn</p>
+                                            <p class="sold-out">Sản phẩm của bạn</p>
+                                        <?php
+                                        } else if ($each['stock'] == 0) {
+                                        ?>
+                                            <p class="sold-out">Hết hàng</p>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <button type="button" class="btn-add-to-cart" data-product_id="<?php echo $each['productID']; ?>"><i class="bi bi-cart-plus-fill"></i>
+                                            </button>
+                                        <?php
+                                        }
+                                    } 
+                                    // If not loged in
+                                    else {
+                                        if ($each['stock'] == 0) {
+                                        ?>
+                                            <p class="sold-out">Hết hàng</p>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <a type="button" href="login.php" class="btn-add-to-cart-not-loged-in" data-product_id="<?php echo $each['productID']; ?>"><i class="bi bi-cart-plus-fill"></i>
+                                            </a>
                                     <?php
-                                    } else if ($each['stock'] == 0) {
-                                    ?>
-                                        <p class="sold-out">Hết hàng</p>
-                                    <?php
-                                    } else {
-                                    ?>
-                                        <button type="button" class="btn-add-to-cart" data-product_id="<?php echo $each['productID']; ?>"><i class="bi bi-cart-plus-fill"></i>
-                                        </button>
-                                    <?php
+                                        }
                                     }
                                     ?>
                                 </div>
@@ -134,20 +150,36 @@ if (mysqli_num_rows($result) == 0) {
                             <div class="product-price-action">
                                 <p class="product-price"><?= number_format($each['price'], 0, '.', '.') ?>đ</p>
                                 <div class="product-action">
-                                    <?php
-                                    if ($each['userID'] == $_SESSION['id']) {
+                                <?php
+                                    // If loged in
+                                    if (isset($_SESSION['id'])) {
+                                        if ($each['userID'] == $_SESSION['id']) {
                                     ?>
-                                        <p class="sold-out">Sản phẩm của bạn</p>
+                                            <p class="sold-out">Sản phẩm của bạn</p>
+                                        <?php
+                                        } else if ($each['stock'] == 0) {
+                                        ?>
+                                            <p class="sold-out">Hết hàng</p>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <button type="button" class="btn-add-to-cart" data-product_id="<?php echo $each['productID']; ?>"><i class="bi bi-cart-plus-fill"></i>
+                                            </button>
+                                        <?php
+                                        }
+                                    } 
+                                    // If not loged in
+                                    else {
+                                        if ($each['stock'] == 0) {
+                                        ?>
+                                            <p class="sold-out">Hết hàng</p>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <a type="button" href="login.php" class="btn-add-to-cart-not-loged-in" data-product_id="<?php echo $each['productID']; ?>"><i class="bi bi-cart-plus-fill"></i>
+                                            </a>
                                     <?php
-                                    } else if ($each['stock'] == 0) {
-                                    ?>
-                                        <p class="sold-out">Hết hàng</p>
-                                    <?php
-                                    } else {
-                                    ?>
-                                        <button type="button" class="btn-add-to-cart" data-product_id="<?php echo $each['productID']; ?>"><i class="bi bi-cart-plus-fill"></i>
-                                        </button>
-                                    <?php
+                                        }
                                     }
                                     ?>
                                 </div>
@@ -185,20 +217,36 @@ if (mysqli_num_rows($result) == 0) {
                             <div class="product-price-action">
                                 <p class="product-price"><?= number_format($each['price'], 0, '.', '.') ?>đ</p>
                                 <div class="product-action">
-                                    <?php
-                                    if ($each['userID'] == $_SESSION['id']) {
+                                <?php
+                                    // If loged in
+                                    if (isset($_SESSION['id'])) {
+                                        if ($each['userID'] == $_SESSION['id']) {
                                     ?>
-                                        <p class="sold-out">Sản phẩm của bạn</p>
+                                            <p class="sold-out">Sản phẩm của bạn</p>
+                                        <?php
+                                        } else if ($each['stock'] == 0) {
+                                        ?>
+                                            <p class="sold-out">Hết hàng</p>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <button type="button" class="btn-add-to-cart" data-product_id="<?php echo $each['productID']; ?>"><i class="bi bi-cart-plus-fill"></i>
+                                            </button>
+                                        <?php
+                                        }
+                                    } 
+                                    // If not loged in
+                                    else {
+                                        if ($each['stock'] == 0) {
+                                        ?>
+                                            <p class="sold-out">Hết hàng</p>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <a type="button" href="login.php" class="btn-add-to-cart-not-loged-in" data-product_id="<?php echo $each['productID']; ?>"><i class="bi bi-cart-plus-fill"></i>
+                                            </a>
                                     <?php
-                                    } else if ($each['stock'] == 0) {
-                                    ?>
-                                        <p class="sold-out">Hết hàng</p>
-                                    <?php
-                                    } else {
-                                    ?>
-                                        <button type="button" class="btn-add-to-cart" data-product_id="<?php echo $each['productID']; ?>"><i class="bi bi-cart-plus-fill"></i>
-                                        </button>
-                                    <?php
+                                        }
                                     }
                                     ?>
                                 </div>
@@ -236,20 +284,36 @@ if (mysqli_num_rows($result) == 0) {
                             <div class="product-price-action">
                                 <p class="product-price"><?= number_format($each['price'], 0, '.', '.') ?>đ</p>
                                 <div class="product-action">
-                                    <?php
-                                    if ($each['userID'] == $_SESSION['id']) {
+                                <?php
+                                    // If loged in
+                                    if (isset($_SESSION['id'])) {
+                                        if ($each['userID'] == $_SESSION['id']) {
                                     ?>
-                                        <p class="sold-out">Sản phẩm của bạn</p>
+                                            <p class="sold-out">Sản phẩm của bạn</p>
+                                        <?php
+                                        } else if ($each['stock'] == 0) {
+                                        ?>
+                                            <p class="sold-out">Hết hàng</p>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <button type="button" class="btn-add-to-cart" data-product_id="<?php echo $each['productID']; ?>"><i class="bi bi-cart-plus-fill"></i>
+                                            </button>
+                                        <?php
+                                        }
+                                    } 
+                                    // If not loged in
+                                    else {
+                                        if ($each['stock'] == 0) {
+                                        ?>
+                                            <p class="sold-out">Hết hàng</p>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <a type="button" href="login.php" class="btn-add-to-cart-not-loged-in" data-product_id="<?php echo $each['productID']; ?>"><i class="bi bi-cart-plus-fill"></i>
+                                            </a>
                                     <?php
-                                    } else if ($each['stock'] == 0) {
-                                    ?>
-                                        <p class="sold-out">Hết hàng</p>
-                                    <?php
-                                    } else {
-                                    ?>
-                                        <button type="button" class="btn-add-to-cart" data-product_id="<?php echo $each['productID']; ?>"><i class="bi bi-cart-plus-fill"></i>
-                                        </button>
-                                    <?php
+                                        }
                                     }
                                     ?>
                                 </div>
@@ -287,20 +351,36 @@ if (mysqli_num_rows($result) == 0) {
                             <div class="product-price-action">
                                 <p class="product-price"><?= number_format($each['price'], 0, '.', '.') ?>đ</p>
                                 <div class="product-action">
-                                    <?php
-                                    if ($each['userID'] == $_SESSION['id']) {
+                                <?php
+                                    // If loged in
+                                    if (isset($_SESSION['id'])) {
+                                        if ($each['userID'] == $_SESSION['id']) {
                                     ?>
-                                        <p class="sold-out">Sản phẩm của bạn</p>
+                                            <p class="sold-out">Sản phẩm của bạn</p>
+                                        <?php
+                                        } else if ($each['stock'] == 0) {
+                                        ?>
+                                            <p class="sold-out">Hết hàng</p>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <button type="button" class="btn-add-to-cart" data-product_id="<?php echo $each['productID']; ?>"><i class="bi bi-cart-plus-fill"></i>
+                                            </button>
+                                        <?php
+                                        }
+                                    } 
+                                    // If not loged in
+                                    else {
+                                        if ($each['stock'] == 0) {
+                                        ?>
+                                            <p class="sold-out">Hết hàng</p>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <a type="button" href="login.php" class="btn-add-to-cart-not-loged-in" data-product_id="<?php echo $each['productID']; ?>"><i class="bi bi-cart-plus-fill"></i>
+                                            </a>
                                     <?php
-                                    } else if ($each['stock'] == 0) {
-                                    ?>
-                                        <p class="sold-out">Hết hàng</p>
-                                    <?php
-                                    } else {
-                                    ?>
-                                        <button type="button" class="btn-add-to-cart" data-product_id="<?php echo $each['productID']; ?>"><i class="bi bi-cart-plus-fill"></i>
-                                        </button>
-                                    <?php
+                                        }
                                     }
                                     ?>
                                 </div>

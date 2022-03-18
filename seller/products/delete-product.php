@@ -64,7 +64,10 @@ if (!isset($_SESSION['editProdSucsess']) && !isset($_SESSION['addProdSucsess']) 
         <div class="d-flex justify-content-between">
             <?php
             //Sql Query 
-            $sql_products = "SELECT * FROM products WHERE userID = '{$_SESSION['userID']}'";
+            $sql_products = "SELECT products.productID,products.productSKU,products.productName,products.categoryID,products.detail,products.price,products.stock,products.sold,products.status,
+            product_image.image,categories.categoryName 
+            FROM products,product_image,categories 
+            WHERE userID = '{$_SESSION['userID']}' and product_image.productID=products.productID and products.categoryID=categories.id and product_image.image LIKE '1%'";
             //Execute Query
             $result = $conn->query($sql_products);
             
@@ -130,7 +133,7 @@ if (!isset($_SESSION['editProdSucsess']) && !isset($_SESSION['addProdSucsess']) 
                                 </div>
                             </td>
                             <td><?= $row['productID']; ?></td>
-                            <td><?= $row['category']; ?></td>
+                            <td><?= $row['categoryName']; ?></td>
                             <td><?= $row['price']; ?>đ</td>
                             <td class="text-center"><?= $row['stock']; ?>
                             </td>
