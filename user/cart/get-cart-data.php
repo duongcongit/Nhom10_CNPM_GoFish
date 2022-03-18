@@ -60,7 +60,7 @@ if (isset($_SESSION['id'])) {
                     ?>
                         <div class="prod-info mb-0 mt-3 col-md-12 bg-light d-flex d-flex align-items-center px-3 py-2">
                             <div style="width: 40%;" class="mb-4 d-flex align-items-center">
-                                <input class="btn-check-product me-1 form-check-input" type="checkbox" style="cursor: pointer;" data-prodid="<?php echo $res_prod['productID'] ?>" data-amount="<?php echo $amount; ?>">
+                                <input class="btn-check-product me-1 form-check-input" type="checkbox" style="cursor: pointer;" data-prodid="<?php echo $res_prod['productID'] ?>" value="<?php echo $amount; ?>">
                                 <img src="<?php echo SITEURL ?>assets/img/products/<?php echo $img1 ?>" alt="" class="product-avatar-list" style="width: 70px;">
                                 <span class="quick-produc-name ms-2 pe-3"><?php echo $res_prod['productName']; ?></span>
                             </div>
@@ -115,8 +115,8 @@ if (isset($_SESSION['id'])) {
             </div>
             <div class="col-md-12 bg-light px-3 mb-3">
                 <div class="col-md-12 d-flex justify-content-between pt-2">
-                    <p>Số sản phẩm: </p>
-                    <p>3</p>
+                    <p>Đã chọn: </p>
+                    <p class="number-product-checked">0 (Sản phẩm)</p>
                 </div>
                 <hr>
                 <div class="col-md-12 d-flex justify-content-between pt-2">
@@ -127,17 +127,17 @@ if (isset($_SESSION['id'])) {
                     </div>
                 </div>
             </div>
-            <a href="#" class="btn btn-danger col-md-12 py-2 mb-3">
-                <h4 class="mt-1">Tiếp tục</h4>
+            <p id="order-help" class="col-md-12 text-danger d-flex justify-content-center d-none" style="font-weight: 500;">(!) Chưa chọn sản phẩm nào.</p>
+            <a href="#" id="btn-order" class="btn btn-danger col-md-12 py-2 mb-3">
+                <h4 class="mt-1">Đặt hàng</h4>
             </a>
         </div>
 
 
 <?php
     }
-}
-else{
-    header("location:".SITEURL);
+} else {
+    header("location:" . SITEURL);
 }
 
 ?>

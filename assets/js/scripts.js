@@ -53,22 +53,6 @@ $(document).ready(function () {
 
   // ================== SCRIPTS FOR DETAIL VIEW PAGE ============================== //
   // ------- FUNCTIONS
-  // Function get data for cart view
-  function get_cart_data() {
-    var test;
-    $.ajax({
-      url: "get-cart-data.php",
-      type: "POST",
-      data: {
-        test: test,
-      },
-      success: function (data) {
-        $("#cart-view").html(data);
-      },
-    });
-  }
-  // Get data quick view cart
-  get_cart_data();
 
   // ------- EVENTS
   // Check when quantity is changed
@@ -117,7 +101,25 @@ $(document).ready(function () {
   });
 
   // ================== SCRIPTS FOR CART PAGE ============================== //
+  //
+  var num_prod_checked = 0;
   // -------- FUNCTIONS
+  // Function get data for cart view
+  function get_cart_data() {
+    var test;
+    $.ajax({
+      url: "get-cart-data.php",
+      type: "POST",
+      data: {
+        test: test,
+      },
+      success: function (data) {
+        $("#cart-view").html(data);
+      },
+    });
+  }
+  // Get data quick view cart
+  get_cart_data();
 
   // Function format price
   function format_price(price) {
@@ -156,24 +158,26 @@ $(document).ready(function () {
       format_price(amount) + '<u class="ms-1">đ</u>'
     );
     //
-    $(".btn-check-product[data-prodid='" + productID + "']").attr(
-      "data-amount",
-      parseInt(amount)
-    );
+    $(".btn-check-product[data-prodid='" + productID + "']").val(parseInt(amount));
+    //
   }
 
   // Function update total price
   function update_total_price() {
     var num_inp = $(".btn-check-product").length;
     var amount = 0;
+    var num_prod = 0;
     for (let i = 0; i < num_inp; i++) {
       var inp = $(".btn-check-product:eq(" + i + ")");
       if (inp.is(":checked")) {
-        amount = amount + parseInt(inp.data("amount"));
+        num_prod++;
+        amount = amount + parseInt(inp.val());
       }
     }
-    //$(".btn-check-product:eq(0)").data("amount");
     //
+    num_prod_checked = num_prod;
+    //
+    $(".number-product-checked").text(num_prod + " (Sản phẩm)");
     $(".total-price").html(format_price(amount) + '<u class="ms-1">đ</u>');
   }
 
@@ -195,6 +199,15 @@ $(document).ready(function () {
   update_all_quantity();
 
   // ------- EVENTS
+  // --- Click button order
+  $(document).on("click", "#btn-order", function(){
+    if(num_prod_checked == 0){
+      $("#order-help").removeClass("d-none");
+    }
+    else{
+      $("#order-help").addClass("d-none");
+    }
+  })
   // --- Event click button select products in cart
   // Select all
   $("#btn-check-all-cart").change(function () {
