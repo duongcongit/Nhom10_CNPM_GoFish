@@ -35,7 +35,8 @@ include "./partials/loginCheck.php";
                             <img src="<?php echo SITEURL ?>seller/assets/img/logo-1.png" alt="" class="logo">
 
                         </a>
-                        <a class="navbar-brand me-auto" href="admin.php">Trang Quản Trị</a>
+                        <a class="navbar-brand me-auto" href="account.php">Trang Quản Trị</a>
+                        <a class="navbar-brand ms-auto" href="#"><i class="bi bi-person-workspace me-2"></i><?php echo $_SESSION['adminName'] ?></a>
                     </div>
                 </nav>
                 <!-- Navbars end -->
