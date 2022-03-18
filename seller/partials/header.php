@@ -62,7 +62,7 @@ include dirname(__FILE__) . '/login-check.php';
         <div class="row">
 
             <!-- Sidebar start -->
-            <div class="container sidebar">
+            <div class="container sidebar sidebar-show">
                 <!-- Sidebar menu start-->
                 <div class="sidebar-menu">
                     <ul class="">
