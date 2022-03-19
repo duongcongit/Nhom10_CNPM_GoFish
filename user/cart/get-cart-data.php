@@ -1,7 +1,7 @@
 <?php
 require '../../config/constants.php';
 
-if (isset($_SESSION['id'])) {
+if (isset($_SESSION['id'])) { 
 
     $userID         = $_SESSION['id'];
     //
@@ -137,6 +137,15 @@ if (isset($_SESSION['id'])) {
 
 
 <?php
+    }
+    else{
+        ?>
+        <div class="col-md-12 d-flex justify-content-center pt-5" style="min-height: 800px;">
+            <h3 class="text-muted mt-5">
+                Chưa có sản phẩm nào
+            </h3>
+        </div>
+        <?php
     }
 } else {
     header("location:" . SITEURL);
